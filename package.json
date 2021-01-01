@@ -3,7 +3,6 @@
   "title": "TaxJs",
   "version": "2021.0.0",
   "description": "german tax calculation in typescript and javascript",
-  "private": true,
   "scripts": {
     "create-ts": "node build/create-ts.js",
     "create-js" : "tsc --target ES5 --module AMD --outDir dist/amd && tsc --target ES5 --module CommonJs --outDir dist/commonjs && tsc --target ES5 --module System --outDir dist/system  && tsc --target ES5 --module UMD --outDir dist/umd && tsc --target ES2015 --module ES2015 --outDir dist/es2015",
