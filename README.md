@@ -1,4 +1,5 @@
-# TaxJs
+# TaxJs ![Node.js CI](https://github.com/taxcalcs/taxjs/workflows/Node.js%20CI/badge.svg) [![NPM](https://nodei.co/npm/taxjs.png?mini=true)](https://npmjs.org/package/taxjs)
+
 
 TaxJs is a typescript and javascript library to calculate german tax.
 
