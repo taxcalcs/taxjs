@@ -1,0 +1,42 @@
+{
+  "name": "taxjs",
+  "title": "TaxJs",
+  "version": "2021.0.0",
+  "description": "german tax calculation in typescript and javascript",
+  "private": true,
+  "scripts": {
+    "create-ts": "node build/create-ts.js",
+    "create-js" : "tsc --target ES5 --module AMD --outDir dist/amd && tsc --target ES5 --module CommonJs --outDir dist/commonjs && tsc --target ES5 --module System --outDir dist/system  && tsc --target ES5 --module UMD --outDir dist/umd && tsc --target ES2015 --module ES2015 --outDir dist/es2015",
+    "compress-js": "node build/compress.js",
+    "test": "node build/test.js",
+    
+    "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5",
+    
+    "build": "npm run create-ts && npm run create-js && npm run compress-js",
+    "all": "npm run build && npm run test"
+  },
+  "author": "Ariel Küchler",
+  "bugs": {
+    "url": "https://github.com/taxcalcs/taxjs/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taxcalcs/taxjs.git"
+  },
+  "keywords": [
+    "tax", "bmf", "lohnsteuer", "germany", "pap"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@types/big.js": "^6.0.1",
+    "big.js": "^6.0.3"
+  },
+  "devDependencies": {
+    "adm-zip": "^0.5.1",
+    "saxon-js": "^2.0.2",
+    "uglify-es": "^3.3.9",
+    "xslt3": "^2.0.2",
+    "node-fetch": "^2.6.1",
+    "csv-parser": "^3.0.0"
+  }
+}

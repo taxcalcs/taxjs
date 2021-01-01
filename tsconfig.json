@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strict": false,
+        "removeComments": false,
+        "allowUnreachableCode": false,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "strictFunctionTypes": true,
+        "declaration": false
+    }
+}
