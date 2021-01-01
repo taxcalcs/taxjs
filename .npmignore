@@ -3,3 +3,4 @@ build/
 .gitignore
 package-lock.json
 .vscode/
+.github/
