@@ -14,7 +14,7 @@ function run(folder, folderMap) {
         });
         resolve(found);
     }).then(founds => {
-        console.log("start ompressing " + folder);
+        console.log("start compressing " + folder);
         founds.forEach(function(fileName) {
             console.log("compress " + fileName);
 
@@ -44,5 +44,3 @@ function run(folder, folderMap) {
 run("dist/umd/", "dist/umd/");
 run("dist/es2015/", "dist/es2015/");
 run("dist/system/", "dist/system/");
-run("dist/amd/", "dist/amd/");
-run("dist/commonjs/", "dist/commonjs/");
