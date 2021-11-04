@@ -1,5 +1,7 @@
 build/unpacked/
 build/unpacked-tests/
+build/ts/
+build/ts-native/
 node_modules/
 .DS_Store
 .vscode/

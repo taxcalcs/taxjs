@@ -4,15 +4,18 @@
   "version": "2021.0.0",
   "description": "german tax calculation in typescript and javascript",
   "scripts": {
-    "create-ts": "node build/create-ts.js",
-    "create-js" : "tsc --target ES5 --module System --outDir dist/system  && tsc --target ES5 --module UMD --outDir dist/umd && tsc --target ES2015 --module ES2015 --outDir dist/es2015",
-    "compress-js": "node build/compress.js",
-    "test": "node build/test.js",
-    
+    "clean": "node build/clean.js",
+    "build:ts": "node build/create-ts.js",
+    "build:declaration": "tsc --outDir dist/declaration --emitDeclarationOnly true --declaration true",
+    "build:system": "tsc --target ES5 --module System --outDir dist/system",
+    "build:umd": "tsc --target ES5 --module UMD --outDir dist/umd",
+    "build:es2015": "tsc --target ES2015 --module ES2015 --outDir dist/es2015",
+    "build:native": "node build/ts-for-native-create.js && tsc --target ES5 --module None --outDir dist/js --project tsconfig.native.json && node build/ts-for-native-clean.js",
+    "build:compress": "node build/compress.js",
     "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5",
-    
-    "build": "npm run create-ts && npm run create-js && npm run compress-js",
-    "all": "npm run build && npm run test"
+    "test": "node build/test.js",
+    "build": "npm run build:ts && npm run build:declaration && npm run build:native && npm run build:system && npm run build:umd && npm run build:es2015 && npm run build:compress",
+    "all": "npm run clean && npm run build && npm run test"
   },
   "author": "Ariel Küchler",
   "bugs": {
@@ -23,19 +26,25 @@
     "url": "https://github.com/taxcalcs/taxjs.git"
   },
   "keywords": [
-    "tax", "bmf", "lohnsteuer", "germany", "pap"
+    "tax",
+    "bmf",
+    "lohnsteuer",
+    "germany",
+    "pap"
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/big.js": "^6.0.1",
-    "big.js": "^6.0.3"
+    "@types/big.js": "^6.1.2",
+    "big.js": "^6.1.1"
   },
   "devDependencies": {
-    "adm-zip": "^0.5.1",
-    "saxon-js": "^2.0.2",
-    "uglify-es": "^3.3.9",
-    "xslt3": "^2.0.2",
-    "node-fetch": "^2.6.1",
-    "csv-parser": "^3.0.0"
+    "adm-zip": "^0.5.9",
+    "csv-parser": "^3.0.0",
+    "fs-extra": "^10.0.0",
+    "node-fetch": "^3.0.0",
+    "replace-in-files": "^3.0.0",
+    "saxon-js": "^2.3.0",
+    "uglify-js": "^3.14.3",
+    "xslt3": "^2.3.0"
   }
 }

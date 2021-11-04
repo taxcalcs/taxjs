@@ -5,6 +5,11 @@
 <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:template match="/PAP">
 import Big, { RoundingMode } from 'big.js';
+import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../declaration/TaxJs';
+
+type <xsl:value-of select="./@name" />InBigType = <xsl:for-each select="./VARIABLES/INPUTS/INPUT[@type = 'BigDecimal']">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;
+type <xsl:value-of select="./@name" />InNumberType = <xsl:for-each select="./VARIABLES/INPUTS/INPUT[@type != 'BigDecimal']">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;
+type <xsl:value-of select="./@name" />OutType = <xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;
 
 /**
 * Steuerberechnungsklasse.
@@ -12,8 +17,12 @@ import Big, { RoundingMode } from 'big.js';
 * Generiert aus Pseudocode von: &lt;a href="https://www.bmf-steuerrechner.de"&gt;bmf-steuerrechner&lt;/a&gt;
 * 
 */
-export class <xsl:value-of select="./@name" /> implements TaxJs {
-    private readonly Z_0 : Big = new Big(0);
+export class <xsl:value-of select="./@name" /> implements TaxJs&lt;<xsl:value-of select="./@name" />InBigType, <xsl:value-of select="./@name" />InNumberType, <xsl:value-of select="./@name" />OutType> {
+    private static readonly _n = "number";
+	private static readonly _b = "Big";
+	private static readonly _i = "input";
+	private static readonly _o = "output";
+	private readonly Z_0 : Big = new Big(0);
     private readonly Z_1 : Big = new Big(1);
 	private readonly Z_10 : Big = new Big(10);
     <xsl:apply-templates select="./VARIABLES" />
@@ -24,6 +33,26 @@ export class <xsl:value-of select="./@name" /> implements TaxJs {
 	<xsl:call-template name="initMethod"/>
 	<xsl:call-template name="generalSetter"/>
 	<xsl:call-template name="generalGetter"/>
+
+	/**
+	 * Converts a value (number or Big) in the correct type (number or Big).
+	 * 
+	 * @param {string} name the name of the value
+	 * @param {TaxJsValueType} value the value to convert
+	 */
+	public toType(name: string, value: TaxJsValueType): TaxJsValueType {
+		const info = <xsl:value-of select="/PAP/@name" />.typeDirectory[name];
+		if (!info) {
+			throw new Error("Unknown parameter " + name);
+		}
+		if (typeof value == "number" &amp;&amp; info.type != "number") {
+			return new Big(value as number);
+		}
+		if (typeof value == "object" &amp;&amp; info.type == "number") {
+			return (value as Big).toNumber();
+		}
+		return value;
+	}
 }
     </xsl:template>
 
@@ -96,44 +125,41 @@ export class <xsl:value-of select="./@name" /> implements TaxJs {
 	 */
 	public initInputs() : void {
 		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">
-		this.<xsl:value-of select="./@name" /> = <xsl:if test="./@type = 'BigDecimal'">this.Z_0</xsl:if><xsl:if test="./@type != 'BigDecimal'">0</xsl:if>;
-		</xsl:for-each>
+			<xsl:if test="./@type = 'BigDecimal'">this.<xsl:value-of select="./@name" /> = </xsl:if>
+		</xsl:for-each>this.Z_0;
+		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">
+			<xsl:if test="./@type != 'BigDecimal'">this.<xsl:value-of select="./@name" /> = </xsl:if>
+		</xsl:for-each>0;
 	}
 	</xsl:template>
 
 	<!-- Setter for all input parameters. -->
 	<xsl:template name="generalSetter">
 	/**
-	 * Setter for all input parameters with type Big.
-	 * 
-	 * @param {String} name Variable name to set.
+	 * Setter for Big input parameters.
+	 *
+	 * @param {string} name Variable name to set.
 	 * @param {Big} value Value to set.
 	 */
-	public setBig(name: String, value : Big) : void {
-		switch(name) {
-		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">
-			<xsl:if test="./@type = 'BigDecimal'">case '<xsl:value-of select="./@name" />': this.<xsl:value-of select="./@name" /> = value; break;
-			</xsl:if>
-		</xsl:for-each>
-			default:
-				throw new Error("Unknown Big parameter " + name);
+	public setBig(name: <xsl:value-of select="/PAP/@name" />InBigType, value : Big): void {
+		if (this.hasOwnProperty(name)) {
+			this[name] = value;
+		}else {
+			throw new Error("Unknown parameter " + name);
 		}
 	}
 
 	/**
-	 * Setter for all input parameters with type number.
+	 * Setter for number input parameters.
 	 *
-	 * @param {String} name Variable name to set.
-	 * @param {Big} value Value to set.
+	 * @param {string} name Variable name to set.
+	 * @param {number} value Value to set.
 	 */
-	public setNumber(name: String, value : number) : void {
-		switch(name) {
-		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">
-			<xsl:if test="./@type != 'BigDecimal'">case '<xsl:value-of select="./@name" />': this.<xsl:value-of select="./@name" /> = value; break;
-			</xsl:if>
-		</xsl:for-each>
-			default:
-				throw new Error("Unknown number parameter " + name);
+	public setNumber(name: <xsl:value-of select="/PAP/@name" />InNumberType, value : number): void {
+		if (this.hasOwnProperty(name)) {
+			this[name] = value;
+		}else {
+			throw new Error("Unknown parameter " + name);
 		}
 	}
 	</xsl:template>
@@ -141,53 +167,27 @@ export class <xsl:value-of select="./@name" /> implements TaxJs {
 	<!-- Getter for all output parameters. -->
 	<xsl:template name="generalGetter">
 	/**
-	 * Getter for all output parameters with type Big.
+	 * Getter for all output parameters. You get a value of type "number or "Big".
 	 *
-	 * @param {String} name Variable name to get.
+	 * @param {string} name Variable name to get.
 	 */
-	public getBig(name: String) : Big {
-		switch(name) {
-		<xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">
-			<xsl:if test="./@type = 'BigDecimal'">case '<xsl:value-of select="./@name" />': return this.<xsl:value-of select="./@name" />;
-			</xsl:if>
-		</xsl:for-each>
-			default:
-				throw new Error("Unknown Big parameter " + name);
+	public get(name: <xsl:value-of select="/PAP/@name" />InBigType | <xsl:value-of select="/PAP/@name" />InNumberType | <xsl:value-of select="/PAP/@name" />OutType) : TaxJsValueType {
+		if (this.hasOwnProperty(name)) {
+			return this[name];
 		}
+		throw new Error("Unknown parameter " + name);
 	}
 
-	/**
-	 * Getter for all output parameters with type number.
-	 *
-	 * @param {String} name Variable name to get.
-	 */
-	public getNumber(name: String) : number {
-		switch(name) {
-		<xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">
-			<xsl:if test="./@type != 'BigDecimal'">case '<xsl:value-of select="./@name" />': return this.<xsl:value-of select="./@name" />;
-			</xsl:if>
-		</xsl:for-each>
-			default:
-				throw new Error("Unknown number parameter " + name);
-		}
-	}
+	private static readonly typeDirectory: TaxJsDictionary = {
+		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._i},</xsl:for-each>
+		<xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._o},</xsl:for-each>
+	};
 
 	/**
-	 * Get all input names.
+	 * Get all fields with types.
 	 */
-	public getInputs() : String[] {
-		return [
-			<xsl:for-each select="./VARIABLES/INPUTS/INPUT">"<xsl:value-of select="./@name" />",</xsl:for-each>
-		];
-	}
-
-	/**
-	 * Get all output names.
-	 */
-	public getOutputs() : String[] {
-		return [
-			<xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">"<xsl:value-of select="./@name" />",</xsl:for-each>
-		];
+	public getDirectory() : TaxJsDictionary {
+		return <xsl:value-of select="/PAP/@name" />.typeDirectory;
 	}
 	</xsl:template>
 

@@ -1,5 +1,6 @@
 const AdmZip = require('adm-zip');
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const path = require('path');
 const Big = require('big.js');
 const fs = require('fs');
@@ -156,7 +157,7 @@ fetch(download).then(res => res.buffer())
                     });
                     
                     l.calculate();
-                    const calculatedTax = l.getBig('LSTLZZ').div(new Big(100));
+                    const calculatedTax = l.get('LSTLZZ').div(new Big(100));
                     assert.strictEqual(expected.toNumber() , calculatedTax.toNumber(), "Year: " + year + " Type: " + type + " Income: " + income + " Tax class: " + taxClassNumeric + " Calculated Tax: " + calculatedTax + " Expected Tax: " + expected);
                 });
             })
