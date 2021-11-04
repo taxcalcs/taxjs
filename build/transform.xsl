@@ -22,6 +22,8 @@ export class <xsl:value-of select="./@name" /> implements TaxJs&lt;<xsl:value-of
 	private static readonly _b = "Big";
 	private static readonly _i = "input";
 	private static readonly _o = "output";
+	private static readonly _s = "STANDARD";
+	private static readonly _d = "DBA";
 	private readonly Z_0 : Big = new Big(0);
     private readonly Z_1 : Big = new Big(1);
 	private readonly Z_10 : Big = new Big(10);
@@ -180,7 +182,8 @@ export class <xsl:value-of select="./@name" /> implements TaxJs&lt;<xsl:value-of
 
 	private static readonly typeDirectory: TaxJsDictionary = {
 		<xsl:for-each select="./VARIABLES/INPUTS/INPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._i},</xsl:for-each>
-		<xsl:for-each select="./VARIABLES/OUTPUTS/OUTPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._o},</xsl:for-each>
+		<xsl:for-each select="./VARIABLES/OUTPUTS[@type!='DBA']/OUTPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._o, group:<xsl:value-of select="/PAP/@name" />._s},</xsl:for-each>
+		<xsl:for-each select="./VARIABLES/OUTPUTS[@type='DBA']/OUTPUT">"<xsl:value-of select="./@name" />": {type:<xsl:value-of select="/PAP/@name" />.<xsl:if test="./@type = 'BigDecimal'">_b</xsl:if><xsl:if test="./@type != 'BigDecimal'">_n</xsl:if>, direction: <xsl:value-of select="/PAP/@name" />._o, group:<xsl:value-of select="/PAP/@name" />._d},</xsl:for-each>
 	};
 
 	/**
