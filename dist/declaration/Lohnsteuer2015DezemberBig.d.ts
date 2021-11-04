@@ -14,6 +14,8 @@ export declare class Lohnsteuer2015DezemberBig implements TaxJs<Lohnsteuer2015De
     private static readonly _b;
     private static readonly _i;
     private static readonly _o;
+    private static readonly _s;
+    private static readonly _d;
     private readonly Z_0;
     private readonly Z_1;
     private readonly Z_10;
