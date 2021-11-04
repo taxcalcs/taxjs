@@ -1,7 +1,10 @@
 const SaxonJS = require('saxon-js');
 const AdmZip = require('adm-zip');
 //const fetch = import('node-fetch');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch')
+    .then(({default: fetch}) => fetch(...args)).catch((error) => {
+    assert.isNotOk(error, 'Promise "fetch node-fetch" error');
+});
 const path = require('path');
 
 // create json XSLT from xml XSLT:

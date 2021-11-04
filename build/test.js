@@ -1,6 +1,9 @@
 const AdmZip = require('adm-zip');
 //const fetch = require('node-fetch');
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) => import('node-fetch')
+    .then(({default: fetch}) => fetch(...args)).catch((error) => {
+    assert.isNotOk(error, 'Promise "fetch node-fetch" error');
+});
 const path = require('path');
 const Big = require('big.js');
 const fs = require('fs');
