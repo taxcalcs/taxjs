@@ -3,6 +3,7 @@
   "title": "TaxJs",
   "version": "2021.0.0",
   "description": "german tax calculation in typescript and javascript",
+  "main": "./dist/js/Lohnsteuer2021Big.min.js",
   "scripts": {
     "clean": "node build/clean.js",
     "build:ts": "node build/create-ts.js",
@@ -41,7 +42,7 @@
     "adm-zip": "^0.5.9",
     "csv-parser": "^3.0.0",
     "fs-extra": "^10.0.0",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "^2.6.6",
     "replace-in-files": "^3.0.0",
     "saxon-js": "^2.3.0",
     "uglify-js": "^3.14.3",
