@@ -1391,173 +1391,79 @@ export class Lohnsteuer2007Big {
      * Initialize all inputs values with zero.
      */
     initInputs() {
-        this.AJAHR = 0;
-        this.ALTER1 = 0;
-        this.HINZUR = this.Z_0;
-        this.JFREIB = this.Z_0;
-        this.JHINZU = this.Z_0;
-        this.JRE4 = this.Z_0;
-        this.JVBEZ = this.Z_0;
-        this.KRV = 0;
-        this.LZZ = 0;
-        this.R = 0;
-        this.RE4 = this.Z_0;
-        this.SONSTB = this.Z_0;
-        this.STERBE = this.Z_0;
-        this.STKL = 0;
-        this.VBEZ = this.Z_0;
-        this.VBEZM = this.Z_0;
-        this.VBEZS = this.Z_0;
-        this.VBS = this.Z_0;
-        this.VJAHR = 0;
-        this.VKAPA = this.Z_0;
-        this.VMT = this.Z_0;
-        this.WFUNDF = this.Z_0;
-        this.ZKF = this.Z_0;
-        this.ZMVB = 0;
+        this.HINZUR = this.JFREIB = this.JHINZU = this.JRE4 = this.JVBEZ = this.RE4 = this.SONSTB = this.STERBE = this.VBEZ = this.VBEZM = this.VBEZS = this.VBS = this.VKAPA = this.VMT = this.WFUNDF = this.ZKF = this.Z_0;
+        this.AJAHR = this.ALTER1 = this.KRV = this.LZZ = this.R = this.STKL = this.VJAHR = this.ZMVB = 0;
     }
     /**
-     * Setter for all input parameters with type Big.
+     * Setter for Big input parameters.
      *
-     * @param {String} name Variable name to set.
+     * @param {string} name Variable name to set.
      * @param {Big} value Value to set.
      */
     setBig(name, value) {
-        switch (name) {
-            case 'HINZUR':
-                this.HINZUR = value;
-                break;
-            case 'JFREIB':
-                this.JFREIB = value;
-                break;
-            case 'JHINZU':
-                this.JHINZU = value;
-                break;
-            case 'JRE4':
-                this.JRE4 = value;
-                break;
-            case 'JVBEZ':
-                this.JVBEZ = value;
-                break;
-            case 'RE4':
-                this.RE4 = value;
-                break;
-            case 'SONSTB':
-                this.SONSTB = value;
-                break;
-            case 'STERBE':
-                this.STERBE = value;
-                break;
-            case 'VBEZ':
-                this.VBEZ = value;
-                break;
-            case 'VBEZM':
-                this.VBEZM = value;
-                break;
-            case 'VBEZS':
-                this.VBEZS = value;
-                break;
-            case 'VBS':
-                this.VBS = value;
-                break;
-            case 'VKAPA':
-                this.VKAPA = value;
-                break;
-            case 'VMT':
-                this.VMT = value;
-                break;
-            case 'WFUNDF':
-                this.WFUNDF = value;
-                break;
-            case 'ZKF':
-                this.ZKF = value;
-                break;
-            default:
-                throw new Error("Unknown Big parameter " + name);
+        if (this.hasOwnProperty(name)) {
+            this[name] = value;
+        }
+        else {
+            throw new Error("Unknown parameter " + name);
         }
     }
     /**
-     * Setter for all input parameters with type number.
+     * Setter for number input parameters.
      *
-     * @param {String} name Variable name to set.
-     * @param {Big} value Value to set.
+     * @param {string} name Variable name to set.
+     * @param {number} value Value to set.
      */
     setNumber(name, value) {
-        switch (name) {
-            case 'AJAHR':
-                this.AJAHR = value;
-                break;
-            case 'ALTER1':
-                this.ALTER1 = value;
-                break;
-            case 'KRV':
-                this.KRV = value;
-                break;
-            case 'LZZ':
-                this.LZZ = value;
-                break;
-            case 'R':
-                this.R = value;
-                break;
-            case 'STKL':
-                this.STKL = value;
-                break;
-            case 'VJAHR':
-                this.VJAHR = value;
-                break;
-            case 'ZMVB':
-                this.ZMVB = value;
-                break;
-            default:
-                throw new Error("Unknown number parameter " + name);
+        if (this.hasOwnProperty(name)) {
+            this[name] = value;
+        }
+        else {
+            throw new Error("Unknown parameter " + name);
         }
     }
     /**
-     * Getter for all output parameters with type Big.
+     * Getter for all output parameters. You get a value of type "number or "Big".
      *
-     * @param {String} name Variable name to get.
+     * @param {string} name Variable name to get.
      */
-    getBig(name) {
-        switch (name) {
-            case 'BK': return this.BK;
-            case 'BKS': return this.BKS;
-            case 'BKV': return this.BKV;
-            case 'LSTLZZ': return this.LSTLZZ;
-            case 'SOLZLZZ': return this.SOLZLZZ;
-            case 'SOLZS': return this.SOLZS;
-            case 'SOLZV': return this.SOLZV;
-            case 'STS': return this.STS;
-            case 'STV': return this.STV;
-            default:
-                throw new Error("Unknown Big parameter " + name);
+    get(name) {
+        if (this.hasOwnProperty(name)) {
+            return this[name];
         }
+        throw new Error("Unknown parameter " + name);
     }
     /**
-     * Getter for all output parameters with type number.
+     * Get all fields with types.
+     */
+    getDirectory() {
+        return Lohnsteuer2007Big.typeDirectory;
+    }
+    /**
+     * Converts a value (number or Big) in the correct type (number or Big).
      *
-     * @param {String} name Variable name to get.
+     * @param {string} name the name of the value
+     * @param {TaxJsValueType} value the value to convert
      */
-    getNumber(name) {
-        switch (name) {
-            default:
-                throw new Error("Unknown number parameter " + name);
+    toType(name, value) {
+        const info = Lohnsteuer2007Big.typeDirectory[name];
+        if (!info) {
+            throw new Error("Unknown parameter " + name);
         }
-    }
-    /**
-     * Get all input names.
-     */
-    getInputs() {
-        return [
-            "AJAHR", "ALTER1", "HINZUR", "JFREIB", "JHINZU", "JRE4", "JVBEZ", "KRV", "LZZ", "R", "RE4", "SONSTB", "STERBE", "STKL", "VBEZ", "VBEZM", "VBEZS", "VBS", "VJAHR", "VKAPA", "VMT", "WFUNDF", "ZKF", "ZMVB",
-        ];
-    }
-    /**
-     * Get all output names.
-     */
-    getOutputs() {
-        return [
-            "BK", "BKS", "BKV", "LSTLZZ", "SOLZLZZ", "SOLZS", "SOLZV", "STS", "STV",
-        ];
+        if (typeof value == "number" && info.type != "number") {
+            return new Big(value);
+        }
+        if (typeof value == "object" && info.type == "number") {
+            return value.toNumber();
+        }
+        return value;
     }
 }
+Lohnsteuer2007Big._n = "number";
+Lohnsteuer2007Big._b = "Big";
+Lohnsteuer2007Big._i = "input";
+Lohnsteuer2007Big._o = "output";
+Lohnsteuer2007Big.typeDirectory = {
+    "AJAHR": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "ALTER1": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "HINZUR": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "JFREIB": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "JHINZU": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "JRE4": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "JVBEZ": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "KRV": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "LZZ": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "R": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "RE4": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "SONSTB": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "STERBE": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "STKL": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "VBEZ": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "VBEZM": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "VBEZS": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "VBS": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "VJAHR": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "VKAPA": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "VMT": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "WFUNDF": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "ZKF": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._i }, "ZMVB": { type: Lohnsteuer2007Big._n, direction: Lohnsteuer2007Big._i }, "BK": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "BKS": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "BKV": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "LSTLZZ": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "SOLZLZZ": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "SOLZS": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "SOLZV": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "STS": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o }, "STV": { type: Lohnsteuer2007Big._b, direction: Lohnsteuer2007Big._o },
+};
 //# sourceMappingURL=Lohnsteuer2007Big.js.map

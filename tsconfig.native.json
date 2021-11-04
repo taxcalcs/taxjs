@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "strict": false,
+        "removeComments": false,
+        "allowUnreachableCode": false,
+        "strictNullChecks": true,
+        "sourceMap": true,
+        "strictFunctionTypes": true,
+        "declaration": false
+    },
+    "include": [
+        "build/ts-native/*",
+        "build/ts-for-native-global.d.ts"
+    ]
+}

@@ -1,13 +1,13 @@
 // uglifyjs  --compress --mangle --output build/umd/Lohnsteuer2006Big.min.js  --source-map "content='build/umd/Lohnsteuer2006Big.js.map'" build/umd/Lohnsteuer2006Big.js
 
-const UglifyJS = require("uglify-es");
+const UglifyJS = require("uglify-js");
 const fs = require('fs');
 
 function run(folder, folderMap) {
     new Promise(function (resolve, reject) {
-        var filenames = fs.readdirSync(folder); 
+        var filenames = fs.readdirSync(folder);
         var found = [];
-        filenames.forEach((file) => { 
+        filenames.forEach((file) => {
             if (file.endsWith("Big.js")) {
                 found.push(file);
             }
@@ -15,7 +15,7 @@ function run(folder, folderMap) {
         resolve(found);
     }).then(founds => {
         console.log("start compressing " + folder);
-        founds.forEach(function(fileName) {
+        founds.forEach(function (fileName) {
             console.log("compress " + fileName);
 
             const className = String(fileName).replace('.js', '');
@@ -24,8 +24,8 @@ function run(folder, folderMap) {
 
             var x = fs.readFileSync(folder + fileName, "utf8");
             var xMAP = fs.readFileSync(folder + fileName + '.map', "utf8");
-            
-            var options = { 
+
+            var options = {
                 mangle: {},
                 sourceMap: {
                     filename: '../../' + targetFile,
@@ -33,8 +33,8 @@ function run(folder, folderMap) {
                     url: '../../' + targetMapFile
                 }
             };
-            
-            var y = UglifyJS.minify({targetFile: x}, options);
+
+            var y = UglifyJS.minify({ targetFile: x }, options);
             fs.writeFileSync(targetFile, y.code);
             fs.writeFileSync(targetMapFile, y.map);
         });
@@ -44,3 +44,4 @@ function run(folder, folderMap) {
 run("dist/umd/", "dist/umd/");
 run("dist/es2015/", "dist/es2015/");
 run("dist/system/", "dist/system/");
+run("dist/js/", "dist/js/");

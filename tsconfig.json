@@ -8,5 +8,8 @@
         "sourceMap": true,
         "strictFunctionTypes": true,
         "declaration": false
-    }
+    },
+    "include": [
+        "build/ts"
+    ]
 }

@@ -9,13 +9,13 @@ System.register(["big.js"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            /**
-            * Steuerberechnungsklasse.
-            *
-            * Generiert aus Pseudocode von: <a href="https://www.bmf-steuerrechner.de">bmf-steuerrechner</a>
-            *
-            */
             Lohnsteuer2017Big = /** @class */ (function () {
+                /**
+                * Steuerberechnungsklasse.
+                *
+                * Generiert aus Pseudocode von: <a href="https://www.bmf-steuerrechner.de">bmf-steuerrechner</a>
+                *
+                */
                 function Lohnsteuer2017Big() {
                     this.Z_0 = new big_js_1.default(0);
                     this.Z_1 = new big_js_1.default(1);
@@ -1939,221 +1939,79 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * Initialize all inputs values with zero.
                  */
                 Lohnsteuer2017Big.prototype.initInputs = function () {
-                    this.af = 0;
-                    this.AJAHR = 0;
-                    this.ALTER1 = 0;
-                    this.ENTSCH = this.Z_0;
-                    this.f = 0;
-                    this.JFREIB = this.Z_0;
-                    this.JHINZU = this.Z_0;
-                    this.JRE4 = this.Z_0;
-                    this.JVBEZ = this.Z_0;
-                    this.KRV = 0;
-                    this.KVZ = this.Z_0;
-                    this.LZZ = 0;
-                    this.LZZFREIB = this.Z_0;
-                    this.LZZHINZU = this.Z_0;
-                    this.PKPV = this.Z_0;
-                    this.PKV = 0;
-                    this.PVS = 0;
-                    this.PVZ = 0;
-                    this.R = 0;
-                    this.RE4 = this.Z_0;
-                    this.SONSTB = this.Z_0;
-                    this.STERBE = this.Z_0;
-                    this.STKL = 0;
-                    this.VBEZ = this.Z_0;
-                    this.VBEZM = this.Z_0;
-                    this.VBEZS = this.Z_0;
-                    this.VBS = this.Z_0;
-                    this.VJAHR = 0;
-                    this.VKAPA = this.Z_0;
-                    this.VMT = this.Z_0;
-                    this.ZKF = this.Z_0;
-                    this.ZMVB = 0;
-                    this.JRE4ENT = this.Z_0;
-                    this.SONSTENT = this.Z_0;
+                    this.ENTSCH = this.JFREIB = this.JHINZU = this.JRE4 = this.JVBEZ = this.KVZ = this.LZZFREIB = this.LZZHINZU = this.PKPV = this.RE4 = this.SONSTB = this.STERBE = this.VBEZ = this.VBEZM = this.VBEZS = this.VBS = this.VKAPA = this.VMT = this.ZKF = this.JRE4ENT = this.SONSTENT = this.Z_0;
+                    this.af = this.AJAHR = this.ALTER1 = this.f = this.KRV = this.LZZ = this.PKV = this.PVS = this.PVZ = this.R = this.STKL = this.VJAHR = this.ZMVB = 0;
                 };
                 /**
-                 * Setter for all input parameters with type Big.
+                 * Setter for Big input parameters.
                  *
-                 * @param {String} name Variable name to set.
+                 * @param {string} name Variable name to set.
                  * @param {Big} value Value to set.
                  */
                 Lohnsteuer2017Big.prototype.setBig = function (name, value) {
-                    switch (name) {
-                        case 'ENTSCH':
-                            this.ENTSCH = value;
-                            break;
-                        case 'JFREIB':
-                            this.JFREIB = value;
-                            break;
-                        case 'JHINZU':
-                            this.JHINZU = value;
-                            break;
-                        case 'JRE4':
-                            this.JRE4 = value;
-                            break;
-                        case 'JVBEZ':
-                            this.JVBEZ = value;
-                            break;
-                        case 'KVZ':
-                            this.KVZ = value;
-                            break;
-                        case 'LZZFREIB':
-                            this.LZZFREIB = value;
-                            break;
-                        case 'LZZHINZU':
-                            this.LZZHINZU = value;
-                            break;
-                        case 'PKPV':
-                            this.PKPV = value;
-                            break;
-                        case 'RE4':
-                            this.RE4 = value;
-                            break;
-                        case 'SONSTB':
-                            this.SONSTB = value;
-                            break;
-                        case 'STERBE':
-                            this.STERBE = value;
-                            break;
-                        case 'VBEZ':
-                            this.VBEZ = value;
-                            break;
-                        case 'VBEZM':
-                            this.VBEZM = value;
-                            break;
-                        case 'VBEZS':
-                            this.VBEZS = value;
-                            break;
-                        case 'VBS':
-                            this.VBS = value;
-                            break;
-                        case 'VKAPA':
-                            this.VKAPA = value;
-                            break;
-                        case 'VMT':
-                            this.VMT = value;
-                            break;
-                        case 'ZKF':
-                            this.ZKF = value;
-                            break;
-                        case 'JRE4ENT':
-                            this.JRE4ENT = value;
-                            break;
-                        case 'SONSTENT':
-                            this.SONSTENT = value;
-                            break;
-                        default:
-                            throw new Error("Unknown Big parameter " + name);
+                    if (this.hasOwnProperty(name)) {
+                        this[name] = value;
+                    }
+                    else {
+                        throw new Error("Unknown parameter " + name);
                     }
                 };
                 /**
-                 * Setter for all input parameters with type number.
+                 * Setter for number input parameters.
                  *
-                 * @param {String} name Variable name to set.
-                 * @param {Big} value Value to set.
+                 * @param {string} name Variable name to set.
+                 * @param {number} value Value to set.
                  */
                 Lohnsteuer2017Big.prototype.setNumber = function (name, value) {
-                    switch (name) {
-                        case 'af':
-                            this.af = value;
-                            break;
-                        case 'AJAHR':
-                            this.AJAHR = value;
-                            break;
-                        case 'ALTER1':
-                            this.ALTER1 = value;
-                            break;
-                        case 'f':
-                            this.f = value;
-                            break;
-                        case 'KRV':
-                            this.KRV = value;
-                            break;
-                        case 'LZZ':
-                            this.LZZ = value;
-                            break;
-                        case 'PKV':
-                            this.PKV = value;
-                            break;
-                        case 'PVS':
-                            this.PVS = value;
-                            break;
-                        case 'PVZ':
-                            this.PVZ = value;
-                            break;
-                        case 'R':
-                            this.R = value;
-                            break;
-                        case 'STKL':
-                            this.STKL = value;
-                            break;
-                        case 'VJAHR':
-                            this.VJAHR = value;
-                            break;
-                        case 'ZMVB':
-                            this.ZMVB = value;
-                            break;
-                        default:
-                            throw new Error("Unknown number parameter " + name);
+                    if (this.hasOwnProperty(name)) {
+                        this[name] = value;
+                    }
+                    else {
+                        throw new Error("Unknown parameter " + name);
                     }
                 };
                 /**
-                 * Getter for all output parameters with type Big.
+                 * Getter for all output parameters. You get a value of type "number or "Big".
                  *
-                 * @param {String} name Variable name to get.
+                 * @param {string} name Variable name to get.
                  */
-                Lohnsteuer2017Big.prototype.getBig = function (name) {
-                    switch (name) {
-                        case 'BK': return this.BK;
-                        case 'BKS': return this.BKS;
-                        case 'BKV': return this.BKV;
-                        case 'LSTLZZ': return this.LSTLZZ;
-                        case 'SOLZLZZ': return this.SOLZLZZ;
-                        case 'SOLZS': return this.SOLZS;
-                        case 'SOLZV': return this.SOLZV;
-                        case 'STS': return this.STS;
-                        case 'STV': return this.STV;
-                        case 'VKVLZZ': return this.VKVLZZ;
-                        case 'VKVSONST': return this.VKVSONST;
-                        case 'VFRB': return this.VFRB;
-                        case 'VFRBS1': return this.VFRBS1;
-                        case 'VFRBS2': return this.VFRBS2;
-                        case 'WVFRB': return this.WVFRB;
-                        case 'WVFRBO': return this.WVFRBO;
-                        case 'WVFRBM': return this.WVFRBM;
-                        default:
-                            throw new Error("Unknown Big parameter " + name);
+                Lohnsteuer2017Big.prototype.get = function (name) {
+                    if (this.hasOwnProperty(name)) {
+                        return this[name];
                     }
+                    throw new Error("Unknown parameter " + name);
                 };
                 /**
-                 * Getter for all output parameters with type number.
+                 * Get all fields with types.
+                 */
+                Lohnsteuer2017Big.prototype.getDirectory = function () {
+                    return Lohnsteuer2017Big.typeDirectory;
+                };
+                /**
+                 * Converts a value (number or Big) in the correct type (number or Big).
                  *
-                 * @param {String} name Variable name to get.
+                 * @param {string} name the name of the value
+                 * @param {TaxJsValueType} value the value to convert
                  */
-                Lohnsteuer2017Big.prototype.getNumber = function (name) {
-                    switch (name) {
-                        default:
-                            throw new Error("Unknown number parameter " + name);
+                Lohnsteuer2017Big.prototype.toType = function (name, value) {
+                    var info = Lohnsteuer2017Big.typeDirectory[name];
+                    if (!info) {
+                        throw new Error("Unknown parameter " + name);
                     }
+                    if (typeof value == "number" && info.type != "number") {
+                        return new big_js_1.default(value);
+                    }
+                    if (typeof value == "object" && info.type == "number") {
+                        return value.toNumber();
+                    }
+                    return value;
                 };
-                /**
-                 * Get all input names.
-                 */
-                Lohnsteuer2017Big.prototype.getInputs = function () {
-                    return [
-                        "af", "AJAHR", "ALTER1", "ENTSCH", "f", "JFREIB", "JHINZU", "JRE4", "JVBEZ", "KRV", "KVZ", "LZZ", "LZZFREIB", "LZZHINZU", "PKPV", "PKV", "PVS", "PVZ", "R", "RE4", "SONSTB", "STERBE", "STKL", "VBEZ", "VBEZM", "VBEZS", "VBS", "VJAHR", "VKAPA", "VMT", "ZKF", "ZMVB", "JRE4ENT", "SONSTENT",
-                    ];
-                };
-                /**
-                 * Get all output names.
-                 */
-                Lohnsteuer2017Big.prototype.getOutputs = function () {
-                    return [
-                        "BK", "BKS", "BKV", "LSTLZZ", "SOLZLZZ", "SOLZS", "SOLZV", "STS", "STV", "VKVLZZ", "VKVSONST", "VFRB", "VFRBS1", "VFRBS2", "WVFRB", "WVFRBO", "WVFRBM",
-                    ];
+                Lohnsteuer2017Big._n = "number";
+                Lohnsteuer2017Big._b = "Big";
+                Lohnsteuer2017Big._i = "input";
+                Lohnsteuer2017Big._o = "output";
+                Lohnsteuer2017Big.typeDirectory = {
+                    "af": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "AJAHR": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "ALTER1": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "ENTSCH": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "f": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "JFREIB": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "JHINZU": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "JRE4": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "JVBEZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "KRV": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "KVZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "LZZ": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "LZZFREIB": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "LZZHINZU": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "PKPV": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "PKV": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "PVS": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "PVZ": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "R": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "RE4": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "SONSTB": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "STERBE": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "STKL": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "VBEZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "VBEZM": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "VBEZS": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "VBS": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "VJAHR": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "VKAPA": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "VMT": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "ZKF": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "ZMVB": { type: Lohnsteuer2017Big._n, direction: Lohnsteuer2017Big._i }, "JRE4ENT": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "SONSTENT": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._i }, "BK": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "BKS": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "BKV": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "LSTLZZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "SOLZLZZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "SOLZS": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "SOLZV": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "STS": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "STV": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "VKVLZZ": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "VKVSONST": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "VFRB": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "VFRBS1": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "VFRBS2": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "WVFRB": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "WVFRBO": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o }, "WVFRBM": { type: Lohnsteuer2017Big._b, direction: Lohnsteuer2017Big._o },
                 };
                 return Lohnsteuer2017Big;
             }());
