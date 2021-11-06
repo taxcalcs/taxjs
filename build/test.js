@@ -1,10 +1,10 @@
-const AdmZip = require('adm-zip');
-const fetch = require('node-fetch');
-const path = require('path');
-const Big = require('big.js');
-const fs = require('fs');
-const csv = require('csv-parser');
-const assert = require('assert').strict;
+import AdmZip from 'adm-zip';
+import fetch from 'node-fetch';
+import path from 'path';
+import Big from 'big.js';
+import fs from 'fs';
+import csv from'csv-parser';
+import assert from 'assert';
 
 const testVersion = '2021.0.0';
 const download = 'https://github.com/taxcalcs/taxcalculator/archive/' + testVersion + '.zip';
@@ -85,7 +85,7 @@ function parameterClass(year, type) {
  * @param {String} type the type to test (= test file name w/o file ending)
  */
 function parameterModule(year, type) {
-    return '../dist/umd/' + parameterClass(year, type) + '.min';
+    return '../dist/es2015/' + parameterClass(year, type) + '.min.js';
 }
 
 /**
@@ -102,7 +102,7 @@ const taxClassMapping = {
 
 fetch(download).then(res => res.buffer())
 .then(buffer => {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve, _reject) {
         var zip = new AdmZip(buffer);
         var zipEntries = zip.getEntries();
         var found = [];
@@ -123,45 +123,47 @@ fetch(download).then(res => res.buffer())
         const type = testFile[1].replace('.csv', '');
         const file = testFile[1];
         const isSpecial = type.indexOf('general') == -1;
-        const TaxModule = require(parameterModule(year, type));
-        const TaxClazz = parameterClass(year, type);
 
-        fs.createReadStream(path.join(unpackFolder, String(year), file))
-            .pipe(csv())
-            .on('data', (row) => {
-                const income = function() {
-                    const sep = type.lastIndexOf('-');
-                    const additional = sep == -1 ? '' : type.substring(sep);
-                    const incomeEur = row[type.replace(additional, '') + '-' + year + additional];
-                    return new Big(incomeEur).mul(new Big(100));
-                }();
-                
-                ['I', 'II', 'III', 'IV', 'V', 'VI'].forEach(function(taxClass) {
-                    const expected = new Big(row[taxClass]);
-                    const taxClassNumeric = taxClassMapping[taxClass];
-                    const l = new TaxModule[TaxClazz]();
+        import(parameterModule(year, type)).then(TaxModule => {
+            const TaxClazz = parameterClass(year, type);
 
-                    l.initInputs(); // set all input variables to zero
-                    l.setNumber('LZZ', 1);
-                    l.setNumber('STKL', taxClassNumeric);
-                    l.setBig('RE4', income);
-
-                    const addMap = parameterFunc(year, taxClassNumeric, isSpecial);
-                    addMap.forEach(function(value, parameter) {
-                        if (value instanceof Big) {
-                            l.setBig(parameter, value);
-                        }else {
-                            l.setNumber(parameter, value);
-                        }
-                    });
+            fs.createReadStream(path.join(unpackFolder, String(year), file))
+                .pipe(csv())
+                .on('data', (row) => {
+                    const income = function() {
+                        const sep = type.lastIndexOf('-');
+                        const additional = sep == -1 ? '' : type.substring(sep);
+                        const incomeEur = row[type.replace(additional, '') + '-' + year + additional];
+                        return new Big(incomeEur).mul(new Big(100));
+                    }();
                     
-                    l.calculate();
-                    const calculatedTax = l.get('LSTLZZ').div(new Big(100));
-                    assert.strictEqual(expected.toNumber() , calculatedTax.toNumber(), "Year: " + year + " Type: " + type + " Income: " + income + " Tax class: " + taxClassNumeric + " Calculated Tax: " + calculatedTax + " Expected Tax: " + expected);
-                });
-            })
-            .on('end', () => {
-                console.log('CSV file successfully processed. Year: ' + year + ' Type: ' + type);
+                    ['I', 'II', 'III', 'IV', 'V', 'VI'].forEach(function(taxClass) {
+                        const expected = new Big(row[taxClass]);
+                        const taxClassNumeric = taxClassMapping[taxClass];
+                        const l = new TaxModule[TaxClazz]();
+
+                        l.initInputs(); // set all input variables to zero
+                        l.setNumber('LZZ', 1);
+                        l.setNumber('STKL', taxClassNumeric);
+                        l.setBig('RE4', income);
+
+                        const addMap = parameterFunc(year, taxClassNumeric, isSpecial);
+                        addMap.forEach(function(value, parameter) {
+                            if (value instanceof Big) {
+                                l.setBig(parameter, value);
+                            }else {
+                                l.setNumber(parameter, value);
+                            }
+                        });
+                        
+                        l.calculate();
+                        const calculatedTax = l.get('LSTLZZ').div(new Big(100));
+                        assert.strictEqual(expected.toNumber() , calculatedTax.toNumber(), "Year: " + year + " Type: " + type + " Income: " + income + " Tax class: " + taxClassNumeric + " Calculated Tax: " + calculatedTax + " Expected Tax: " + expected);
+                    });
+                })
+                .on('end', () => {
+                    console.log('CSV file successfully processed. Year: ' + year + ' Type: ' + type);
+            });
         });
     });
 });

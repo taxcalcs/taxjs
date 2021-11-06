@@ -10,7 +10,7 @@ declare global {
     type TaxJsValueTypeString = "number" | "Big";
     type TaxJsValueType = number | Big;
     type TaxJsDirection = "input" | "output";
-    type TaxJsDictionary = Readonly<Partial<Record<string, Readonly<Partial<TaxJsTypeDescription>>>>>;
+    type TaxJsDictionary = Readonly<Partial<Record<string, Readonly<TaxJsTypeDescription>>>>;
     type TaxJsOutputGroup = "STANDARD" | "DBA";
 
     interface TaxJs<IN_BIG, IN_NUMBER, OUT> {
@@ -26,6 +26,6 @@ declare global {
     interface TaxJsTypeDescription {
         type: TaxJsValueTypeString,
         direction: TaxJsDirection,
-        group: TaxJsOutputGroup
+        group?: TaxJsOutputGroup
     }
 }

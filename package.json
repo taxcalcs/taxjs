@@ -4,6 +4,7 @@
   "version": "2021.0.0",
   "description": "german tax calculation in typescript and javascript",
   "main": "./dist/js/Lohnsteuer2021Big.min.js",
+  "type": "module",
   "scripts": {
     "clean": "node build/clean.js",
     "build:ts": "node build/create-ts.js",
@@ -39,10 +40,14 @@
     "big.js": "^6.1.1"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.4.34",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^16.11.6",
+    "@types/uglify-js": "^3.13.1",
     "adm-zip": "^0.5.9",
     "csv-parser": "^3.0.0",
     "fs-extra": "^10.0.0",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^3.0.0",
     "replace-in-files": "^3.0.0",
     "saxon-js": "^2.3.0",
     "uglify-js": "^3.14.3",

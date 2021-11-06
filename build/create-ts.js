@@ -1,7 +1,7 @@
-const SaxonJS = require('saxon-js');
-const AdmZip = require('adm-zip');
-const fetch = require('node-fetch');
-const path = require('path');
+import SaxonJS from 'saxon-js';
+import AdmZip from 'adm-zip';
+import fetch from 'node-fetch';
+import * as path from 'path';
 
 // create json XSLT from xml XSLT:
 // xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5
@@ -26,7 +26,8 @@ fetch(download).then(res => res.buffer())
             resolve(found);
         })
     }).then(xmlFileNames => {
-        const dirPath = path.join(__dirname, '..', tsFolder);
+        const dirPath = path.join(path.resolve(path.dirname('.')), tsFolder);
+        console.log("outdir: " + dirPath);
         xmlFileNames.forEach(function (xmlFileName) {
             console.log("create" + xmlFileName);
             SaxonJS.transform({

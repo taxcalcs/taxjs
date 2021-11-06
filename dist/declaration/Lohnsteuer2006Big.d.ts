@@ -1,5 +1,5 @@
 import Big from 'big.js';
-import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../declaration/TaxJs';
+import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
 declare type Lohnsteuer2006BigInBigType = "HINZUR" | "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "WFUNDF" | "ZKF";
 declare type Lohnsteuer2006BigInNumberType = "AJAHR" | "ALTER1" | "KRV" | "LZZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
 declare type Lohnsteuer2006BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV";
