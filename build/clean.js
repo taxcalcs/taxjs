@@ -1,4 +1,5 @@
-const fse = require('fs-extra');
+import fse from 'fs-extra';
+
 const folders = ['build/unpacked/', 'build/unpacked-tests/', 'dist/'];
 
 folders.forEach(function (folder) {

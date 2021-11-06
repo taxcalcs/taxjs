@@ -1,7 +1,7 @@
 // uglifyjs  --compress --mangle --output build/umd/Lohnsteuer2006Big.min.js  --source-map "content='build/umd/Lohnsteuer2006Big.js.map'" build/umd/Lohnsteuer2006Big.js
 
-const UglifyJS = require("uglify-js");
-const fs = require('fs');
+import UglifyJS from "uglify-js";
+import fs from 'fs';
 
 function run(folder, folderMap) {
     new Promise(function (resolve, reject) {

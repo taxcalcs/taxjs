@@ -1,5 +1,5 @@
-const replaceInFiles = require('replace-in-files');
-const fse = require('fs-extra');
+import replaceInFiles from 'replace-in-files';
+import fse from 'fs-extra';
 
 const cpSource = "build/ts/";
 const cpTarget = "build/ts-native/"

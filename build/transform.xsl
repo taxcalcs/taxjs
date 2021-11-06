@@ -5,7 +5,7 @@
 <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:template match="/PAP">
 import Big, { RoundingMode } from 'big.js';
-import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../declaration/TaxJs';
+import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
 
 type <xsl:value-of select="./@name" />InBigType = <xsl:for-each select="./VARIABLES/INPUTS/INPUT[@type = 'BigDecimal']">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;
 type <xsl:value-of select="./@name" />InNumberType = <xsl:for-each select="./VARIABLES/INPUTS/INPUT[@type != 'BigDecimal']">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;

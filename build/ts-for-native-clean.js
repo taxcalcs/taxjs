@@ -1,4 +1,4 @@
-const fse = require('fs-extra');
+import fse from 'fs-extra';
 
 fse.remove("build/ts-native/", err => {
     if (err)
