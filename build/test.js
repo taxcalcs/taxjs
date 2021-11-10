@@ -143,17 +143,13 @@ fetch(download).then(res => res.buffer())
                         const l = new TaxModule[TaxClazz]();
 
                         l.initInputs(); // set all input variables to zero
-                        l.setNumber('LZZ', 1);
-                        l.setNumber('STKL', taxClassNumeric);
-                        l.setBig('RE4', income);
+                        l.set('LZZ', 1);
+                        l.set('STKL', taxClassNumeric);
+                        l.set('RE4', income);
 
                         const addMap = parameterFunc(year, taxClassNumeric, isSpecial);
                         addMap.forEach(function(value, parameter) {
-                            if (value instanceof Big) {
-                                l.setBig(parameter, value);
-                            }else {
-                                l.setNumber(parameter, value);
-                            }
+                            l.set(parameter, value);
                         });
                         
                         l.calculate();

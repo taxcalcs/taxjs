@@ -137,31 +137,27 @@ export class <xsl:value-of select="./@name" /> implements TaxJs&lt;<xsl:value-of
 
 	<!-- Setter for all input parameters. -->
 	<xsl:template name="generalSetter">
-	/**
-	 * Setter for Big input parameters.
-	 *
-	 * @param {string} name Variable name to set.
-	 * @param {Big} value Value to set.
-	 */
-	public setBig(name: <xsl:value-of select="/PAP/@name" />InBigType, value : Big): void {
-		if (this.hasOwnProperty(name)) {
-			this[name] = value;
-		}else {
-			throw new Error("Unknown parameter " + name);
-		}
+	// not realy clean, but for ts compiler
+	private isBigInput(name: <xsl:value-of select="/PAP/@name" />InBigType | <xsl:value-of select="/PAP/@name" />InNumberType, value: TaxJsValueType): name is <xsl:value-of select="/PAP/@name" />InBigType {
+		return value instanceof Big;
 	}
-
+	
 	/**
-	 * Setter for number input parameters.
+	 * Setter for Big or number input parameters.
 	 *
 	 * @param {string} name Variable name to set.
 	 * @param {number} value Value to set.
 	 */
-	public setNumber(name: <xsl:value-of select="/PAP/@name" />InNumberType, value : number): void {
-		if (this.hasOwnProperty(name)) {
-			this[name] = value;
-		}else {
+	public set(name: <xsl:value-of select="/PAP/@name" />InBigType | <xsl:value-of select="/PAP/@name" />InNumberType, value: TaxJsValueType): void {
+		if (!this.hasOwnProperty(name)) {
 			throw new Error("Unknown parameter " + name);
+		}
+		if (this.isBigInput(name, value)) {
+			if (value instanceof Big) {
+				this[name] = value;
+			}
+		} else if (!(value instanceof Big)) {
+			this[name] = value;
 		}
 	}
 	</xsl:template>
