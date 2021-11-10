@@ -2095,32 +2095,27 @@ var Lohnsteuer2015DezemberBig = /** @class */ (function () {
         this.ENTSCH = this.JFREIB = this.JHINZU = this.JRE4 = this.JVBEZ = this.KVZ = this.LZZFREIB = this.LZZHINZU = this.PKPV = this.RE4 = this.SONSTB = this.STERBE = this.VBEZ = this.VBEZM = this.VBEZS = this.VBS = this.VKAPA = this.VMT = this.ZKF = this.JRE4ENT = this.SONSTENT = this.Z_0;
         this.af = this.AJAHR = this.ALTER1 = this.f = this.KRV = this.LZZ = this.PKV = this.PVS = this.PVZ = this.R = this.STKL = this.VJAHR = this.ZMVB = 0;
     };
-    /**
-     * Setter for Big input parameters.
-     *
-     * @param {string} name Variable name to set.
-     * @param {Big} value Value to set.
-     */
-    Lohnsteuer2015DezemberBig.prototype.setBig = function (name, value) {
-        if (this.hasOwnProperty(name)) {
-            this[name] = value;
-        }
-        else {
-            throw new Error("Unknown parameter " + name);
-        }
+    // not realy clean, but for ts compiler
+    Lohnsteuer2015DezemberBig.prototype.isBigInput = function (name, value) {
+        return value instanceof Big;
     };
     /**
-     * Setter for number input parameters.
+     * Setter for Big or number input parameters.
      *
      * @param {string} name Variable name to set.
      * @param {number} value Value to set.
      */
-    Lohnsteuer2015DezemberBig.prototype.setNumber = function (name, value) {
-        if (this.hasOwnProperty(name)) {
-            this[name] = value;
-        }
-        else {
+    Lohnsteuer2015DezemberBig.prototype.set = function (name, value) {
+        if (!this.hasOwnProperty(name)) {
             throw new Error("Unknown parameter " + name);
+        }
+        if (this.isBigInput(name, value)) {
+            if (value instanceof Big) {
+                this[name] = value;
+            }
+        }
+        else if (!(value instanceof Big)) {
+            this[name] = value;
         }
     };
     /**

@@ -1632,32 +1632,27 @@ var Lohnsteuer2010Big = /** @class */ (function () {
         this.ENTSCH = this.JFREIB = this.JHINZU = this.JRE4 = this.JVBEZ = this.LZZFREIB = this.LZZHINZU = this.PKPV = this.RE4 = this.SONSTB = this.STERBE = this.VBEZ = this.VBEZM = this.VBEZS = this.VBS = this.VKAPA = this.VMT = this.ZKF = this.Z_0;
         this.AF = this.AJAHR = this.ALTER1 = this.F = this.KRV = this.LZZ = this.PKV = this.PVS = this.PVZ = this.R = this.STKL = this.VJAHR = this.ZMVB = 0;
     };
-    /**
-     * Setter for Big input parameters.
-     *
-     * @param {string} name Variable name to set.
-     * @param {Big} value Value to set.
-     */
-    Lohnsteuer2010Big.prototype.setBig = function (name, value) {
-        if (this.hasOwnProperty(name)) {
-            this[name] = value;
-        }
-        else {
-            throw new Error("Unknown parameter " + name);
-        }
+    // not realy clean, but for ts compiler
+    Lohnsteuer2010Big.prototype.isBigInput = function (name, value) {
+        return value instanceof Big;
     };
     /**
-     * Setter for number input parameters.
+     * Setter for Big or number input parameters.
      *
      * @param {string} name Variable name to set.
      * @param {number} value Value to set.
      */
-    Lohnsteuer2010Big.prototype.setNumber = function (name, value) {
-        if (this.hasOwnProperty(name)) {
-            this[name] = value;
-        }
-        else {
+    Lohnsteuer2010Big.prototype.set = function (name, value) {
+        if (!this.hasOwnProperty(name)) {
             throw new Error("Unknown parameter " + name);
+        }
+        if (this.isBigInput(name, value)) {
+            if (value instanceof Big) {
+                this[name] = value;
+            }
+        }
+        else if (!(value instanceof Big)) {
+            this[name] = value;
         }
     };
     /**

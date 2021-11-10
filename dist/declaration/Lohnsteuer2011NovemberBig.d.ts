@@ -1124,20 +1124,14 @@ export declare class Lohnsteuer2011NovemberBig implements TaxJs<Lohnsteuer2011No
      * Initialize all inputs values with zero.
      */
     initInputs(): void;
+    private isBigInput;
     /**
-     * Setter for Big input parameters.
-     *
-     * @param {string} name Variable name to set.
-     * @param {Big} value Value to set.
-     */
-    setBig(name: Lohnsteuer2011NovemberBigInBigType, value: Big): void;
-    /**
-     * Setter for number input parameters.
+     * Setter for Big or number input parameters.
      *
      * @param {string} name Variable name to set.
      * @param {number} value Value to set.
      */
-    setNumber(name: Lohnsteuer2011NovemberBigInNumberType, value: number): void;
+    set(name: Lohnsteuer2011NovemberBigInBigType | Lohnsteuer2011NovemberBigInNumberType, value: TaxJsValueType): void;
     /**
      * Getter for all output parameters. You get a value of type "number or "Big".
      *

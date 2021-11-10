@@ -1149,20 +1149,14 @@ export declare class Lohnsteuer2012Big implements TaxJs<Lohnsteuer2012BigInBigTy
      * Initialize all inputs values with zero.
      */
     initInputs(): void;
+    private isBigInput;
     /**
-     * Setter for Big input parameters.
-     *
-     * @param {string} name Variable name to set.
-     * @param {Big} value Value to set.
-     */
-    setBig(name: Lohnsteuer2012BigInBigType, value: Big): void;
-    /**
-     * Setter for number input parameters.
+     * Setter for Big or number input parameters.
      *
      * @param {string} name Variable name to set.
      * @param {number} value Value to set.
      */
-    setNumber(name: Lohnsteuer2012BigInNumberType, value: number): void;
+    set(name: Lohnsteuer2012BigInBigType | Lohnsteuer2012BigInNumberType, value: TaxJsValueType): void;
     /**
      * Getter for all output parameters. You get a value of type "number or "Big".
      *
