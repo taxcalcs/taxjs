@@ -4,5 +4,5 @@ fse.remove("build/ts-native/", err => {
     if (err)
         console.log("ERROR remove build/ts-native/");
     else
-        console.log("Remove build/ts-native/");
+        console.log("Removed build/ts-native/");
 });

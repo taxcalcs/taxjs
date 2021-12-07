@@ -6,7 +6,7 @@ import * as path from 'path';
 // create json XSLT from xml XSLT:
 // xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5
 
-const testVersion = '2021.0.0';
+const testVersion = '2022.0.0';
 const download = 'https://repo1.maven.org/maven2/info/kuechler/bmf/taxapi/taxxmls/' + testVersion + '/taxxmls-' + testVersion + '.jar';
 const unpackFolder = "build/unpacked";
 const tsFolder = "build/ts";

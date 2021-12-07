@@ -1,9 +1,9 @@
 {
   "name": "taxjs",
   "title": "TaxJs",
-  "version": "2021.0.0",
+  "version": "2022.0.0",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2021Big.min.js",
+  "main": "./dist/js/Lohnsteuer2022Big.min.js",
   "type": "module",
   "scripts": {
     "clean": "node build/clean.js",

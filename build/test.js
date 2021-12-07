@@ -6,7 +6,7 @@ import fs from 'fs';
 import csv from'csv-parser';
 import assert from 'assert';
 
-const testVersion = '2021.0.0';
+const testVersion = '2022.0.0';
 const download = 'https://github.com/taxcalcs/taxcalculator/archive/' + testVersion + '.zip';
 const unpackFolder = "build/unpacked-tests";
 const pathPrefix = 'taxcalculator-' + testVersion + '/src/test/resources/info/kuechler/bmf/taxcalculator/';
@@ -46,6 +46,7 @@ function parameterFunc(year, taxClass, special) {
                     map.set('KVZ', new Big(1.1))
                     break;
                 case 2021:
+                case 2022:
                     map.set('KVZ', new Big(1.3))
                     break;
             }
@@ -126,6 +127,7 @@ fetch(download).then(res => res.buffer())
 
         import(parameterModule(year, type)).then(TaxModule => {
             const TaxClazz = parameterClass(year, type);
+            let counter = 0;
 
             fs.createReadStream(path.join(unpackFolder, String(year), file))
                 .pipe(csv())
@@ -155,10 +157,11 @@ fetch(download).then(res => res.buffer())
                         l.calculate();
                         const calculatedTax = l.get('LSTLZZ').div(new Big(100));
                         assert.strictEqual(expected.toNumber() , calculatedTax.toNumber(), "Year: " + year + " Type: " + type + " Income: " + income + " Tax class: " + taxClassNumeric + " Calculated Tax: " + calculatedTax + " Expected Tax: " + expected);
+                        counter++;
                     });
                 })
                 .on('end', () => {
-                    console.log('CSV file successfully processed. Year: ' + year + ' Type: ' + type);
+                    console.log('CSV file successfully processed. Year: ' + year + ' Type: ' + type + ', tests run: ' + counter);
             });
         });
     });
