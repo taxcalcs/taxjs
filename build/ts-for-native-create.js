@@ -11,8 +11,7 @@ console.log("Copy " + cpSource + " -> " + cpTarget);
 try {
     const {
         changedFiles,
-        countOfMatchesByPaths,
-        replaceInFilesOptions
+        countOfMatchesByPaths
     } = replaceInFiles({
         files: tsFile,
         from: /.*import.*;.*/g,

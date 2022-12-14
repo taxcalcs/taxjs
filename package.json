@@ -40,21 +40,21 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/big.js": "^6.1.6",
-    "big.js": "^6.2.1"
+    "@types/big.js": "6",
+    "big.js": "6"
   },
   "devDependencies": {
-    "@types/adm-zip": "^0.5.0",
-    "@types/fs-extra": "^9.0.13",
-    "@types/node": "^18.11.15",
-    "@types/uglify-js": "^3.17.1",
-    "adm-zip": "^0.5.9",
-    "csv-parser": "^3.0.0",
-    "fs-extra": "^11.1.0",
-    "node-fetch": "^3.3.0",
-    "replace-in-files": "^3.0.0",
-    "saxon-js": "^2.5.0",
-    "uglify-js": "^3.17.4",
-    "xslt3": "^2.5.0"
+    "@types/adm-zip": "0.5",
+    "@types/fs-extra": "9",
+    "@types/node": ">=14",
+    "@types/uglify-js": "3",
+    "adm-zip": "0.5",
+    "csv-parser": "3",
+    "fs-extra": "11",
+    "node-fetch": "3",
+    "replace-in-files": "3",
+    "saxon-js": "2",
+    "uglify-js": "3",
+    "xslt3": "2"
   }
 }
