@@ -6,7 +6,7 @@ import fs from 'fs';
 import csv from'csv-parser';
 import assert from 'assert';
 
-const testVersion = '2022.0.0';
+const testVersion = '2023.0.0';
 const download = 'https://github.com/taxcalcs/taxcalculator/archive/' + testVersion + '.zip';
 const unpackFolder = "build/unpacked-tests";
 const pathPrefix = 'taxcalculator-' + testVersion + '/src/test/resources/info/kuechler/bmf/taxcalculator/';
@@ -49,6 +49,9 @@ function parameterFunc(year, taxClass, special) {
                 case 2022:
                     map.set('KVZ', new Big(1.3))
                     break;
+                case 2023:
+                    map.set('KVZ', new Big(1.6))
+                    break;
             }
         }
     }
@@ -74,6 +77,10 @@ function parameterClass(year, type) {
             name = 'Lohnsteuer2011DecemberBig'
         }else if (year === 2015) {
             name = 'Lohnsteuer2015DezemberBig';
+        }
+    }else if (type.endsWith('-mai')) {
+        if (year === 2022) {
+            name = 'Lohnsteuer2022MaiBig'
         }
     }
     return name;
@@ -101,7 +108,8 @@ const taxClassMapping = {
     'VI' : 6
 };
 
-fetch(download).then(res => res.buffer())
+fetch(download).then(res => res.arrayBuffer())
+.then(arrayBuffer => Buffer.from(arrayBuffer))
 .then(buffer => {
     return new Promise(function (resolve, _reject) {
         var zip = new AdmZip(buffer);
@@ -135,7 +143,14 @@ fetch(download).then(res => res.buffer())
                     const income = function() {
                         const sep = type.lastIndexOf('-');
                         const additional = sep == -1 ? '' : type.substring(sep);
-                        const incomeEur = row[type.replace(additional, '') + '-' + year + additional];
+                        let incomeIndex;
+                        if (additional === "-mai") {
+                            // fix for wrong name
+                            incomeIndex = type.replace(additional, '') + '-' + year + ".2";
+                        }else {
+                            incomeIndex = type.replace(additional, '') + '-' + year + additional;
+                        }
+                        const incomeEur = row[incomeIndex];
                         return new Big(incomeEur).mul(new Big(100));
                     }();
                     
@@ -153,7 +168,7 @@ fetch(download).then(res => res.buffer())
                         addMap.forEach(function(value, parameter) {
                             l.set(parameter, value);
                         });
-                        
+
                         l.calculate();
                         const calculatedTax = l.get('LSTLZZ').div(new Big(100));
                         assert.strictEqual(expected.toNumber() , calculatedTax.toNumber(), "Year: " + year + " Type: " + type + " Income: " + income + " Tax class: " + taxClassNumeric + " Calculated Tax: " + calculatedTax + " Expected Tax: " + expected);
@@ -161,7 +176,7 @@ fetch(download).then(res => res.buffer())
                     });
                 })
                 .on('end', () => {
-                    console.log('CSV file successfully processed. Year: ' + year + ' Type: ' + type + ', tests run: ' + counter);
+                    console.log('CSV file successfully processed with' + TaxClazz + '. Year: ' + year + ' Type: ' + type + ', tests run: ' + counter);
             });
         });
     });

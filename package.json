@@ -1,9 +1,9 @@
 {
   "name": "taxjs",
   "title": "TaxJs",
-  "version": "2022.0.0",
+  "version": "2023.0.0",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2022Big.min.js",
+  "main": "./dist/js/Lohnsteuer2023Big.min.js",
   "type": "module",
   "scripts": {
     "clean": "node build/clean.js",
@@ -40,21 +40,21 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/big.js": "^6.1.2",
-    "big.js": "^6.1.1"
+    "@types/big.js": "^6.1.6",
+    "big.js": "^6.2.1"
   },
   "devDependencies": {
-    "@types/adm-zip": "^0.4.34",
+    "@types/adm-zip": "^0.5.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^16.11.6",
-    "@types/uglify-js": "^3.13.1",
+    "@types/node": "^18.11.15",
+    "@types/uglify-js": "^3.17.1",
     "adm-zip": "^0.5.9",
     "csv-parser": "^3.0.0",
-    "fs-extra": "^10.0.0",
-    "node-fetch": "^3.0.0",
+    "fs-extra": "^11.1.0",
+    "node-fetch": "^3.3.0",
     "replace-in-files": "^3.0.0",
-    "saxon-js": "^2.3.0",
-    "uglify-js": "^3.14.3",
-    "xslt3": "^2.3.0"
+    "saxon-js": "^2.5.0",
+    "uglify-js": "^3.17.4",
+    "xslt3": "^2.5.0"
   }
 }
