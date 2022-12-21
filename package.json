@@ -19,7 +19,7 @@
     "build:es2022": "tsc --target es2022 --module es2022 --outDir dist/es2022",
     "build:native": "node build/ts-for-native-create.js && tsc --target ES5 --module None --outDir dist/js --project tsconfig.native.json && node build/ts-for-native-clean.js",
     "build:compress": "node build/compress.js",
-    "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5",
+    "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json",
     "test": "node build/test.js",
     "build": "npm run build:ts && npm run build:declaration && npm run build:native && npm run build:system && npm run build:umd && npm run build:es2015 && npm run build:compress",
     "all": "npm run clean && npm run build && npm run test"
