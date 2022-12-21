@@ -246,15 +246,15 @@ export class Lohnsteuer2007Big {
                     this.VBEZB = (this.VBEZM.mul(new Big(this.ZMVB))).add(this.VBEZS);
                     /**  Achtung! Rechengenauigkeit Division?  */
                     this.HFVB = this.TAB2[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB)).mul(this.ZAHL100);
-                    this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB)).round(0, 3 /* RoundUp */);
+                    this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB)).round(0, Big.roundUp);
                 }
             }
             else {
-                this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, 0 /* RoundDown */);
+                this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, Big.roundDown);
                 this.HFVB = this.TAB2[this.J].mul(this.ZAHL100);
                 this.FVBZ = this.TAB3[this.J];
             }
-            this.FVB = (this.VBEZB.mul(this.TAB1[this.J])).round(2, 3 /* RoundUp */);
+            this.FVB = (this.VBEZB.mul(this.TAB1[this.J])).round(2, Big.roundUp);
             if (this.FVB.cmp(this.HFVB) == 1) {
                 this.FVB = this.HFVB;
             }
@@ -278,7 +278,7 @@ export class Lohnsteuer2007Big {
                 }
             }
             this.BMG = this.RE4.sub(this.VBEZ);
-            this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(2, 3 /* RoundUp */);
+            this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(2, Big.roundUp);
             this.JW = this.TAB5[this.K].mul(this.ZAHL100);
             this.UPANTEIL();
             if (this.ALTE.cmp(this.ANTEIL2) == 1) {
@@ -289,26 +289,26 @@ export class Lohnsteuer2007Big {
     /**  Massgeblicher Arbeitslohn fuer die Jahreslohnsteuer, PAP Seite 12  */
     MRE4() {
         if (this.LZZ == 1) {
-            this.ZRE4 = this.RE4LZZ.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.ZRE4VP = this.RE4LZZV.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.ZVBEZ = (this.VBEZ.sub(this.FVB)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+            this.ZRE4 = this.RE4LZZ.div(this.ZAHL100).round(2, Big.roundDown);
+            this.ZRE4VP = this.RE4LZZV.div(this.ZAHL100).round(2, Big.roundDown);
+            this.ZVBEZ = (this.VBEZ.sub(this.FVB)).div(this.ZAHL100).round(2, Big.roundDown);
         }
         else {
             if (this.LZZ == 2) {
-                this.ZRE4 = ((this.RE4LZZ.add(new Big(0.67))).mul(new Big(0.12))).round(2, 0 /* RoundDown */);
-                this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.67))).mul(new Big(0.12))).round(2, 0 /* RoundDown */);
-                this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.67))).mul(new Big(0.12))).round(2, 0 /* RoundDown */);
+                this.ZRE4 = ((this.RE4LZZ.add(new Big(0.67))).mul(new Big(0.12))).round(2, Big.roundDown);
+                this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.67))).mul(new Big(0.12))).round(2, Big.roundDown);
+                this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.67))).mul(new Big(0.12))).round(2, Big.roundDown);
             }
             else {
                 if (this.LZZ == 3) {
-                    this.ZRE4 = ((this.RE4LZZ.add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, 0 /* RoundDown */);
-                    this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, 0 /* RoundDown */);
-                    this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, 0 /* RoundDown */);
+                    this.ZRE4 = ((this.RE4LZZ.add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, Big.roundDown);
+                    this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, Big.roundDown);
+                    this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.89))).mul(new Big(3.6))).div(new Big(7.0)).round(2, Big.roundDown);
                 }
                 else {
-                    this.ZRE4 = ((this.RE4LZZ.add(new Big(0.56))).mul(new Big(3.6))).round(2, 0 /* RoundDown */);
-                    this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.56))).mul(new Big(3.6))).round(2, 0 /* RoundDown */);
-                    this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.56))).mul(new Big(3.6))).round(2, 0 /* RoundDown */);
+                    this.ZRE4 = ((this.RE4LZZ.add(new Big(0.56))).mul(new Big(3.6))).round(2, Big.roundDown);
+                    this.ZRE4VP = ((this.RE4LZZV.add(new Big(0.56))).mul(new Big(3.6))).round(2, Big.roundDown);
+                    this.ZVBEZ = ((this.VBEZ.sub(this.FVB).add(new Big(0.56))).mul(new Big(3.6))).round(2, Big.roundDown);
                 }
             }
         }
@@ -334,13 +334,13 @@ export class Lohnsteuer2007Big {
         this.ANP = this.Z_0;
         if (this.ZVBEZ.cmp(this.Z_0) >= 0) {
             if (this.ZVBEZ.cmp(this.FVBZ) == -1) {
-                this.FVBZ = this.ZVBEZ.round(0, 0 /* RoundDown */);
+                this.FVBZ = this.ZVBEZ.round(0, Big.roundDown);
             }
         }
         if (this.STKL < 6) {
             if (this.ZVBEZ.cmp(this.Z_0) == 1) {
                 if ((this.ZVBEZ.sub(this.FVBZ)).cmp(new Big(102)) == -1) {
-                    this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, 0 /* RoundDown */);
+                    this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, Big.roundDown);
                 }
                 else {
                     this.ANP = new Big(102);
@@ -350,7 +350,7 @@ export class Lohnsteuer2007Big {
         if (this.STKL < 6) {
             if (this.ZRE4.cmp(this.ZVBEZ) == 1) {
                 if ((this.ZRE4.sub(this.ZVBEZ)).cmp(new Big(920)) == -1) {
-                    this.ANP = (this.ANP.add(this.ZRE4).sub(this.ZVBEZ)).round(0, 0 /* RoundDown */);
+                    this.ANP = (this.ANP.add(this.ZRE4).sub(this.ZVBEZ)).round(0, Big.roundDown);
                 }
                 else {
                     this.ANP = this.ANP.add(new Big(920));
@@ -360,24 +360,24 @@ export class Lohnsteuer2007Big {
         this.KZTAB = 1;
         if (this.STKL == 1) {
             this.SAP = new Big(36);
-            this.KFB = (this.ZKF.mul(new Big(5808))).round(0, 0 /* RoundDown */);
+            this.KFB = (this.ZKF.mul(new Big(5808))).round(0, Big.roundDown);
         }
         else {
             if (this.STKL == 2) {
                 this.EFA = new Big(1308);
                 this.SAP = new Big(36);
-                this.KFB = (this.ZKF.mul(new Big(5808))).round(0, 0 /* RoundDown */);
+                this.KFB = (this.ZKF.mul(new Big(5808))).round(0, Big.roundDown);
             }
             else {
                 if (this.STKL == 3) {
                     this.KZTAB = 2;
                     this.SAP = new Big(72);
-                    this.KFB = (this.ZKF.mul(new Big(5808))).round(0, 0 /* RoundDown */);
+                    this.KFB = (this.ZKF.mul(new Big(5808))).round(0, Big.roundDown);
                 }
                 else {
                     if (this.STKL == 4) {
                         this.SAP = new Big(36);
-                        this.KFB = (this.ZKF.mul(new Big(2904))).round(0, 0 /* RoundDown */);
+                        this.KFB = (this.ZKF.mul(new Big(2904))).round(0, Big.roundDown);
                     }
                     else {
                         this.KFB = this.Z_0;
@@ -395,13 +395,13 @@ export class Lohnsteuer2007Big {
         else {
             this.VSP = this.Z_0;
         }
-        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(0, 0 /* RoundDown */);
+        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(0, Big.roundDown);
         if (this.ZVE.cmp(this.ZAHL1) == -1) {
             this.ZVE = this.Z_0;
             this.X = this.Z_0;
         }
         else {
-            this.X = this.ZVE.div(new Big(this.KZTAB)).round(0, 0 /* RoundDown */);
+            this.X = this.ZVE.div(new Big(this.KZTAB)).round(0, Big.roundDown);
         }
         if (this.STKL < 5) {
             this.UPTAB07();
@@ -423,18 +423,18 @@ export class Lohnsteuer2007Big {
             if (this.ZRE4VP.cmp(new Big(63000)) == 1) {
                 this.ZRE4VP = new Big(63000);
             }
-            this.VSP1 = (this.ZRE4VP.mul(new Big(0.28))).round(2, 0 /* RoundDown */);
-            this.VSP1 = (this.VSP1.mul(new Big(0.0995))).round(2, 0 /* RoundDown */);
+            this.VSP1 = (this.ZRE4VP.mul(new Big(0.28))).round(2, Big.roundDown);
+            this.VSP1 = (this.VSP1.mul(new Big(0.0995))).round(2, Big.roundDown);
         }
         this.VSP2 = this.ZRE4VP.mul(new Big(0.11));
         this.VHB = new Big(this.KZTAB).mul(new Big(1500));
         if (this.VSP2.cmp(this.VHB) == 1) {
             this.VSP2 = this.VHB;
         }
-        this.VSPN = (this.VSP1.add(this.VSP2)).round(0, 3 /* RoundUp */);
+        this.VSPN = (this.VSP1.add(this.VSP2)).round(0, Big.roundUp);
         this.MVSP();
         if (this.VSPN.cmp(this.VSP) == 1) {
-            this.VSP = this.VSPN.round(2, 0 /* RoundDown */);
+            this.VSP = this.VSPN.round(2, Big.roundDown);
         }
     }
     /**  Vorsorgepauschale (§39b Abs. 2 Satz 6 Nr 3 EStG) Vergleichsberechnung fuer Guenstigerpruefung, PAP Seite 16  */
@@ -454,7 +454,7 @@ export class Lohnsteuer2007Big {
                 this.VSP = this.VSPKURZ;
             }
             else {
-                this.VSP = this.VSPO.round(0, 0 /* RoundDown */);
+                this.VSP = this.VSPO.round(0, Big.roundDown);
             }
         }
         else {
@@ -477,20 +477,20 @@ export class Lohnsteuer2007Big {
             this.VSPREST = this.VSPO.sub(this.VSPVOR);
             if (this.VSPREST.cmp(this.VSPMAX1) == 1) {
                 this.VSP = this.VSP.add(this.VSPMAX1);
-                this.VSPREST = (this.VSPREST.sub(this.VSPMAX1)).div(this.ZAHL2).round(2, 3 /* RoundUp */);
+                this.VSPREST = (this.VSPREST.sub(this.VSPMAX1)).div(this.ZAHL2).round(2, Big.roundUp);
                 if (this.VSPREST.cmp(this.VSPMAX2) == 1) {
-                    this.VSP = (this.VSP.add(this.VSPMAX2)).round(0, 0 /* RoundDown */);
+                    this.VSP = (this.VSP.add(this.VSPMAX2)).round(0, Big.roundDown);
                 }
                 else {
-                    this.VSP = (this.VSP.add(this.VSPREST)).round(0, 0 /* RoundDown */);
+                    this.VSP = (this.VSP.add(this.VSPREST)).round(0, Big.roundDown);
                 }
             }
             else {
-                this.VSP = (this.VSP.add(this.VSPREST)).round(0, 0 /* RoundDown */);
+                this.VSP = (this.VSP.add(this.VSPREST)).round(0, Big.roundDown);
             }
         }
         else {
-            this.VSP = this.VSPO.round(0, 0 /* RoundDown */);
+            this.VSP = this.VSPO.round(0, Big.roundDown);
         }
     }
     /**  Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 8 EStG), PAP Seite 18  */
@@ -500,12 +500,12 @@ export class Lohnsteuer2007Big {
             this.ZX = new Big(25812);
             this.UP5_6();
             if (this.ZZX.cmp(new Big(200000)) == 1) {
-                this.ST = (this.ST.add(new Big(73158.96))).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.add(new Big(73158.96))).round(0, Big.roundDown);
                 ;
-                this.ST = (this.ST.add((this.ZZX.sub(new Big(200000))).mul(new Big(0.45)))).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.add((this.ZZX.sub(new Big(200000))).mul(new Big(0.45)))).round(0, Big.roundDown);
             }
             else {
-                this.ST = (this.ST.add((this.ZZX.sub(new Big(25812))).mul(new Big(0.42)))).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.add((this.ZZX.sub(new Big(25812))).mul(new Big(0.42)))).round(0, Big.roundDown);
             }
         }
         else {
@@ -515,7 +515,7 @@ export class Lohnsteuer2007Big {
                 this.VERGL = this.ST;
                 this.ZX = new Big(9144);
                 this.UP5_6();
-                this.HOCH = (this.ST.add((this.ZZX.sub(new Big(9144))).mul(new Big(0.42)))).round(0, 0 /* RoundDown */);
+                this.HOCH = (this.ST.add((this.ZZX.sub(new Big(9144))).mul(new Big(0.42)))).round(0, Big.roundDown);
                 if (this.HOCH.cmp(this.VERGL) == -1) {
                     this.ST = this.HOCH;
                 }
@@ -534,7 +534,7 @@ export class Lohnsteuer2007Big {
         this.UPTAB07();
         this.ST2 = this.ST;
         this.DIFF = (this.ST1.sub(this.ST2)).mul(this.ZAHL2);
-        this.MIST = (this.ZX.mul(new Big(0.15))).round(0, 0 /* RoundDown */);
+        this.MIST = (this.ZX.mul(new Big(0.15))).round(0, Big.roundDown);
         if (this.MIST.cmp(this.DIFF) == 1) {
             this.ST = this.MIST;
         }
@@ -546,12 +546,12 @@ export class Lohnsteuer2007Big {
     MSOLZ() {
         this.SOLZFREI = new Big(972 * this.KZTAB);
         if (this.JBMG.cmp(this.SOLZFREI) == 1) {
-            this.SOLZJ = (this.JBMG.mul(new Big(5.5))).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+            this.SOLZJ = (this.JBMG.mul(new Big(5.5))).div(this.ZAHL100).round(2, Big.roundDown);
             this.SOLZMIN = (this.JBMG.sub(this.SOLZFREI)).mul(new Big(20)).div(this.ZAHL100);
             if (this.SOLZMIN.cmp(this.SOLZJ) == -1) {
                 this.SOLZJ = this.SOLZMIN;
             }
-            this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, 0 /* RoundDown */);
+            this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, Big.roundDown);
             this.UPANTEIL();
             this.SOLZLZZ = this.ANTEIL1;
         }
@@ -575,17 +575,17 @@ export class Lohnsteuer2007Big {
         }
         else {
             if (this.LZZ == 2) {
-                this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, 0 /* RoundDown */);
-                this.ANTEIL2 = this.JW.div(this.ZAHL12).round(0, 3 /* RoundUp */);
+                this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, Big.roundDown);
+                this.ANTEIL2 = this.JW.div(this.ZAHL12).round(0, Big.roundUp);
             }
             else {
                 if (this.LZZ == 3) {
-                    this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, 0 /* RoundDown */);
-                    this.ANTEIL2 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, 3 /* RoundUp */);
+                    this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, Big.roundDown);
+                    this.ANTEIL2 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, Big.roundUp);
                 }
                 else {
-                    this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, 0 /* RoundDown */);
-                    this.ANTEIL2 = this.JW.div(this.ZAHL360).round(0, 3 /* RoundUp */);
+                    this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, Big.roundDown);
+                    this.ANTEIL2 = this.JW.div(this.ZAHL360).round(0, Big.roundUp);
                 }
             }
         }
@@ -618,7 +618,7 @@ export class Lohnsteuer2007Big {
                     this.STS = this.Z_0;
                 }
             }
-            this.SOLZS = this.STS.mul(new Big(5.5)).div(this.ZAHL100).round(0, 0 /* RoundDown */);
+            this.SOLZS = this.STS.mul(new Big(5.5)).div(this.ZAHL100).round(0, Big.roundDown);
             if (this.R > 0) {
                 this.BKS = this.STS;
             }
@@ -666,14 +666,14 @@ export class Lohnsteuer2007Big {
                 this.RE4 = this.RE4.sub(this.JFREIB).add(this.JHINZU);
                 this.JFREIB = this.Z_0;
                 this.JHINZU = this.Z_0;
-                this.RE4 = (this.RE4.add(this.VMT)).div(this.ZAHL5).round(0, 0 /* RoundDown */);
+                this.RE4 = (this.RE4.add(this.VMT)).div(this.ZAHL5).round(0, Big.roundDown);
                 this.MRE4LZZ2();
                 this.MLSTJAHR();
                 this.LST2 = this.ST.mul(this.ZAHL100);
                 this.STV = this.LST2.mul(this.ZAHL5);
             }
             else {
-                this.RE4 = this.RE4.add(this.VMT.div(this.ZAHL5).round(0, 0 /* RoundDown */));
+                this.RE4 = this.RE4.add(this.VMT.div(this.ZAHL5).round(0, Big.roundDown));
                 this.MRE4LZZ2();
                 this.MLSTJAHR();
                 this.LST2 = this.ST.mul(this.ZAHL100);
@@ -683,7 +683,7 @@ export class Lohnsteuer2007Big {
             if (this.LST3.cmp(this.STV) == -1) {
                 this.STV = this.LST3;
             }
-            this.SOLZV = (this.STV.mul(new Big(5.5))).div(this.ZAHL100).round(0, 0 /* RoundDown */);
+            this.SOLZV = (this.STV.mul(new Big(5.5))).div(this.ZAHL100).round(0, Big.roundDown);
             if (this.R > 0) {
                 this.BKV = this.STV;
             }
@@ -704,25 +704,25 @@ export class Lohnsteuer2007Big {
         }
         else {
             if (this.X.cmp(new Big(12740)) == -1) {
-                this.Y = (this.X.sub(new Big(7664))).div(new Big(10000)).round(6, 0 /* RoundDown */);
+                this.Y = (this.X.sub(new Big(7664))).div(new Big(10000)).round(6, Big.roundDown);
                 this.RW = this.Y.mul(new Big(883.74));
                 this.RW = this.RW.add(new Big(1500));
-                this.ST = (this.RW.mul(this.Y)).round(0, 0 /* RoundDown */);
+                this.ST = (this.RW.mul(this.Y)).round(0, Big.roundDown);
             }
             else {
                 if (this.X.cmp(new Big(52152)) == -1) {
-                    this.Y = (this.X.sub(new Big(12739))).div(new Big(10000)).round(6, 0 /* RoundDown */);
+                    this.Y = (this.X.sub(new Big(12739))).div(new Big(10000)).round(6, Big.roundDown);
                     this.RW = this.Y.mul(new Big(228.74));
                     this.RW = this.RW.add(new Big(2397));
                     this.RW = this.RW.mul(this.Y);
-                    this.ST = (this.RW.add(new Big(989))).round(0, 0 /* RoundDown */);
+                    this.ST = (this.RW.add(new Big(989))).round(0, Big.roundDown);
                 }
                 else {
                     if (this.X.cmp(new Big(250001)) == -1) {
-                        this.ST = ((this.X.mul(new Big(0.42))).sub(new Big(7914))).round(0, 0 /* RoundDown */);
+                        this.ST = ((this.X.mul(new Big(0.42))).sub(new Big(7914))).round(0, Big.roundDown);
                     }
                     else {
-                        this.ST = ((this.X.mul(new Big(0.45))).sub(new Big(15414))).round(0, 0 /* RoundDown */);
+                        this.ST = ((this.X.mul(new Big(0.45))).sub(new Big(15414))).round(0, Big.roundDown);
                     }
                 }
             }

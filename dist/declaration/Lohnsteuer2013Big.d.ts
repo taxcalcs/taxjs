@@ -1,8 +1,8 @@
 import Big from 'big.js';
 import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
-declare type Lohnsteuer2013BigInBigType = "ENTSCH" | "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "LZZFREIB" | "LZZHINZU" | "PKPV" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF" | "JRE4ENT" | "SONSTENT";
-declare type Lohnsteuer2013BigInNumberType = "AF" | "AJAHR" | "ALTER1" | "F" | "KRV" | "LZZ" | "PKV" | "PVS" | "PVZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
-declare type Lohnsteuer2013BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV";
+type Lohnsteuer2013BigInBigType = "ENTSCH" | "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "LZZFREIB" | "LZZHINZU" | "PKPV" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF" | "JRE4ENT" | "SONSTENT";
+type Lohnsteuer2013BigInNumberType = "AF" | "AJAHR" | "ALTER1" | "F" | "KRV" | "LZZ" | "PKV" | "PVS" | "PVZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
+type Lohnsteuer2013BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV";
 /**
 * Steuerberechnungsklasse.
 *

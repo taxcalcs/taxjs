@@ -37,6 +37,10 @@ For convert xslt file into xslt sef file you have to install [xslt3](https://www
 ````
 npm install -g  xslt3
 ````
+and
+````
+npm run compile-xsl
+````
 
 For compile typscript into javascript you have to install [typescript](https://www.npmjs.com/package/typescript).
 

@@ -1,8 +1,8 @@
 import Big from 'big.js';
 import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
-declare type Lohnsteuer2009BigInBigType = "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "LZZFREIB" | "LZZHINZU" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF";
-declare type Lohnsteuer2009BigInNumberType = "AJAHR" | "ALTER1" | "KRV" | "LZZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
-declare type Lohnsteuer2009BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV";
+type Lohnsteuer2009BigInBigType = "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "LZZFREIB" | "LZZHINZU" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF";
+type Lohnsteuer2009BigInNumberType = "AJAHR" | "ALTER1" | "KRV" | "LZZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
+type Lohnsteuer2009BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV";
 /**
 * Steuerberechnungsklasse.
 *

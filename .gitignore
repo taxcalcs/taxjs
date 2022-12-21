@@ -2,6 +2,7 @@ build/unpacked/
 build/unpacked-tests/
 build/ts/
 build/ts-native/
+build/transform.sef.json
 node_modules/
 .DS_Store
 .vscode/

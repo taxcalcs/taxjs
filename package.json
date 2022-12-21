@@ -16,6 +16,7 @@
     "build:system": "tsc --target ES5 --module System --outDir dist/system",
     "build:umd": "tsc --target ES5 --module UMD --outDir dist/umd",
     "build:es2015": "tsc --target ES2015 --module ES2015 --outDir dist/es2015",
+    "build:es2022": "tsc --target es2022 --module es2022 --outDir dist/es2022",
     "build:native": "node build/ts-for-native-create.js && tsc --target ES5 --module None --outDir dist/js --project tsconfig.native.json && node build/ts-for-native-clean.js",
     "build:compress": "node build/compress.js",
     "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5",

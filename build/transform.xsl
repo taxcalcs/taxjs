@@ -4,7 +4,7 @@
   version="2.0">
 <xsl:output method="text" indent="no" encoding="UTF-8" />
     <xsl:template match="/PAP">
-import Big, { RoundingMode } from 'big.js';
+import Big from 'big.js';
 import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
 
 type <xsl:value-of select="./@name" />InBigType = <xsl:for-each select="./VARIABLES/INPUTS/INPUT[@type = 'BigDecimal']">"<xsl:value-of select="./@name" />"<xsl:if test="position() != last()">|</xsl:if></xsl:for-each>;
@@ -195,7 +195,7 @@ export class <xsl:value-of select="./@name" /> implements TaxJs&lt;<xsl:value-of
 	<!-- Transform expressions. -->
 	<xsl:template name="convertExpression">
 		<xsl:param name = "value" />
-		<xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace($value, '^(.*)divide\s*\(((?:[^,\)]|\([^\(\)]+\))+),((?:[^,\)]|\([^\(\)]+\))+),\s*(BigDecimal\.ROUND_[A-Z_]+)\s*\)(.*)$', '$1div($2).round($3, $4)$5'), 'BigDecimal.ROUND_UP', 'RoundingMode.RoundUp'), 'BigDecimal.ROUND_DOWN', 'RoundingMode.RoundDown'), 'BigDecimal.valueOf', 'new Big'), 'BigDecimal.ONE', 'ZAHL1'), 'BigDecimal.ZERO', 'Z_0'), 'BigDecimal', 'Big'), 'longValue', 'toNumber'), 'int|double|long', 'number'), 'divide', 'div'), 'multiply', 'mul'), 'subtract', 'sub'), 'compareTo', 'cmp'), 'setScale', 'round'), '([0-9])(?:L|D)([^A_Za-z])', '$1$2'), '([A-Z_][A-Z0-9_]*(?:[^a-z]|$))', 'this.$1'), '([^a-zA-Z0-9]|^)(f|af|bd)([^a-zA-Z0-9]|$)', '$1this.$2$3')" />
+		<xsl:value-of select="replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace($value, '^(.*)divide\s*\(((?:[^,\)]|\([^\(\)]+\))+),((?:[^,\)]|\([^\(\)]+\))+),\s*(BigDecimal\.ROUND_[A-Z_]+)\s*\)(.*)$', '$1div($2).round($3, $4)$5'), 'BigDecimal.ROUND_UP', 'Big.roundUp'), 'BigDecimal.ROUND_DOWN', 'Big.roundDown'), 'BigDecimal.valueOf', 'new Big'), 'BigDecimal.ONE', 'ZAHL1'), 'BigDecimal.ZERO', 'Z_0'), 'BigDecimal', 'Big'), 'longValue', 'toNumber'), 'int|double|long', 'number'), 'divide', 'div'), 'multiply', 'mul'), 'subtract', 'sub'), 'compareTo', 'cmp'), 'setScale', 'round'), '([0-9])(?:L|D)([^A_Za-z])', '$1$2'), '([A-Z_][A-Z0-9_]*(?:[^a-z]|$))', 'this.$1'), '([^a-zA-Z0-9]|^)(f|af|bd)([^a-zA-Z0-9]|$)', '$1this.$2$3')" />
 	</xsl:template>
 
 	<!-- Transform values. -->

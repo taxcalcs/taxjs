@@ -379,30 +379,30 @@ export class Lohnsteuer2023Big {
     /**  Ermittlung des Jahresarbeitslohns nach § 39 b Abs. 2 Satz 2 EStG, PAP Seite 16  */
     MRE4JL() {
         if (this.LZZ == 1) {
-            this.ZRE4J = this.RE4.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.ZVBEZJ = this.VBEZ.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.JLFREIB = this.LZZFREIB.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.JLHINZU = this.LZZHINZU.div(this.ZAHL100).round(2, 0 /* RoundDown */);
+            this.ZRE4J = this.RE4.div(this.ZAHL100).round(2, Big.roundDown);
+            this.ZVBEZJ = this.VBEZ.div(this.ZAHL100).round(2, Big.roundDown);
+            this.JLFREIB = this.LZZFREIB.div(this.ZAHL100).round(2, Big.roundDown);
+            this.JLHINZU = this.LZZHINZU.div(this.ZAHL100).round(2, Big.roundDown);
         }
         else {
             if (this.LZZ == 2) {
-                this.ZRE4J = (this.RE4.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                this.ZRE4J = (this.RE4.mul(this.ZAHL12)).div(this.ZAHL100).round(2, Big.roundDown);
+                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL12)).div(this.ZAHL100).round(2, Big.roundDown);
+                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL12)).div(this.ZAHL100).round(2, Big.roundDown);
+                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL12)).div(this.ZAHL100).round(2, Big.roundDown);
             }
             else {
                 if (this.LZZ == 3) {
-                    this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                    this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                    this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                    this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
+                    this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL700).round(2, Big.roundDown);
+                    this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL700).round(2, Big.roundDown);
+                    this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL700).round(2, Big.roundDown);
+                    this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL700).round(2, Big.roundDown);
                 }
                 else {
-                    this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                    this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                    this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                    this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                    this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL100).round(2, Big.roundDown);
+                    this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL100).round(2, Big.roundDown);
+                    this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL100).round(2, Big.roundDown);
+                    this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL100).round(2, Big.roundDown);
                 }
             }
         }
@@ -433,35 +433,35 @@ export class Lohnsteuer2023Big {
             if (this.LZZ == 1) {
                 this.VBEZB = (this.VBEZM.mul(new Big(this.ZMVB))).add(this.VBEZS);
                 this.HFVB = this.TAB2[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB));
-                this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB)).round(0, 3 /* RoundUp */);
+                this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new Big(this.ZMVB)).round(0, Big.roundUp);
             }
             else {
-                this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, 0 /* RoundDown */);
+                this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, Big.roundDown);
                 this.HFVB = this.TAB2[this.J];
                 this.FVBZ = this.TAB3[this.J];
             }
-            this.FVB = ((this.VBEZB.mul(this.TAB1[this.J]))).div(this.ZAHL100).round(2, 3 /* RoundUp */);
+            this.FVB = ((this.VBEZB.mul(this.TAB1[this.J]))).div(this.ZAHL100).round(2, Big.roundUp);
             if (this.FVB.cmp(this.HFVB) == 1) {
                 this.FVB = this.HFVB;
             }
             if (this.FVB.cmp(this.ZVBEZJ) == 1) {
                 this.FVB = this.ZVBEZJ;
             }
-            this.FVBSO = (this.FVB.add((this.VBEZBSO.mul(this.TAB1[this.J])).div(this.ZAHL100))).round(2, 3 /* RoundUp */);
+            this.FVBSO = (this.FVB.add((this.VBEZBSO.mul(this.TAB1[this.J])).div(this.ZAHL100))).round(2, Big.roundUp);
             if (this.FVBSO.cmp(this.TAB2[this.J]) == 1) {
                 this.FVBSO = this.TAB2[this.J];
             }
-            this.HFVBZSO = (((this.VBEZB.add(this.VBEZBSO)).div(this.ZAHL100)).sub(this.FVBSO)).round(2, 0 /* RoundDown */);
-            this.FVBZSO = (this.FVBZ.add((this.VBEZBSO).div(this.ZAHL100))).round(0, 3 /* RoundUp */);
+            this.HFVBZSO = (((this.VBEZB.add(this.VBEZBSO)).div(this.ZAHL100)).sub(this.FVBSO)).round(2, Big.roundDown);
+            this.FVBZSO = (this.FVBZ.add((this.VBEZBSO).div(this.ZAHL100))).round(0, Big.roundUp);
             if (this.FVBZSO.cmp(this.HFVBZSO) == 1) {
-                this.FVBZSO = this.HFVBZSO.round(0, 3 /* RoundUp */);
+                this.FVBZSO = this.HFVBZSO.round(0, Big.roundUp);
             }
             if (this.FVBZSO.cmp(this.TAB3[this.J]) == 1) {
                 this.FVBZSO = this.TAB3[this.J];
             }
-            this.HFVBZ = ((this.VBEZB.div(this.ZAHL100)).sub(this.FVB)).round(2, 0 /* RoundDown */);
+            this.HFVBZ = ((this.VBEZB.div(this.ZAHL100)).sub(this.FVB)).round(2, Big.roundDown);
             if (this.FVBZ.cmp(this.HFVBZ) == 1) {
-                this.FVBZ = this.HFVBZ.round(0, 3 /* RoundUp */);
+                this.FVBZ = this.HFVBZ.round(0, Big.roundUp);
             }
         }
         this.MRE4ALTE();
@@ -485,7 +485,7 @@ export class Lohnsteuer2023Big {
             }
             this.BMG = this.ZRE4J.sub(this.ZVBEZJ);
             /**  Lt. PAP muss hier auf ganze EUR gerundet werden  */
-            this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(0, 3 /* RoundUp */);
+            this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(0, Big.roundUp);
             this.HBALTE = this.TAB5[this.K];
             if (this.ALTE.cmp(this.HBALTE) == 1) {
                 this.ALTE = this.HBALTE;
@@ -494,15 +494,15 @@ export class Lohnsteuer2023Big {
     }
     /**  Ermittlung des Jahresarbeitslohns nach Abzug der Freibeträge nach § 39 b Abs. 2 Satz 3 und 4 EStG, PAP Seite 20  */
     MRE4ABZ() {
-        this.ZRE4 = (this.ZRE4J.sub(this.FVB).sub(this.ALTE).sub(this.JLFREIB).add(this.JLHINZU)).round(2, 0 /* RoundDown */);
+        this.ZRE4 = (this.ZRE4J.sub(this.FVB).sub(this.ALTE).sub(this.JLFREIB).add(this.JLHINZU)).round(2, Big.roundDown);
         if (this.ZRE4.cmp(this.Z_0) == -1) {
             this.ZRE4 = this.Z_0;
         }
         this.ZRE4VP = this.ZRE4J;
         if (this.KENNVMT == 2) {
-            this.ZRE4VP = this.ZRE4VP.sub(this.ENTSCH.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+            this.ZRE4VP = this.ZRE4VP.sub(this.ENTSCH.div(this.ZAHL100)).round(2, Big.roundDown);
         }
-        this.ZVBEZ = this.ZVBEZJ.sub(this.FVB).round(2, 0 /* RoundDown */);
+        this.ZVBEZ = this.ZVBEZJ.sub(this.FVB).round(2, Big.roundDown);
         if (this.ZVBEZ.cmp(this.Z_0) == -1) {
             this.ZVBEZ = this.Z_0;
         }
@@ -510,20 +510,20 @@ export class Lohnsteuer2023Big {
     /**  Berechnung fuer laufende Lohnzahlungszeitraueme Seite 21 */
     MBERECH() {
         this.MZTABFB();
-        this.VFRB = ((this.ANP.add(this.FVB.add(this.FVBZ))).mul(this.ZAHL100)).round(0, 0 /* RoundDown */);
+        this.VFRB = ((this.ANP.add(this.FVB.add(this.FVBZ))).mul(this.ZAHL100)).round(0, Big.roundDown);
         this.MLSTJAHR();
-        this.WVFRB = ((this.ZVE.sub(this.GFB)).mul(this.ZAHL100)).round(0, 0 /* RoundDown */);
+        this.WVFRB = ((this.ZVE.sub(this.GFB)).mul(this.ZAHL100)).round(0, Big.roundDown);
         if (this.WVFRB.cmp(this.Z_0) == -1) { /**  WVFRB < 0  */
             this.WVFRB = new Big(0);
         }
-        this.LSTJAHR = (this.ST.mul(new Big(this.f))).round(0, 0 /* RoundDown */);
+        this.LSTJAHR = (this.ST.mul(new Big(this.f))).round(0, Big.roundDown);
         this.UPLSTLZZ();
         this.UPVKVLZZ();
         if (this.ZKF.cmp(this.Z_0) == 1) { /**  ZKF > 0  */
             this.ZTABFB = this.ZTABFB.add(this.KFB);
             this.MRE4ABZ();
             this.MLSTJAHR();
-            this.JBMG = (this.ST.mul(new Big(this.f))).round(0, 0 /* RoundDown */);
+            this.JBMG = (this.ST.mul(new Big(this.f))).round(0, Big.roundDown);
         }
         else {
             this.JBMG = this.LSTJAHR;
@@ -539,7 +539,7 @@ export class Lohnsteuer2023Big {
         if (this.STKL < 6) {
             if (this.ZVBEZ.cmp(this.Z_0) == 1) {
                 if ((this.ZVBEZ.sub(this.FVBZ)).cmp(new Big(102)) == -1) {
-                    this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, 3 /* RoundUp */);
+                    this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, Big.roundUp);
                 }
                 else {
                     this.ANP = new Big(102);
@@ -553,7 +553,7 @@ export class Lohnsteuer2023Big {
         if (this.STKL < 6) {
             if (this.ZRE4.cmp(this.ZVBEZ) == 1) {
                 if (this.ZRE4.sub(this.ZVBEZ).cmp(new Big(1200)) == -1) {
-                    this.ANP = this.ANP.add(this.ZRE4).sub(this.ZVBEZ).round(0, 3 /* RoundUp */);
+                    this.ANP = this.ANP.add(this.ZRE4).sub(this.ZVBEZ).round(0, Big.roundUp);
                 }
                 else {
                     this.ANP = this.ANP.add(new Big(1200));
@@ -563,24 +563,24 @@ export class Lohnsteuer2023Big {
         this.KZTAB = 1;
         if (this.STKL == 1) {
             this.SAP = new Big(36);
-            this.KFB = (this.ZKF.mul(new Big(8952))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+            this.KFB = (this.ZKF.mul(new Big(8952))).round(0, Big.roundDown); /**  Geändert für 2023  */
         }
         else {
             if (this.STKL == 2) {
                 this.EFA = new Big(4008); /**  Geändert für 2022  */
                 this.SAP = new Big(36);
-                this.KFB = (this.ZKF.mul(new Big(8952))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                this.KFB = (this.ZKF.mul(new Big(8952))).round(0, Big.roundDown); /**  Geändert für 2023  */
             }
             else {
                 if (this.STKL == 3) {
                     this.KZTAB = 2;
                     this.SAP = new Big(36);
-                    this.KFB = (this.ZKF.mul(new Big(8952))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                    this.KFB = (this.ZKF.mul(new Big(8952))).round(0, Big.roundDown); /**  Geändert für 2023  */
                 }
                 else {
                     if (this.STKL == 4) {
                         this.SAP = new Big(36);
-                        this.KFB = (this.ZKF.mul(new Big(4476))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                        this.KFB = (this.ZKF.mul(new Big(4476))).round(0, Big.roundDown); /**  Geändert für 2023  */
                     }
                     else {
                         if (this.STKL == 5) {
@@ -594,28 +594,28 @@ export class Lohnsteuer2023Big {
                 }
             }
         }
-        this.ZTABFB = (this.EFA.add(this.ANP).add(this.SAP).add(this.FVBZ)).round(2, 0 /* RoundDown */);
+        this.ZTABFB = (this.EFA.add(this.ANP).add(this.SAP).add(this.FVBZ)).round(2, Big.roundDown);
     }
     /**  Ermittlung Jahreslohnsteuer, PAP Seite 23  */
     MLSTJAHR() {
         this.UPEVP();
         if (this.KENNVMT != 1) {
-            this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(2, 0 /* RoundDown */);
+            this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(2, Big.roundDown);
             this.UPMLST();
         }
         else {
-            this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP).sub((this.VMT).div(this.ZAHL100)).sub((this.VKAPA).div(this.ZAHL100))).round(2, 0 /* RoundDown */);
+            this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP).sub((this.VMT).div(this.ZAHL100)).sub((this.VKAPA).div(this.ZAHL100))).round(2, Big.roundDown);
             if (this.ZVE.cmp(this.Z_0) == -1) {
-                this.ZVE = this.ZVE.add(this.VMT.div(this.ZAHL100)).add(this.VKAPA.div(this.ZAHL100)).div(this.ZAHL5).round(2, 0 /* RoundDown */);
+                this.ZVE = this.ZVE.add(this.VMT.div(this.ZAHL100)).add(this.VKAPA.div(this.ZAHL100)).div(this.ZAHL5).round(2, Big.roundDown);
                 this.UPMLST();
-                this.ST = (this.ST.mul(this.ZAHL5)).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.mul(this.ZAHL5)).round(0, Big.roundDown);
             }
             else {
                 this.UPMLST();
                 this.STOVMT = this.ST;
-                this.ZVE = (this.ZVE.add(((this.VMT.add(this.VKAPA)).div(this.ZAHL500)))).round(2, 0 /* RoundDown */);
+                this.ZVE = (this.ZVE.add(((this.VMT.add(this.VKAPA)).div(this.ZAHL500)))).round(2, Big.roundDown);
                 this.UPMLST();
-                this.ST = (((this.ST.sub(this.STOVMT)).mul(this.ZAHL5)).add(this.STOVMT)).round(0, 0 /* RoundDown */);
+                this.ST = (((this.ST.sub(this.STOVMT)).mul(this.ZAHL5)).add(this.STOVMT)).round(0, Big.roundDown);
             }
         }
     }
@@ -653,7 +653,7 @@ export class Lohnsteuer2023Big {
             this.X = this.Z_0;
         }
         else {
-            this.X = (this.ZVE.div(new Big(this.KZTAB))).round(0, 0 /* RoundDown */);
+            this.X = (this.ZVE.div(new Big(this.KZTAB))).round(0, Big.roundDown);
         }
         if (this.STKL < 5) {
             /**  Änderung für 2023  */
@@ -672,10 +672,10 @@ export class Lohnsteuer2023Big {
             if (this.ZRE4VP.cmp(this.BBGRV) == 1) {
                 this.ZRE4VP = this.BBGRV;
             }
-            this.VSP1 = (this.TBSVORV.mul(this.ZRE4VP)).round(2, 0 /* RoundDown */);
-            this.VSP1 = (this.VSP1.mul(this.RVSATZAN)).round(2, 0 /* RoundDown */);
+            this.VSP1 = (this.TBSVORV.mul(this.ZRE4VP)).round(2, Big.roundDown);
+            this.VSP1 = (this.VSP1.mul(this.RVSATZAN)).round(2, Big.roundDown);
         }
-        this.VSP2 = (this.ZRE4VP.mul(new Big(0.12))).round(2, 0 /* RoundDown */);
+        this.VSP2 = (this.ZRE4VP.mul(new Big(0.12))).round(2, Big.roundDown);
         if (this.STKL == 3) {
             this.VHB = new Big(3000);
         }
@@ -685,10 +685,10 @@ export class Lohnsteuer2023Big {
         if (this.VSP2.cmp(this.VHB) == 1) {
             this.VSP2 = this.VHB;
         }
-        this.VSPN = (this.VSP1.add(this.VSP2)).round(0, 3 /* RoundUp */);
+        this.VSPN = (this.VSP1.add(this.VSP2)).round(0, Big.roundUp);
         this.MVSP();
         if (this.VSPN.cmp(this.VSP) == 1) {
-            this.VSP = this.VSPN.round(2, 0 /* RoundDown */);
+            this.VSP = this.VSPN.round(2, Big.roundDown);
         }
     }
     /**  Vorsorgepauschale (§39b Abs. 2 Satz 5 Nr 3 EStG) Vergleichsberechnung fuer Guenstigerpruefung, PAP Seite 28  */
@@ -703,14 +703,14 @@ export class Lohnsteuer2023Big {
             else {
                 this.VSP3 = this.PKPV.mul(this.ZAHL12).div(this.ZAHL100);
                 if (this.PKV == 2) {
-                    this.VSP3 = this.VSP3.sub(this.ZRE4VP.mul(this.KVSATZAG.add(this.PVSATZAG))).round(2, 0 /* RoundDown */);
+                    this.VSP3 = this.VSP3.sub(this.ZRE4VP.mul(this.KVSATZAG.add(this.PVSATZAG))).round(2, Big.roundDown);
                 }
             }
         }
         else {
-            this.VSP3 = this.ZRE4VP.mul(this.KVSATZAN.add(this.PVSATZAN)).round(2, 0 /* RoundDown */);
+            this.VSP3 = this.ZRE4VP.mul(this.KVSATZAN.add(this.PVSATZAN)).round(2, Big.roundDown);
         }
-        this.VSP = this.VSP3.add(this.VSP1).round(0, 3 /* RoundUp */);
+        this.VSP = this.VSP3.add(this.VSP1).round(0, Big.roundUp);
     }
     /**  Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 29  */
     MST5_6() {
@@ -719,11 +719,11 @@ export class Lohnsteuer2023Big {
             this.ZX = this.W2STKL5;
             this.UP5_6();
             if (this.ZZX.cmp(this.W3STKL5) == 1) {
-                this.ST = (this.ST.add((this.W3STKL5.sub(this.W2STKL5)).mul(new Big(0.42)))).round(0, 0 /* RoundDown */);
-                this.ST = (this.ST.add((this.ZZX.sub(this.W3STKL5)).mul(new Big(0.45)))).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.add((this.W3STKL5.sub(this.W2STKL5)).mul(new Big(0.42)))).round(0, Big.roundDown);
+                this.ST = (this.ST.add((this.ZZX.sub(this.W3STKL5)).mul(new Big(0.45)))).round(0, Big.roundDown);
             }
             else {
-                this.ST = (this.ST.add((this.ZZX.sub(this.W2STKL5)).mul(new Big(0.42)))).round(0, 0 /* RoundDown */);
+                this.ST = (this.ST.add((this.ZZX.sub(this.W2STKL5)).mul(new Big(0.42)))).round(0, Big.roundDown);
             }
         }
         else {
@@ -733,7 +733,7 @@ export class Lohnsteuer2023Big {
                 this.VERGL = this.ST;
                 this.ZX = this.W1STKL5;
                 this.UP5_6();
-                this.HOCH = (this.ST.add((this.ZZX.sub(this.W1STKL5)).mul(new Big(0.42)))).round(0, 0 /* RoundDown */); /**  Neuer Wert 2014  */
+                this.HOCH = (this.ST.add((this.ZZX.sub(this.W1STKL5)).mul(new Big(0.42)))).round(0, Big.roundDown); /**  Neuer Wert 2014  */
                 if (this.HOCH.cmp(this.VERGL) == -1) {
                     this.ST = this.HOCH;
                 }
@@ -745,16 +745,16 @@ export class Lohnsteuer2023Big {
     }
     /**  Unterprogramm zur Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 30  */
     UP5_6() {
-        this.X = (this.ZX.mul(new Big(1.25))).round(2, 0 /* RoundDown */);
+        this.X = (this.ZX.mul(new Big(1.25))).round(2, Big.roundDown);
         /**  Änderung für 2023  */
         this.UPTAB23();
         this.ST1 = this.ST;
-        this.X = (this.ZX.mul(new Big(0.75))).round(2, 0 /* RoundDown */);
+        this.X = (this.ZX.mul(new Big(0.75))).round(2, Big.roundDown);
         /**  Änderung für 2023  */
         this.UPTAB23();
         this.ST2 = this.ST;
         this.DIFF = (this.ST1.sub(this.ST2)).mul(this.ZAHL2);
-        this.MIST = (this.ZX.mul(new Big(0.14))).round(0, 0 /* RoundDown */);
+        this.MIST = (this.ZX.mul(new Big(0.14))).round(0, Big.roundDown);
         if (this.MIST.cmp(this.DIFF) == 1) {
             this.ST = this.MIST;
         }
@@ -766,12 +766,12 @@ export class Lohnsteuer2023Big {
     MSOLZ() {
         this.SOLZFREI = (this.SOLZFREI.mul(new Big(this.KZTAB)));
         if (this.JBMG.cmp(this.SOLZFREI) == 1) {
-            this.SOLZJ = (this.JBMG.mul(new Big(5.5))).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-            this.SOLZMIN = (this.JBMG.sub(this.SOLZFREI)).mul(new Big(11.9)).div(this.ZAHL100).round(2, 0 /* RoundDown */); /**  Änderung für 2021  */
+            this.SOLZJ = (this.JBMG.mul(new Big(5.5))).div(this.ZAHL100).round(2, Big.roundDown);
+            this.SOLZMIN = (this.JBMG.sub(this.SOLZFREI)).mul(new Big(11.9)).div(this.ZAHL100).round(2, Big.roundDown); /**  Änderung für 2021  */
             if (this.SOLZMIN.cmp(this.SOLZJ) == -1) {
                 this.SOLZJ = this.SOLZMIN;
             }
-            this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, 0 /* RoundDown */);
+            this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, Big.roundDown);
             this.UPANTEIL();
             this.SOLZLZZ = this.ANTEIL1;
         }
@@ -794,14 +794,14 @@ export class Lohnsteuer2023Big {
         }
         else {
             if (this.LZZ == 2) {
-                this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, 0 /* RoundDown */);
+                this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, Big.roundDown);
             }
             else {
                 if (this.LZZ == 3) {
-                    this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, 0 /* RoundDown */);
+                    this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, Big.roundDown);
                 }
                 else {
-                    this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, 0 /* RoundDown */);
+                    this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, Big.roundDown);
                 }
             }
         }
@@ -823,12 +823,12 @@ export class Lohnsteuer2023Big {
             this.MOSONST();
             this.UPVKV();
             this.VKVSONST = this.VKV;
-            this.ZRE4J = ((this.JRE4.add(this.SONSTB)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-            this.ZVBEZJ = ((this.JVBEZ.add(this.VBS)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+            this.ZRE4J = ((this.JRE4.add(this.SONSTB)).div(this.ZAHL100)).round(2, Big.roundDown);
+            this.ZVBEZJ = ((this.JVBEZ.add(this.VBS)).div(this.ZAHL100)).round(2, Big.roundDown);
             this.VBEZBSO = this.STERBE;
             this.MRE4SONST();
             this.MLSTJAHR();
-            this.WVFRBM = (this.ZVE.sub(this.GFB)).mul(this.ZAHL100).round(2, 0 /* RoundDown */);
+            this.WVFRBM = (this.ZVE.sub(this.GFB)).mul(this.ZAHL100).round(2, Big.roundDown);
             if (this.WVFRBM.cmp(this.Z_0) == -1) { /**  WVFRBM < 0  */
                 this.WVFRBM = this.Z_0;
             }
@@ -838,7 +838,7 @@ export class Lohnsteuer2023Big {
             /**  lt. PAP:  "Hinweis: negative Zahlen werden nach ihrem Betrag gerundet!"  */
             /**  Fallunterscheidung bzgl. negativer Zahlen nicht nötig, da die Java-Klasse BigDecimal.ROUND_DOWN   */
             /**  die Ziffer und nicht die Zahl abrundet, also aus -4.5 wird -4 und aus 4.5 wird 4  */
-            this.STS = this.LSTSO.sub(this.LSTOSO).mul(new Big(this.f)).div(this.ZAHL100).round(0, 0 /* RoundDown */).mul(this.ZAHL100);
+            this.STS = this.LSTSO.sub(this.LSTOSO).mul(new Big(this.f)).div(this.ZAHL100).round(0, Big.roundDown).mul(this.ZAHL100);
             /**  Neu für 2022  */
             this.STSMIN();
         }
@@ -854,7 +854,7 @@ export class Lohnsteuer2023Big {
                 if (this.LSTLZZ.cmp(this.Z_0) == -1) { /**   LSTLZZ < 0  */
                     this.LSTLZZ = this.Z_0;
                 }
-                this.SOLZLZZ = this.SOLZLZZ.add(this.STS.mul(new Big(5.5).div(this.ZAHL100))).round(0, 0 /* RoundDown */);
+                this.SOLZLZZ = this.SOLZLZZ.add(this.STS.mul(new Big(5.5).div(this.ZAHL100))).round(0, Big.roundDown);
                 if (this.SOLZLZZ.cmp(this.Z_0) == -1) { /**   SOLZLZZ < 0  */
                     this.SOLZLZZ = this.Z_0;
                 }
@@ -889,7 +889,7 @@ export class Lohnsteuer2023Big {
             this.X = this.Z_0;
         }
         else {
-            this.X = this.SOLZSZVE.div(new Big(this.KZTAB)).round(0, 0 /* RoundDown */);
+            this.X = this.SOLZSZVE.div(new Big(this.KZTAB)).round(0, Big.roundDown);
         }
         if (this.STKL < 5) { /**  STKL < 5  */
             /**  Änderung für 2023  */
@@ -898,9 +898,9 @@ export class Lohnsteuer2023Big {
         else {
             this.MST5_6();
         }
-        this.SOLZSBMG = this.ST.mul(new Big(this.f)).round(0, 0 /* RoundDown */);
+        this.SOLZSBMG = this.ST.mul(new Big(this.f)).round(0, Big.roundDown);
         if (this.SOLZSBMG.cmp(this.SOLZFREI) == 1) { /**  SOLZSBMG > SOLZFREI  */
-            this.SOLZS = this.STS.mul(new Big(5.5)).div(this.ZAHL100).round(0, 0 /* RoundDown */);
+            this.SOLZS = this.STS.mul(new Big(5.5)).div(this.ZAHL100).round(0, Big.roundDown);
         }
         else {
             this.SOLZS = this.Z_0;
@@ -920,8 +920,8 @@ export class Lohnsteuer2023Big {
                 this.LST1 = this.LSTSO;
             }
             this.VBEZBSO = this.STERBE.add(this.VKAPA);
-            this.ZRE4J = ((this.JRE4.add(this.SONSTB).add(this.VMT).add(this.VKAPA)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-            this.ZVBEZJ = ((this.JVBEZ.add(this.VBS).add(this.VKAPA)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+            this.ZRE4J = ((this.JRE4.add(this.SONSTB).add(this.VMT).add(this.VKAPA)).div(this.ZAHL100)).round(2, Big.roundDown);
+            this.ZVBEZJ = ((this.JVBEZ.add(this.VBS).add(this.VKAPA)).div(this.ZAHL100)).round(2, Big.roundDown);
             this.KENNVMT = 2;
             this.MRE4SONST();
             this.MLSTJAHR();
@@ -946,12 +946,12 @@ export class Lohnsteuer2023Big {
                     weshalb nach dem Aufrunden auf ganze EUR durch 'divide(ZAHL100, 0, BigDecimal.ROUND_DOWN)'
                     wieder die Multiplikation mit 100 erfolgt.
                  */
-                this.STV = this.STV.mul(new Big(this.f)).div(this.ZAHL100).round(0, 0 /* RoundDown */).mul(this.ZAHL100);
+                this.STV = this.STV.mul(new Big(this.f)).div(this.ZAHL100).round(0, Big.roundDown).mul(this.ZAHL100);
             }
             /**  Beginn Neu 2021  */
-            this.SOLZVBMG = this.STV.div(this.ZAHL100).round(0, 0 /* RoundDown */).add(this.JBMG);
+            this.SOLZVBMG = this.STV.div(this.ZAHL100).round(0, Big.roundDown).add(this.JBMG);
             if (this.SOLZVBMG.cmp(this.SOLZFREI) == 1) { /**  SOLZVBMG > SOLZFREI  */
-                this.SOLZV = this.STV.mul(new Big(5.5)).div(this.ZAHL100).round(0, 0 /* RoundDown */);
+                this.SOLZV = this.STV.mul(new Big(5.5)).div(this.ZAHL100).round(0, Big.roundDown);
             }
             else {
                 this.SOLZV = this.Z_0;
@@ -972,17 +972,17 @@ export class Lohnsteuer2023Big {
     }
     /**  Sonderberechnung ohne sonstige Bezüge für Berechnung bei sonstigen Bezügen oder Vergütung für mehrjährige Tätigkeit, PAP Seite 37  */
     MOSONST() {
-        this.ZRE4J = (this.JRE4.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-        this.ZVBEZJ = (this.JVBEZ.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-        this.JLFREIB = this.JFREIB.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-        this.JLHINZU = this.JHINZU.div(this.ZAHL100).round(2, 0 /* RoundDown */);
+        this.ZRE4J = (this.JRE4.div(this.ZAHL100)).round(2, Big.roundDown);
+        this.ZVBEZJ = (this.JVBEZ.div(this.ZAHL100)).round(2, Big.roundDown);
+        this.JLFREIB = this.JFREIB.div(this.ZAHL100).round(2, Big.roundDown);
+        this.JLHINZU = this.JHINZU.div(this.ZAHL100).round(2, Big.roundDown);
         this.MRE4();
         this.MRE4ABZ();
         this.ZRE4VP = this.ZRE4VP.sub(this.JRE4ENT.div(this.ZAHL100));
         this.MZTABFB();
-        this.VFRBS1 = ((this.ANP.add(this.FVB.add(this.FVBZ))).mul(this.ZAHL100)).round(2, 0 /* RoundDown */);
+        this.VFRBS1 = ((this.ANP.add(this.FVB.add(this.FVBZ))).mul(this.ZAHL100)).round(2, Big.roundDown);
         this.MLSTJAHR();
-        this.WVFRBO = ((this.ZVE.sub(this.GFB)).mul(this.ZAHL100)).round(2, 0 /* RoundDown */);
+        this.WVFRBO = ((this.ZVE.sub(this.GFB)).mul(this.ZAHL100)).round(2, Big.roundDown);
         if (this.WVFRBO.cmp(this.Z_0) == -1) {
             this.WVFRBO = this.Z_0;
         }
@@ -1007,25 +1007,25 @@ export class Lohnsteuer2023Big {
         }
         else {
             if (this.X.cmp(new Big(16000)) == -1) { /**  Geändert für 2023  */
-                this.Y = (this.X.sub(this.GFB)).div(this.ZAHL10000).round(6, 0 /* RoundDown */);
+                this.Y = (this.X.sub(this.GFB)).div(this.ZAHL10000).round(6, Big.roundDown);
                 this.RW = this.Y.mul(new Big(979.18)); /**  Geändert für 2023  */
                 this.RW = this.RW.add(new Big(1400));
-                this.ST = (this.RW.mul(this.Y)).round(0, 0 /* RoundDown */);
+                this.ST = (this.RW.mul(this.Y)).round(0, Big.roundDown);
             }
             else {
                 if (this.X.cmp(new Big(62810)) == -1) { /**  Geändert für 2023  */
-                    this.Y = (this.X.sub(new Big(15999))).div(this.ZAHL10000).round(6, 0 /* RoundDown */); /**  Geändert für 2023   */
+                    this.Y = (this.X.sub(new Big(15999))).div(this.ZAHL10000).round(6, Big.roundDown); /**  Geändert für 2023   */
                     this.RW = this.Y.mul(new Big(192.59)); /**  Geändert für 2023  */
                     this.RW = this.RW.add(new Big(2397));
                     this.RW = this.RW.mul(this.Y);
-                    this.ST = (this.RW.add(new Big(966.53))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                    this.ST = (this.RW.add(new Big(966.53))).round(0, Big.roundDown); /**  Geändert für 2023  */
                 }
                 else {
                     if (this.X.cmp(new Big(277826)) == -1) { /**  Geändert für 2022  */
-                        this.ST = ((this.X.mul(new Big(0.42))).sub(new Big(9972.98))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                        this.ST = ((this.X.mul(new Big(0.42))).sub(new Big(9972.98))).round(0, Big.roundDown); /**  Geändert für 2023  */
                     }
                     else {
-                        this.ST = ((this.X.mul(new Big(0.45))).sub(new Big(18307.73))).round(0, 0 /* RoundDown */); /**  Geändert für 2023  */
+                        this.ST = ((this.X.mul(new Big(0.45))).sub(new Big(18307.73))).round(0, Big.roundDown); /**  Geändert für 2023  */
                     }
                 }
             }

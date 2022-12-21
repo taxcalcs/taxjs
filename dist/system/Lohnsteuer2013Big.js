@@ -304,15 +304,15 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.MRE4ABZ();
                     this.MZTABFB();
                     this.MLSTJAHR();
-                    this.LSTJAHR = this.ST.mul(new big_js_1.default(this.F)).round(0, 0 /* RoundDown */);
+                    this.LSTJAHR = this.ST.mul(new big_js_1.default(this.F)).round(0, big_js_1.default.roundDown);
                     this.JW = this.LSTJAHR.mul(this.ZAHL100);
                     this.UPLSTLZZ();
                     this.UPVKVLZZ();
                     if (this.ZKF.cmp(this.Z_0) == 1) {
-                        this.ZTABFB = (this.ZTABFB.add(this.KFB)).round(2, 0 /* RoundDown */);
+                        this.ZTABFB = (this.ZTABFB.add(this.KFB)).round(2, big_js_1.default.roundDown);
                         this.MRE4ABZ();
                         this.MLSTJAHR();
-                        this.JBMG = this.ST.mul(new big_js_1.default(this.F)).round(0, 0 /* RoundDown */);
+                        this.JBMG = this.ST.mul(new big_js_1.default(this.F)).round(0, big_js_1.default.roundDown);
                     }
                     else {
                         this.JBMG = this.LSTJAHR;
@@ -324,30 +324,30 @@ System.register(["big.js"], function (exports_1, context_1) {
                 /**  Ermittlung des Jahresarbeitslohns nach § 39 b Abs. 2 Satz 2 EStG, PAP Seite 12  */
                 Lohnsteuer2013Big.prototype.MRE4JL = function () {
                     if (this.LZZ == 1) {
-                        this.ZRE4J = this.RE4.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                        this.ZVBEZJ = this.VBEZ.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                        this.JLFREIB = this.LZZFREIB.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                        this.JLHINZU = this.LZZHINZU.div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                        this.ZRE4J = this.RE4.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                        this.ZVBEZJ = this.VBEZ.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                        this.JLFREIB = this.LZZFREIB.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                        this.JLHINZU = this.LZZHINZU.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                     }
                     else {
                         if (this.LZZ == 2) {
-                            this.ZRE4J = (this.RE4.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                            this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                            this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                            this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL12)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                            this.ZRE4J = (this.RE4.mul(this.ZAHL12)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                            this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL12)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                            this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL12)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                            this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL12)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                         }
                         else {
                             if (this.LZZ == 3) {
-                                this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
-                                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL700).round(2, 0 /* RoundDown */);
+                                this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL700).round(2, big_js_1.default.roundDown);
+                                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL700).round(2, big_js_1.default.roundDown);
+                                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL700).round(2, big_js_1.default.roundDown);
+                                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL700).round(2, big_js_1.default.roundDown);
                             }
                             else {
-                                this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                                this.ZRE4J = (this.RE4.mul(this.ZAHL360)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                                this.ZVBEZJ = (this.VBEZ.mul(this.ZAHL360)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                                this.JLFREIB = (this.LZZFREIB.mul(this.ZAHL360)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                                this.JLHINZU = (this.LZZHINZU.mul(this.ZAHL360)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                             }
                         }
                     }
@@ -378,32 +378,32 @@ System.register(["big.js"], function (exports_1, context_1) {
                         if (this.LZZ == 1) {
                             this.VBEZB = (this.VBEZM.mul(new big_js_1.default(this.ZMVB))).add(this.VBEZS);
                             this.HFVB = this.TAB2[this.J].div(this.ZAHL12).mul(new big_js_1.default(this.ZMVB));
-                            this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new big_js_1.default(this.ZMVB)).round(0, 3 /* RoundUp */);
+                            this.FVBZ = this.TAB3[this.J].div(this.ZAHL12).mul(new big_js_1.default(this.ZMVB)).round(0, big_js_1.default.roundUp);
                         }
                         else {
-                            this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, 0 /* RoundDown */);
+                            this.VBEZB = ((this.VBEZM.mul(this.ZAHL12)).add(this.VBEZS)).round(2, big_js_1.default.roundDown);
                             this.HFVB = this.TAB2[this.J];
                             this.FVBZ = this.TAB3[this.J];
                         }
-                        this.FVB = ((this.VBEZB.mul(this.TAB1[this.J]))).div(this.ZAHL100).round(2, 3 /* RoundUp */);
+                        this.FVB = ((this.VBEZB.mul(this.TAB1[this.J]))).div(this.ZAHL100).round(2, big_js_1.default.roundUp);
                         if (this.FVB.cmp(this.HFVB) == 1) {
                             this.FVB = this.HFVB;
                         }
-                        this.FVBSO = (this.FVB.add((this.VBEZBSO.mul(this.TAB1[this.J])).div(this.ZAHL100))).round(2, 3 /* RoundUp */);
+                        this.FVBSO = (this.FVB.add((this.VBEZBSO.mul(this.TAB1[this.J])).div(this.ZAHL100))).round(2, big_js_1.default.roundUp);
                         if (this.FVBSO.cmp(this.TAB2[this.J]) == 1) {
                             this.FVBSO = this.TAB2[this.J];
                         }
-                        this.HFVBZSO = (((this.VBEZB.add(this.VBEZBSO)).div(this.ZAHL100)).sub(this.FVBSO)).round(2, 0 /* RoundDown */);
-                        this.FVBZSO = (this.FVBZ.add((this.VBEZBSO).div(this.ZAHL100))).round(0, 3 /* RoundUp */);
+                        this.HFVBZSO = (((this.VBEZB.add(this.VBEZBSO)).div(this.ZAHL100)).sub(this.FVBSO)).round(2, big_js_1.default.roundDown);
+                        this.FVBZSO = (this.FVBZ.add((this.VBEZBSO).div(this.ZAHL100))).round(0, big_js_1.default.roundUp);
                         if (this.FVBZSO.cmp(this.HFVBZSO) == 1) {
-                            this.FVBZSO = this.HFVBZSO.round(0, 3 /* RoundUp */);
+                            this.FVBZSO = this.HFVBZSO.round(0, big_js_1.default.roundUp);
                         }
                         if (this.FVBZSO.cmp(this.TAB3[this.J]) == 1) {
                             this.FVBZSO = this.TAB3[this.J];
                         }
-                        this.HFVBZ = ((this.VBEZB.div(this.ZAHL100)).sub(this.FVB)).round(2, 0 /* RoundDown */);
+                        this.HFVBZ = ((this.VBEZB.div(this.ZAHL100)).sub(this.FVB)).round(2, big_js_1.default.roundDown);
                         if (this.FVBZ.cmp(this.HFVBZ) == 1) {
-                            this.FVBZ = this.HFVBZ.round(0, 3 /* RoundUp */);
+                            this.FVBZ = this.HFVBZ.round(0, big_js_1.default.roundUp);
                         }
                     }
                     this.MRE4ALTE();
@@ -427,7 +427,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                         }
                         this.BMG = this.ZRE4J.sub(this.ZVBEZJ);
                         /**  Lt. PAP muss hier auf ganze EUR gerundet werden  */
-                        this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(0, 3 /* RoundUp */);
+                        this.ALTE = (this.BMG.mul(this.TAB4[this.K])).round(0, big_js_1.default.roundUp);
                         this.HBALTE = this.TAB5[this.K];
                         if (this.ALTE.cmp(this.HBALTE) == 1) {
                             this.ALTE = this.HBALTE;
@@ -436,15 +436,15 @@ System.register(["big.js"], function (exports_1, context_1) {
                 };
                 /**  Ermittlung des Jahresarbeitslohns nach Abzug der Freibeträge nach § 39 b Abs. 2 Satz 3 und 4 EStG, PAP Seite 16  */
                 Lohnsteuer2013Big.prototype.MRE4ABZ = function () {
-                    this.ZRE4 = (this.ZRE4J.sub(this.FVB).sub(this.ALTE).sub(this.JLFREIB).add(this.JLHINZU)).round(2, 0 /* RoundDown */);
+                    this.ZRE4 = (this.ZRE4J.sub(this.FVB).sub(this.ALTE).sub(this.JLFREIB).add(this.JLHINZU)).round(2, big_js_1.default.roundDown);
                     if (this.ZRE4.cmp(this.Z_0) == -1) {
                         this.ZRE4 = this.Z_0;
                     }
                     this.ZRE4VP = this.ZRE4J;
                     if (this.KENNVMT == 2) {
-                        this.ZRE4VP = this.ZRE4VP.sub(this.ENTSCH.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+                        this.ZRE4VP = this.ZRE4VP.sub(this.ENTSCH.div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
                     }
-                    this.ZVBEZ = this.ZVBEZJ.sub(this.FVB).round(2, 0 /* RoundDown */);
+                    this.ZVBEZ = this.ZVBEZJ.sub(this.FVB).round(2, big_js_1.default.roundDown);
                     if (this.ZVBEZ.cmp(this.Z_0) == -1) {
                         this.ZVBEZ = this.Z_0;
                     }
@@ -458,7 +458,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     if (this.STKL < 6) {
                         if (this.ZVBEZ.cmp(this.Z_0) == 1) {
                             if ((this.ZVBEZ.sub(this.FVBZ)).cmp(new big_js_1.default(102)) == -1) {
-                                this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, 3 /* RoundUp */);
+                                this.ANP = (this.ZVBEZ.sub(this.FVBZ)).round(0, big_js_1.default.roundUp);
                             }
                             else {
                                 this.ANP = new big_js_1.default(102);
@@ -472,7 +472,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     if (this.STKL < 6) {
                         if (this.ZRE4.cmp(this.ZVBEZ) == 1) {
                             if (this.ZRE4.sub(this.ZVBEZ).cmp(this.ZAHL1000) == -1) {
-                                this.ANP = this.ANP.add(this.ZRE4).sub(this.ZVBEZ).round(0, 3 /* RoundUp */);
+                                this.ANP = this.ANP.add(this.ZRE4).sub(this.ZVBEZ).round(0, big_js_1.default.roundUp);
                             }
                             else {
                                 this.ANP = this.ANP.add(this.ZAHL1000);
@@ -482,24 +482,24 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.KZTAB = 1;
                     if (this.STKL == 1) {
                         this.SAP = new big_js_1.default(36);
-                        this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, 0 /* RoundDown */);
+                        this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, big_js_1.default.roundDown);
                     }
                     else {
                         if (this.STKL == 2) {
                             this.EFA = new big_js_1.default(1308);
                             this.SAP = new big_js_1.default(36);
-                            this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, 0 /* RoundDown */);
+                            this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, big_js_1.default.roundDown);
                         }
                         else {
                             if (this.STKL == 3) {
                                 this.KZTAB = 2;
                                 this.SAP = new big_js_1.default(36);
-                                this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, 0 /* RoundDown */);
+                                this.KFB = (this.ZKF.mul(new big_js_1.default(7008))).round(0, big_js_1.default.roundDown);
                             }
                             else {
                                 if (this.STKL == 4) {
                                     this.SAP = new big_js_1.default(36);
-                                    this.KFB = (this.ZKF.mul(new big_js_1.default(3504))).round(0, 0 /* RoundDown */);
+                                    this.KFB = (this.ZKF.mul(new big_js_1.default(3504))).round(0, big_js_1.default.roundDown);
                                 }
                                 else {
                                     if (this.STKL == 5) {
@@ -513,28 +513,28 @@ System.register(["big.js"], function (exports_1, context_1) {
                             }
                         }
                     }
-                    this.ZTABFB = (this.EFA.add(this.ANP).add(this.SAP).add(this.FVBZ)).round(2, 0 /* RoundDown */);
+                    this.ZTABFB = (this.EFA.add(this.ANP).add(this.SAP).add(this.FVBZ)).round(2, big_js_1.default.roundDown);
                 };
                 /**  Ermittlung Jahreslohnsteuer, PAP Seite 18  */
                 Lohnsteuer2013Big.prototype.MLSTJAHR = function () {
                     this.UPEVP();
                     if (this.KENNVMT != 1) {
-                        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(2, 0 /* RoundDown */);
+                        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(2, big_js_1.default.roundDown);
                         this.UPMLST();
                     }
                     else {
-                        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP).sub((this.VMT).div(this.ZAHL100)).sub((this.VKAPA).div(this.ZAHL100))).round(2, 0 /* RoundDown */);
+                        this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP).sub((this.VMT).div(this.ZAHL100)).sub((this.VKAPA).div(this.ZAHL100))).round(2, big_js_1.default.roundDown);
                         if (this.ZVE.cmp(this.Z_0) == -1) {
-                            this.ZVE = this.ZVE.add(this.VMT.div(this.ZAHL100)).add(this.VKAPA.div(this.ZAHL100)).div(this.ZAHL5).round(2, 0 /* RoundDown */);
+                            this.ZVE = this.ZVE.add(this.VMT.div(this.ZAHL100)).add(this.VKAPA.div(this.ZAHL100)).div(this.ZAHL5).round(2, big_js_1.default.roundDown);
                             this.UPMLST();
-                            this.ST = (this.ST.mul(this.ZAHL5)).round(0, 0 /* RoundDown */);
+                            this.ST = (this.ST.mul(this.ZAHL5)).round(0, big_js_1.default.roundDown);
                         }
                         else {
                             this.UPMLST();
                             this.STOVMT = this.ST;
-                            this.ZVE = (this.ZVE.add(((this.VMT.add(this.VKAPA)).div(this.ZAHL500)))).round(2, 0 /* RoundDown */);
+                            this.ZVE = (this.ZVE.add(((this.VMT.add(this.VKAPA)).div(this.ZAHL500)))).round(2, big_js_1.default.roundDown);
                             this.UPMLST();
-                            this.ST = (((this.ST.sub(this.STOVMT)).mul(this.ZAHL5)).add(this.STOVMT)).round(0, 0 /* RoundDown */);
+                            this.ST = (((this.ST.sub(this.STOVMT)).mul(this.ZAHL5)).add(this.STOVMT)).round(0, big_js_1.default.roundDown);
                         }
                     }
                 };
@@ -569,7 +569,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                         this.X = this.Z_0;
                     }
                     else {
-                        this.X = (this.ZVE.div(new big_js_1.default(this.KZTAB))).round(0, 0 /* RoundDown */);
+                        this.X = (this.ZVE.div(new big_js_1.default(this.KZTAB))).round(0, big_js_1.default.roundDown);
                     }
                     if (this.STKL < 5) {
                         this.UPTAB13();
@@ -602,10 +602,10 @@ System.register(["big.js"], function (exports_1, context_1) {
                             }
                         }
                         /**  Neuer Wert 2013  */
-                        this.VSP1 = (this.ZRE4VP.mul(new big_js_1.default(0.52))).round(2, 0 /* RoundDown */);
-                        this.VSP1 = (this.VSP1.mul(new big_js_1.default(0.0945))).round(2, 0 /* RoundDown */);
+                        this.VSP1 = (this.ZRE4VP.mul(new big_js_1.default(0.52))).round(2, big_js_1.default.roundDown);
+                        this.VSP1 = (this.VSP1.mul(new big_js_1.default(0.0945))).round(2, big_js_1.default.roundDown);
                     }
-                    this.VSP2 = (this.ZRE4VP.mul(new big_js_1.default(0.12))).round(2, 0 /* RoundDown */);
+                    this.VSP2 = (this.ZRE4VP.mul(new big_js_1.default(0.12))).round(2, big_js_1.default.roundDown);
                     if (this.STKL == 3) {
                         this.VHB = new big_js_1.default(3000);
                     }
@@ -615,10 +615,10 @@ System.register(["big.js"], function (exports_1, context_1) {
                     if (this.VSP2.cmp(this.VHB) == 1) {
                         this.VSP2 = this.VHB;
                     }
-                    this.VSPN = (this.VSP1.add(this.VSP2)).round(0, 3 /* RoundUp */);
+                    this.VSPN = (this.VSP1.add(this.VSP2)).round(0, big_js_1.default.roundUp);
                     this.MVSP();
                     if (this.VSPN.cmp(this.VSP) == 1) {
-                        this.VSP = this.VSPN.round(2, 0 /* RoundDown */);
+                        this.VSP = this.VSPN.round(2, big_js_1.default.roundDown);
                     }
                 };
                 /**  Vorsorgepauschale (§39b Abs. 2 Satz 5 Nr 3 EStG) Vergleichsberechnung fuer Guenstigerpruefung, PAP Seite 22  */
@@ -642,7 +642,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                                 else {
                                     this.PVSATZAG = new big_js_1.default(0.01025).round(5);
                                 }
-                                this.VSP3 = this.VSP3.sub(this.ZRE4VP.mul(this.KVSATZAG.add(this.PVSATZAG))).round(2, 0 /* RoundDown */);
+                                this.VSP3 = this.VSP3.sub(this.ZRE4VP.mul(this.KVSATZAG.add(this.PVSATZAG))).round(2, big_js_1.default.roundDown);
                             }
                         }
                     }
@@ -657,12 +657,12 @@ System.register(["big.js"], function (exports_1, context_1) {
                         if (this.PVZ == 1) {
                             this.PVSATZAN = this.PVSATZAN.add(new big_js_1.default(0.0025));
                         }
-                        this.VSP3 = this.ZRE4VP.mul(this.KVSATZAN.add(this.PVSATZAN)).round(2, 0 /* RoundDown */);
+                        this.VSP3 = this.ZRE4VP.mul(this.KVSATZAN.add(this.PVSATZAN)).round(2, big_js_1.default.roundDown);
                     }
-                    this.VSP = this.VSP3.add(this.VSP1).round(0, 3 /* RoundUp */);
+                    this.VSP = this.VSP3.add(this.VSP1).round(0, big_js_1.default.roundUp);
                 };
                 Lohnsteuer2013Big.prototype.UMVSP = function () {
-                    this.VSPVOR = (this.VSPVOR.sub(this.ZRE4VP.mul(new big_js_1.default(0.16)))).round(2, 0 /* RoundDown */);
+                    this.VSPVOR = (this.VSPVOR.sub(this.ZRE4VP.mul(new big_js_1.default(0.16)))).round(2, big_js_1.default.roundDown);
                     if (this.VSPVOR.cmp(this.Z_0) == -1) {
                         this.VSPVOR = this.Z_0;
                     }
@@ -671,20 +671,20 @@ System.register(["big.js"], function (exports_1, context_1) {
                         this.VSPREST = this.VSPO.sub(this.VSPVOR);
                         if (this.VSPREST.cmp(this.VSPMAX1) == 1) {
                             this.VSP = this.VSP.add(this.VSPMAX1);
-                            this.VSPREST = (this.VSPREST.sub(this.VSPMAX1)).div(this.ZAHL2).round(2, 3 /* RoundUp */);
+                            this.VSPREST = (this.VSPREST.sub(this.VSPMAX1)).div(this.ZAHL2).round(2, big_js_1.default.roundUp);
                             if (this.VSPREST.cmp(this.VSPMAX2) == 1) {
-                                this.VSP = (this.VSP.add(this.VSPMAX2)).round(0, 0 /* RoundDown */);
+                                this.VSP = (this.VSP.add(this.VSPMAX2)).round(0, big_js_1.default.roundDown);
                             }
                             else {
-                                this.VSP = (this.VSP.add(this.VSPREST)).round(0, 0 /* RoundDown */);
+                                this.VSP = (this.VSP.add(this.VSPREST)).round(0, big_js_1.default.roundDown);
                             }
                         }
                         else {
-                            this.VSP = (this.VSP.add(this.VSPREST)).round(0, 0 /* RoundDown */);
+                            this.VSP = (this.VSP.add(this.VSPREST)).round(0, big_js_1.default.roundDown);
                         }
                     }
                     else {
-                        this.VSP = this.VSPO.round(0, 0 /* RoundDown */);
+                        this.VSP = this.VSPO.round(0, big_js_1.default.roundDown);
                     }
                 };
                 /**  Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 23  */
@@ -694,11 +694,11 @@ System.register(["big.js"], function (exports_1, context_1) {
                         this.ZX = new big_js_1.default(26441);
                         this.UP5_6();
                         if (this.ZZX.cmp(new big_js_1.default(200584)) == 1) {
-                            this.ST = (this.ST.add((new big_js_1.default(200584).sub(new big_js_1.default(26441))).mul(new big_js_1.default(0.42)))).round(0, 0 /* RoundDown */);
-                            this.ST = (this.ST.add((this.ZZX.sub(new big_js_1.default(200584))).mul(new big_js_1.default(0.45)))).round(0, 0 /* RoundDown */);
+                            this.ST = (this.ST.add((new big_js_1.default(200584).sub(new big_js_1.default(26441))).mul(new big_js_1.default(0.42)))).round(0, big_js_1.default.roundDown);
+                            this.ST = (this.ST.add((this.ZZX.sub(new big_js_1.default(200584))).mul(new big_js_1.default(0.45)))).round(0, big_js_1.default.roundDown);
                         }
                         else {
-                            this.ST = (this.ST.add((this.ZZX.sub(new big_js_1.default(26441))).mul(new big_js_1.default(0.42)))).round(0, 0 /* RoundDown */);
+                            this.ST = (this.ST.add((this.ZZX.sub(new big_js_1.default(26441))).mul(new big_js_1.default(0.42)))).round(0, big_js_1.default.roundDown);
                         }
                     }
                     else {
@@ -708,7 +708,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                             this.VERGL = this.ST;
                             this.ZX = new big_js_1.default(9550);
                             this.UP5_6();
-                            this.HOCH = (this.ST.add((this.ZZX.sub(new big_js_1.default(9550))).mul(new big_js_1.default(0.42)))).round(0, 0 /* RoundDown */);
+                            this.HOCH = (this.ST.add((this.ZZX.sub(new big_js_1.default(9550))).mul(new big_js_1.default(0.42)))).round(0, big_js_1.default.roundDown);
                             if (this.HOCH.cmp(this.VERGL) == -1) {
                                 this.ST = this.HOCH;
                             }
@@ -720,14 +720,14 @@ System.register(["big.js"], function (exports_1, context_1) {
                 };
                 /**  Unterprogramm zur Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 24  */
                 Lohnsteuer2013Big.prototype.UP5_6 = function () {
-                    this.X = (this.ZX.mul(new big_js_1.default(1.25))).round(2, 0 /* RoundDown */);
+                    this.X = (this.ZX.mul(new big_js_1.default(1.25))).round(2, big_js_1.default.roundDown);
                     this.UPTAB13();
                     this.ST1 = this.ST;
-                    this.X = (this.ZX.mul(new big_js_1.default(0.75))).round(2, 0 /* RoundDown */);
+                    this.X = (this.ZX.mul(new big_js_1.default(0.75))).round(2, big_js_1.default.roundDown);
                     this.UPTAB13();
                     this.ST2 = this.ST;
                     this.DIFF = (this.ST1.sub(this.ST2)).mul(this.ZAHL2);
-                    this.MIST = (this.ZX.mul(new big_js_1.default(0.14))).round(0, 0 /* RoundDown */);
+                    this.MIST = (this.ZX.mul(new big_js_1.default(0.14))).round(0, big_js_1.default.roundDown);
                     if (this.MIST.cmp(this.DIFF) == 1) {
                         this.ST = this.MIST;
                     }
@@ -739,12 +739,12 @@ System.register(["big.js"], function (exports_1, context_1) {
                 Lohnsteuer2013Big.prototype.MSOLZ = function () {
                     this.SOLZFREI = new big_js_1.default(972 * this.KZTAB);
                     if (this.JBMG.cmp(this.SOLZFREI) == 1) {
-                        this.SOLZJ = (this.JBMG.mul(new big_js_1.default(5.5))).div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                        this.SOLZMIN = (this.JBMG.sub(this.SOLZFREI)).mul(new big_js_1.default(20)).div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                        this.SOLZJ = (this.JBMG.mul(new big_js_1.default(5.5))).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                        this.SOLZMIN = (this.JBMG.sub(this.SOLZFREI)).mul(new big_js_1.default(20)).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                         if (this.SOLZMIN.cmp(this.SOLZJ) == -1) {
                             this.SOLZJ = this.SOLZMIN;
                         }
-                        this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, 0 /* RoundDown */);
+                        this.JW = this.SOLZJ.mul(this.ZAHL100).round(0, big_js_1.default.roundDown);
                         this.UPANTEIL();
                         this.SOLZLZZ = this.ANTEIL1;
                     }
@@ -767,14 +767,14 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                     else {
                         if (this.LZZ == 2) {
-                            this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, 0 /* RoundDown */);
+                            this.ANTEIL1 = this.JW.div(this.ZAHL12).round(0, big_js_1.default.roundDown);
                         }
                         else {
                             if (this.LZZ == 3) {
-                                this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, 0 /* RoundDown */);
+                                this.ANTEIL1 = (this.JW.mul(this.ZAHL7)).div(this.ZAHL360).round(0, big_js_1.default.roundDown);
                             }
                             else {
-                                this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, 0 /* RoundDown */);
+                                this.ANTEIL1 = this.JW.div(this.ZAHL360).round(0, big_js_1.default.roundDown);
                             }
                         }
                     }
@@ -796,8 +796,8 @@ System.register(["big.js"], function (exports_1, context_1) {
                         this.MOSONST();
                         this.UPVKV();
                         this.VKVSONST = this.VKV;
-                        this.ZRE4J = ((this.JRE4.add(this.SONSTB)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-                        this.ZVBEZJ = ((this.JVBEZ.add(this.VBS)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+                        this.ZRE4J = ((this.JRE4.add(this.SONSTB)).div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
+                        this.ZVBEZJ = ((this.JVBEZ.add(this.VBS)).div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
                         this.VBEZBSO = this.STERBE;
                         this.MRE4SONST();
                         this.MLSTJAHR();
@@ -808,11 +808,11 @@ System.register(["big.js"], function (exports_1, context_1) {
                                     allerdings muss der Wert in Cent vorgehalten werden,
                                     deshalb nach dem Aufrunden auf ganze EUR durch 'divide(ZAHL100, 0, BigDecimal.ROUND_DOWN)'
                                     wieder die Multiplikation mit 100  */
-                        this.STS = this.LSTSO.sub(this.LSTOSO).mul(new big_js_1.default(this.F)).div(this.ZAHL100).round(0, 0 /* RoundDown */).mul(this.ZAHL100);
+                        this.STS = this.LSTSO.sub(this.LSTOSO).mul(new big_js_1.default(this.F)).div(this.ZAHL100).round(0, big_js_1.default.roundDown).mul(this.ZAHL100);
                         if (this.STS.cmp(this.Z_0) == -1) {
                             this.STS = this.Z_0;
                         }
-                        this.SOLZS = this.STS.mul(new big_js_1.default(5.5)).div(this.ZAHL100).round(0, 0 /* RoundDown */);
+                        this.SOLZS = this.STS.mul(new big_js_1.default(5.5)).div(this.ZAHL100).round(0, big_js_1.default.roundDown);
                         if (this.R > 0) {
                             this.BKS = this.STS;
                         }
@@ -835,8 +835,8 @@ System.register(["big.js"], function (exports_1, context_1) {
                             this.LST1 = this.LSTSO;
                         }
                         this.VBEZBSO = this.STERBE.add(this.VKAPA);
-                        this.ZRE4J = ((this.JRE4.add(this.SONSTB).add(this.VMT).add(this.VKAPA)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-                        this.ZVBEZJ = ((this.JVBEZ.add(this.VBS).add(this.VKAPA)).div(this.ZAHL100)).round(2, 0 /* RoundDown */);
+                        this.ZRE4J = ((this.JRE4.add(this.SONSTB).add(this.VMT).add(this.VKAPA)).div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
+                        this.ZVBEZJ = ((this.JVBEZ.add(this.VBS).add(this.VKAPA)).div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
                         this.KENNVMT = 2;
                         this.MRE4SONST();
                         this.MLSTJAHR();
@@ -861,9 +861,9 @@ System.register(["big.js"], function (exports_1, context_1) {
                                 weshalb nach dem Aufrunden auf ganze EUR durch 'divide(ZAHL100, 0, BigDecimal.ROUND_DOWN)'
                                 wieder die Multiplikation mit 100 erfolgt.
                              */
-                            this.STV = this.STV.mul(new big_js_1.default(this.F)).div(this.ZAHL100).round(0, 0 /* RoundDown */).mul(this.ZAHL100);
+                            this.STV = this.STV.mul(new big_js_1.default(this.F)).div(this.ZAHL100).round(0, big_js_1.default.roundDown).mul(this.ZAHL100);
                         }
-                        this.SOLZV = ((this.STV.mul(new big_js_1.default(5.5))).div(this.ZAHL100)).round(0, 0 /* RoundDown */);
+                        this.SOLZV = ((this.STV.mul(new big_js_1.default(5.5))).div(this.ZAHL100)).round(0, big_js_1.default.roundDown);
                         if (this.R > 0) {
                             this.BKV = this.STV;
                         }
@@ -879,10 +879,10 @@ System.register(["big.js"], function (exports_1, context_1) {
                 };
                 /**  Sonderberechnung ohne sonstige Bezüge für Berechnung bei sonstigen Bezügen oder Vergütung für mehrjährige Tätigkeit, PAP Seite 29  */
                 Lohnsteuer2013Big.prototype.MOSONST = function () {
-                    this.ZRE4J = (this.JRE4.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-                    this.ZVBEZJ = (this.JVBEZ.div(this.ZAHL100)).round(2, 0 /* RoundDown */);
-                    this.JLFREIB = this.JFREIB.div(this.ZAHL100).round(2, 0 /* RoundDown */);
-                    this.JLHINZU = this.JHINZU.div(this.ZAHL100).round(2, 0 /* RoundDown */);
+                    this.ZRE4J = (this.JRE4.div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
+                    this.ZVBEZJ = (this.JVBEZ.div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
+                    this.JLFREIB = this.JFREIB.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
+                    this.JLHINZU = this.JHINZU.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                     this.MRE4();
                     this.MRE4ABZ();
                     this.ZRE4VP = this.ZRE4VP.sub(this.JRE4ENT.div(this.ZAHL100));
@@ -906,25 +906,25 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                     else {
                         if (this.X.cmp(new big_js_1.default(13470)) == -1) {
-                            this.Y = (this.X.sub(new big_js_1.default(8130))).div(new big_js_1.default(10000)).round(6, 0 /* RoundDown */);
+                            this.Y = (this.X.sub(new big_js_1.default(8130))).div(new big_js_1.default(10000)).round(6, big_js_1.default.roundDown);
                             this.RW = this.Y.mul(new big_js_1.default(933.7));
                             this.RW = this.RW.add(new big_js_1.default(1400));
-                            this.ST = (this.RW.mul(this.Y)).round(0, 0 /* RoundDown */);
+                            this.ST = (this.RW.mul(this.Y)).round(0, big_js_1.default.roundDown);
                         }
                         else {
                             if (this.X.cmp(new big_js_1.default(52882)) == -1) {
-                                this.Y = (this.X.sub(new big_js_1.default(13469))).div(new big_js_1.default(10000)).round(6, 0 /* RoundDown */);
+                                this.Y = (this.X.sub(new big_js_1.default(13469))).div(new big_js_1.default(10000)).round(6, big_js_1.default.roundDown);
                                 this.RW = this.Y.mul(new big_js_1.default(228.74));
                                 this.RW = this.RW.add(new big_js_1.default(2397));
                                 this.RW = this.RW.mul(this.Y);
-                                this.ST = (this.RW.add(new big_js_1.default(1014))).round(0, 0 /* RoundDown */);
+                                this.ST = (this.RW.add(new big_js_1.default(1014))).round(0, big_js_1.default.roundDown);
                             }
                             else {
                                 if (this.X.cmp(new big_js_1.default(250731)) == -1) {
-                                    this.ST = ((this.X.mul(new big_js_1.default(0.42))).sub(new big_js_1.default(8196))).round(0, 0 /* RoundDown */);
+                                    this.ST = ((this.X.mul(new big_js_1.default(0.42))).sub(new big_js_1.default(8196))).round(0, big_js_1.default.roundDown);
                                 }
                                 else {
-                                    this.ST = ((this.X.mul(new big_js_1.default(0.45))).sub(new big_js_1.default(15718))).round(0, 0 /* RoundDown */);
+                                    this.ST = ((this.X.mul(new big_js_1.default(0.45))).sub(new big_js_1.default(15718))).round(0, big_js_1.default.roundDown);
                                 }
                             }
                         }

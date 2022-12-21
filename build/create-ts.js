@@ -30,7 +30,7 @@ fetch(download).then(res => res.arrayBuffer())
         const dirPath = path.join(path.resolve(path.dirname('.')), tsFolder);
         console.log("outdir: " + dirPath);
         xmlFileNames.forEach(function (xmlFileName) {
-            console.log("create" + xmlFileName);
+            console.log("create " + xmlFileName);
             SaxonJS.transform({
                 stylesheetFileName: "build/transform.sef.json",
                 sourceFileName: unpackFolder + '/' + xmlFileName,
