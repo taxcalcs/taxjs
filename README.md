@@ -28,7 +28,7 @@ You can find all fields on the [test page](https://taxcalcs.github.io/taxjs-test
 
 ## Dependencies
 
-As replacement for the Java BigDecimal class the library [big.js](https://www.npmjs.com/package/big.js) and the typescript definition [@types/big.js](https://www.npmjs.com/package/@types/big.js) is used. 
+As replacement for the Java BigDecimal class the library [big.js](https://www.npmjs.com/package/big.js) and the typescript definition [@types/big.js](https://www.npmjs.com/package/@types/big.js) are used. 
 
 ## Development
 
