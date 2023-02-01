@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/adm-zip": "0.5",
-    "@types/fs-extra": "9",
+    "@types/fs-extra": "11",
     "@types/node": ">=14",
     "@types/uglify-js": "3",
     "adm-zip": "0.5",
