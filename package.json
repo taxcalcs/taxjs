@@ -1,9 +1,9 @@
 {
   "name": "taxjs",
   "title": "TaxJs",
-  "version": "2023.0.0",
+  "version": "2023.1.0",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2023Big.min.js",
+  "main": "./dist/js/Lohnsteuer2023JanuarBig.min.js",
   "type": "module",
   "scripts": {
     "clean": "node build/clean.js",

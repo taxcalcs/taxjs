@@ -6,7 +6,7 @@ import fs from 'fs';
 import csv from'csv-parser';
 import assert from 'assert';
 
-const testVersion = '2023.0.0';
+const testVersion = '2023.1.0';
 const download = 'https://github.com/taxcalcs/taxcalculator/archive/' + testVersion + '.zip';
 const unpackFolder = "build/unpacked-tests";
 const pathPrefix = 'taxcalculator-' + testVersion + '/src/test/resources/info/kuechler/bmf/taxcalculator/';
@@ -82,6 +82,10 @@ function parameterClass(year, type) {
         if (year === 2022) {
             name = 'Lohnsteuer2022MaiBig'
         }
+    }else if (type.endsWith('-januar')) {
+        if (year === 2023) {
+            name = 'Lohnsteuer2023JanuarBig'
+        }
     }
     return name;
 }
@@ -144,12 +148,13 @@ fetch(download).then(res => res.arrayBuffer())
                         const sep = type.lastIndexOf('-');
                         const additional = sep == -1 ? '' : type.substring(sep);
                         let incomeIndex;
-                        if (additional === "-mai") {
+                        if (additional === "-januar") {
                             // fix for wrong name
-                            incomeIndex = type.replace(additional, '') + '-' + year + ".2";
+                            incomeIndex = type + '-' + year;
                         }else {
                             incomeIndex = type.replace(additional, '') + '-' + year + additional;
                         }
+                        // console.log("incomeIndex=" + incomeIndex + " " + JSON.stringify(row));
                         const incomeEur = row[incomeIndex];
                         return new Big(incomeEur).mul(new Big(100));
                     }();
