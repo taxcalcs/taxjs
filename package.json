@@ -57,7 +57,7 @@
     "saxon-js": "2",
     "typescript": "^5.3.3",
     "uglify-js": "3",
-    "xslt3": "2"
+    "xslt3": "^2.6.0"
   },
   "publishConfig": {
     "registry": "https://artifactory.service.jobrad.org/artifactory/api/npm/npm/"
