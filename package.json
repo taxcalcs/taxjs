@@ -1,5 +1,5 @@
 {
-  "name": "taxjs",
+  "name": "@jobrad/taxjs",
   "title": "TaxJs",
   "version": "2023.1.0",
   "description": "german tax calculation in typescript and javascript",
@@ -55,7 +55,11 @@
     "node-fetch": "3",
     "replace-in-files": "3",
     "saxon-js": "2",
+    "typescript": "^5.3.3",
     "uglify-js": "3",
     "xslt3": "2"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.service.jobrad.org/artifactory/api/npm/npm/"
   }
 }
