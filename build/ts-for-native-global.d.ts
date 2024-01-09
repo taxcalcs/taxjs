@@ -1,7 +1,6 @@
 import * as BigJs from 'big.js';
 
 declare global {
-    const RoundingMode: typeof BigJs.RoundingMode;
     const Big: BigJs.BigConstructor;
     type Big = BigJs.Big;
 
