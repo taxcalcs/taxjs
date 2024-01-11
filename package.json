@@ -1,9 +1,10 @@
 {
   "name": "@jobrad/taxjs",
   "title": "TaxJs",
-  "version": "2023.2.0",
+  "version": "2023.2.1",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2023JanuarBig.min.js",
+  "main": "./dist/js/Lohnsteuer2023AbJuli.min.js",
+  "types": "./dist/declaration/Lohnsteuer2023AbJuli.d.ts",
   "type": "module",
   "scripts": {
     "clean": "node build/clean.js",
