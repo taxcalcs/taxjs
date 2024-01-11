@@ -1,9 +1,10 @@
 {
-  "name": "taxjs",
+  "name": "@jobrad/taxjs",
   "title": "TaxJs",
-  "version": "2023.1.0",
+  "version": "2023.2.1",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2023JanuarBig.min.js",
+  "main": "./dist/js/Lohnsteuer2023AbJuli.min.js",
+  "types": "./dist/declaration/Lohnsteuer2023AbJuli.d.ts",
   "type": "module",
   "scripts": {
     "clean": "node build/clean.js",
@@ -19,7 +20,7 @@
     "build:es2022": "tsc --target es2022 --module es2022 --outDir dist/es2022",
     "build:native": "node build/ts-for-native-create.js && tsc --target ES5 --module None --outDir dist/js --project tsconfig.native.json && node build/ts-for-native-clean.js",
     "build:compress": "node build/compress.js",
-    "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json",
+    "compile-xsl": "xslt3 -xsl:build/transform.xsl -export:build/transform.sef.json -t -ns:##html5",
     "test": "node build/test.js",
     "build": "npm run build:ts && npm run build:declaration && npm run build:native && npm run build:system && npm run build:umd && npm run build:es2015 && npm run build:compress",
     "all": "npm run clean && npm run build && npm run test"
@@ -55,7 +56,11 @@
     "node-fetch": "3",
     "replace-in-files": "3",
     "saxon-js": "2",
+    "typescript": "^5.3.3",
     "uglify-js": "3",
-    "xslt3": "2"
+    "xslt3": "^2.6.0"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.service.jobrad.org/artifactory/api/npm/npm/"
   }
 }
