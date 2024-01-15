@@ -1,9 +1,9 @@
 {
   "name": "@jobrad/taxjs",
   "title": "TaxJs",
-  "version": "2023.2.1",
+  "version": "2023.2.2-RC1",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2023AbJuli.min.js",
+  "main": "./dist/es2015/Lohnsteuer2023AbJuli.js",
   "types": "./dist/declaration/Lohnsteuer2023AbJuli.d.ts",
   "type": "module",
   "scripts": {
@@ -42,10 +42,10 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@types/big.js": "6",
-    "big.js": "6"
+    "@types/big.js": "6"
   },
   "devDependencies": {
+    "big.js": "6",
     "@types/adm-zip": "0.5",
     "@types/fs-extra": "11",
     "@types/node": ">=14",
@@ -62,5 +62,11 @@
   },
   "publishConfig": {
     "registry": "https://artifactory.service.jobrad.org/artifactory/api/npm/npm/"
-  }
+  },
+  "files": [
+    "dist",
+    "package.json",
+    "package-lock.json",
+    "README.md"
+  ]
 }
