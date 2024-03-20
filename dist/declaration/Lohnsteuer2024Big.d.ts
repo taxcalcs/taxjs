@@ -1,15 +1,15 @@
 import Big from 'big.js';
 import { TaxJs, TaxJsValueType, TaxJsDictionary } from '../../TaxJs';
-type Lohnsteuer2024InBigType = "ENTSCH" | "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "KVZ" | "LZZFREIB" | "LZZHINZU" | "MBV" | "PKPV" | "PVA" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF" | "JRE4ENT" | "SONSTENT";
-type Lohnsteuer2024InNumberType = "af" | "AJAHR" | "ALTER1" | "f" | "KRV" | "LZZ" | "PKV" | "PVS" | "PVZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
-type Lohnsteuer2024OutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV" | "VKVLZZ" | "VKVSONST" | "VFRB" | "VFRBS1" | "VFRBS2" | "WVFRB" | "WVFRBO" | "WVFRBM";
+type Lohnsteuer2024BigInBigType = "ENTSCH" | "JFREIB" | "JHINZU" | "JRE4" | "JVBEZ" | "KVZ" | "LZZFREIB" | "LZZHINZU" | "MBV" | "PKPV" | "PVA" | "RE4" | "SONSTB" | "STERBE" | "VBEZ" | "VBEZM" | "VBEZS" | "VBS" | "VKAPA" | "VMT" | "ZKF" | "JRE4ENT" | "SONSTENT";
+type Lohnsteuer2024BigInNumberType = "af" | "AJAHR" | "ALTER1" | "f" | "KRV" | "LZZ" | "PKV" | "PVS" | "PVZ" | "R" | "STKL" | "VJAHR" | "ZMVB";
+type Lohnsteuer2024BigOutType = "BK" | "BKS" | "BKV" | "LSTLZZ" | "SOLZLZZ" | "SOLZS" | "SOLZV" | "STS" | "STV" | "VKVLZZ" | "VKVSONST" | "VFRB" | "VFRBS1" | "VFRBS2" | "WVFRB" | "WVFRBO" | "WVFRBM";
 /**
 * Steuerberechnungsklasse.
 *
 * Generiert aus Pseudocode von: <a href="https://www.bmf-steuerrechner.de">bmf-steuerrechner</a>
 *
 */
-export declare class Lohnsteuer2024 implements TaxJs<Lohnsteuer2024InBigType, Lohnsteuer2024InNumberType, Lohnsteuer2024OutType> {
+export declare class Lohnsteuer2024Big implements TaxJs<Lohnsteuer2024BigInBigType, Lohnsteuer2024BigInNumberType, Lohnsteuer2024BigOutType> {
     private static readonly _n;
     private static readonly _b;
     private static readonly _i;
@@ -1423,13 +1423,13 @@ export declare class Lohnsteuer2024 implements TaxJs<Lohnsteuer2024InBigType, Lo
      * @param {string} name Variable name to set.
      * @param {number} value Value to set.
      */
-    set(name: Lohnsteuer2024InBigType | Lohnsteuer2024InNumberType, value: TaxJsValueType): void;
+    set(name: Lohnsteuer2024BigInBigType | Lohnsteuer2024BigInNumberType, value: TaxJsValueType): void;
     /**
      * Getter for all output parameters. You get a value of type "number or "Big".
      *
      * @param {string} name Variable name to get.
      */
-    get(name: Lohnsteuer2024InBigType | Lohnsteuer2024InNumberType | Lohnsteuer2024OutType): TaxJsValueType;
+    get(name: Lohnsteuer2024BigInBigType | Lohnsteuer2024BigInNumberType | Lohnsteuer2024BigOutType): TaxJsValueType;
     private static readonly typeDirectory;
     /**
      * Get all fields with types.

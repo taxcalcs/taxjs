@@ -1,6 +1,6 @@
 System.register(["big.js"], function (exports_1, context_1) {
     "use strict";
-    var big_js_1, Lohnsteuer2024;
+    var big_js_1, Lohnsteuer2024Big;
     var __moduleName = context_1 && context_1.id;
     return {
         setters: [
@@ -9,14 +9,14 @@ System.register(["big.js"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            Lohnsteuer2024 = /** @class */ (function () {
+            Lohnsteuer2024Big = /** @class */ (function () {
                 /**
                 * Steuerberechnungsklasse.
                 *
                 * Generiert aus Pseudocode von: <a href="https://www.bmf-steuerrechner.de">bmf-steuerrechner</a>
                 *
                 */
-                function Lohnsteuer2024() {
+                function Lohnsteuer2024Big() {
                     this.Z_0 = new big_js_1.default(0);
                     this.Z_1 = new big_js_1.default(1);
                     this.Z_10 = new big_js_1.default(10);
@@ -343,7 +343,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.ZAHL10000 = new big_js_1.default(10000);
                 }
                 /**  PROGRAMMABLAUFPLAN, PAP Seite 14  */
-                Lohnsteuer2024.prototype.calculate = function () {
+                Lohnsteuer2024Big.prototype.calculate = function () {
                     this.MPARA();
                     this.MRE4JL();
                     this.VBEZBSO = this.Z_0;
@@ -355,7 +355,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.MVMT();
                 };
                 /**  Zuweisung von Werten für bestimmte Sozialversicherungsparameter  PAP Seite 15  */
-                Lohnsteuer2024.prototype.MPARA = function () {
+                Lohnsteuer2024Big.prototype.MPARA = function () {
                     if (this.KRV < 2) { /**  &lt; = <  */
                         if (this.KRV == 0) {
                             this.BBGRV = new big_js_1.default(90600); /**  Geändert für 2024  */
@@ -393,7 +393,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.SOLZFREI = new big_js_1.default(18130); /**  geändert 2024  */
                 };
                 /**  Ermittlung des Jahresarbeitslohns nach § 39 b Abs. 2 Satz 2 EStG, PAP Seite 16  */
-                Lohnsteuer2024.prototype.MRE4JL = function () {
+                Lohnsteuer2024Big.prototype.MRE4JL = function () {
                     if (this.LZZ == 1) {
                         this.ZRE4J = this.RE4.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
                         this.ZVBEZJ = this.VBEZ.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
@@ -427,7 +427,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Freibeträge für Versorgungsbezüge, Altersentlastungsbetrag (§ 39b Abs. 2 Satz 3 EStG), PAP Seite 17  */
-                Lohnsteuer2024.prototype.MRE4 = function () {
+                Lohnsteuer2024Big.prototype.MRE4 = function () {
                     if (this.ZVBEZJ.cmp(this.Z_0) == 0) {
                         this.FVBZ = this.Z_0;
                         this.FVB = this.Z_0;
@@ -483,7 +483,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.MRE4ALTE();
                 };
                 /**  Altersentlastungsbetrag (§ 39b Abs. 2 Satz 3 EStG), PAP Seite 18  */
-                Lohnsteuer2024.prototype.MRE4ALTE = function () {
+                Lohnsteuer2024Big.prototype.MRE4ALTE = function () {
                     if (this.ALTER1 == 0) {
                         this.ALTE = this.Z_0;
                     }
@@ -509,7 +509,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Ermittlung des Jahresarbeitslohns nach Abzug der Freibeträge nach § 39 b Abs. 2 Satz 3 und 4 EStG, PAP Seite 20  */
-                Lohnsteuer2024.prototype.MRE4ABZ = function () {
+                Lohnsteuer2024Big.prototype.MRE4ABZ = function () {
                     this.ZRE4 = (this.ZRE4J.sub(this.FVB).sub(this.ALTE).sub(this.JLFREIB).add(this.JLHINZU)).round(2, big_js_1.default.roundDown);
                     if (this.ZRE4.cmp(this.Z_0) == -1) {
                         this.ZRE4 = this.Z_0;
@@ -524,7 +524,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Berechnung fuer laufende Lohnzahlungszeitraueme Seite 21 */
-                Lohnsteuer2024.prototype.MBERECH = function () {
+                Lohnsteuer2024Big.prototype.MBERECH = function () {
                     this.MZTABFB();
                     this.VFRB = ((this.ANP.add(this.FVB.add(this.FVBZ))).mul(this.ZAHL100)).round(0, big_js_1.default.roundDown);
                     this.MLSTJAHR();
@@ -547,7 +547,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.MSOLZ();
                 };
                 /**  Ermittlung der festen Tabellenfreibeträge (ohne Vorsorgepauschale), PAP Seite 22  */
-                Lohnsteuer2024.prototype.MZTABFB = function () {
+                Lohnsteuer2024Big.prototype.MZTABFB = function () {
                     this.ANP = this.Z_0;
                     if (this.ZVBEZ.cmp(this.Z_0) >= 0 && this.ZVBEZ.cmp(this.FVBZ) == -1) {
                         this.FVBZ = new big_js_1.default(this.ZVBEZ.toNumber());
@@ -613,7 +613,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.ZTABFB = (this.EFA.add(this.ANP).add(this.SAP).add(this.FVBZ)).round(2, big_js_1.default.roundDown);
                 };
                 /**  Ermittlung Jahreslohnsteuer, PAP Seite 23  */
-                Lohnsteuer2024.prototype.MLSTJAHR = function () {
+                Lohnsteuer2024Big.prototype.MLSTJAHR = function () {
                     this.UPEVP();
                     if (this.KENNVMT != 1) {
                         this.ZVE = (this.ZRE4.sub(this.ZTABFB).sub(this.VSP)).round(2, big_js_1.default.roundDown);
@@ -636,14 +636,14 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  PAP Seite 24  */
-                Lohnsteuer2024.prototype.UPVKVLZZ = function () {
+                Lohnsteuer2024Big.prototype.UPVKVLZZ = function () {
                     this.UPVKV();
                     this.JW = this.VKV;
                     this.UPANTEIL();
                     this.VKVLZZ = this.ANTEIL1;
                 };
                 /**  PAP Seite 24  */
-                Lohnsteuer2024.prototype.UPVKV = function () {
+                Lohnsteuer2024Big.prototype.UPVKV = function () {
                     if (this.PKV > 0) {
                         if (this.VSP2.cmp(this.VSP3) == 1) {
                             this.VKV = this.VSP2.mul(this.ZAHL100);
@@ -657,13 +657,13 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  PAP Seite 25  */
-                Lohnsteuer2024.prototype.UPLSTLZZ = function () {
+                Lohnsteuer2024Big.prototype.UPLSTLZZ = function () {
                     this.JW = this.LSTJAHR.mul(this.ZAHL100);
                     this.UPANTEIL();
                     this.LSTLZZ = this.ANTEIL1;
                 };
                 /**  Ermittlung der Jahreslohnsteuer aus dem Einkommensteuertarif. PAP Seite 26  */
-                Lohnsteuer2024.prototype.UPMLST = function () {
+                Lohnsteuer2024Big.prototype.UPMLST = function () {
                     if (this.ZVE.cmp(this.ZAHL1) == -1) {
                         this.ZVE = this.Z_0;
                         this.X = this.Z_0;
@@ -680,7 +680,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  	Vorsorgepauschale (§ 39b Absatz 2 Satz 5 Nummer 3 und Absatz 4 EStG) PAP Seite 27   */
-                Lohnsteuer2024.prototype.UPEVP = function () {
+                Lohnsteuer2024Big.prototype.UPEVP = function () {
                     if (this.KRV > 1) { /**  &lt; = < &gt; = >  */
                         this.VSP1 = this.Z_0;
                     }
@@ -707,7 +707,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Vorsorgepauschale (§39b Abs. 2 Satz 5 Nr 3 EStG) Vergleichsberechnung fuer Guenstigerpruefung, PAP Seite 28  */
-                Lohnsteuer2024.prototype.MVSP = function () {
+                Lohnsteuer2024Big.prototype.MVSP = function () {
                     if (this.ZRE4VP.cmp(this.BBGKVPV) == 1) {
                         this.ZRE4VP = this.BBGKVPV;
                     }
@@ -728,7 +728,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.VSP = this.VSP3.add(this.VSP1).round(0, big_js_1.default.roundUp);
                 };
                 /**  Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 29  */
-                Lohnsteuer2024.prototype.MST5_6 = function () {
+                Lohnsteuer2024Big.prototype.MST5_6 = function () {
                     this.ZZX = this.X;
                     if (this.ZZX.cmp(this.W2STKL5) == 1) {
                         this.ZX = this.W2STKL5;
@@ -759,7 +759,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Unterprogramm zur Lohnsteuer fuer die Steuerklassen V und VI (§ 39b Abs. 2 Satz 7 EStG), PAP Seite 30  */
-                Lohnsteuer2024.prototype.UP5_6 = function () {
+                Lohnsteuer2024Big.prototype.UP5_6 = function () {
                     this.X = (this.ZX.mul(new big_js_1.default(1.25))).round(2, big_js_1.default.roundDown);
                     /**  Änderung für 2024  */
                     this.UPTAB24();
@@ -778,7 +778,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Solidaritaetszuschlag, PAP Seite 31  */
-                Lohnsteuer2024.prototype.MSOLZ = function () {
+                Lohnsteuer2024Big.prototype.MSOLZ = function () {
                     this.SOLZFREI = (this.SOLZFREI.mul(new big_js_1.default(this.KZTAB)));
                     if (this.JBMG.cmp(this.SOLZFREI) == 1) {
                         this.SOLZJ = (this.JBMG.mul(new big_js_1.default(5.5))).div(this.ZAHL100).round(2, big_js_1.default.roundDown);
@@ -803,7 +803,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Anteil von Jahresbetraegen fuer einen LZZ (§ 39b Abs. 2 Satz 9 EStG), PAP Seite 32  */
-                Lohnsteuer2024.prototype.UPANTEIL = function () {
+                Lohnsteuer2024Big.prototype.UPANTEIL = function () {
                     if (this.LZZ == 1) {
                         this.ANTEIL1 = this.JW;
                     }
@@ -822,7 +822,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Berechnung sonstiger Bezuege nach § 39b Abs. 3 Saetze 1 bis 8 EStG), PAP Seite 33  */
-                Lohnsteuer2024.prototype.MSONST = function () {
+                Lohnsteuer2024Big.prototype.MSONST = function () {
                     this.LZZ = 1;
                     if (this.ZMVB == 0) {
                         this.ZMVB = 12;
@@ -859,7 +859,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Neu für 2022, PAP Seite 34  */
-                Lohnsteuer2024.prototype.STSMIN = function () {
+                Lohnsteuer2024Big.prototype.STSMIN = function () {
                     if (this.STS.cmp(this.Z_0) == -1) { /**  STS < 0  */
                         if (this.MBV.cmp(this.Z_0) == 0) { /**   MBV = 0   */
                             /**  absichtlich leer  */
@@ -892,7 +892,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Berechnung des SolZ auf sonstige Bezüge, PAP Seite 35, Neu ab 2021  */
-                Lohnsteuer2024.prototype.MSOLZSTS = function () {
+                Lohnsteuer2024Big.prototype.MSOLZSTS = function () {
                     if (this.ZKF.cmp(this.Z_0) == 1) { /**  ZKF > 0  */
                         this.SOLZSZVE = this.ZVE.sub(this.KFB);
                     }
@@ -922,7 +922,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Berechnung der Verguetung fuer mehrjaehrige Taetigkeit nach § 39b Abs. 3 Satz 9 und 10 EStG), PAP Seite 36  */
-                Lohnsteuer2024.prototype.MVMT = function () {
+                Lohnsteuer2024Big.prototype.MVMT = function () {
                     if (this.VKAPA.cmp(this.Z_0) == -1) {
                         this.VKAPA = this.Z_0;
                     }
@@ -986,7 +986,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                 };
                 /**  Sonderberechnung ohne sonstige Bezüge für Berechnung bei sonstigen Bezügen oder Vergütung für mehrjährige Tätigkeit, PAP Seite 37  */
-                Lohnsteuer2024.prototype.MOSONST = function () {
+                Lohnsteuer2024Big.prototype.MOSONST = function () {
                     this.ZRE4J = (this.JRE4.div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
                     this.ZVBEZJ = (this.JVBEZ.div(this.ZAHL100)).round(2, big_js_1.default.roundDown);
                     this.JLFREIB = this.JFREIB.div(this.ZAHL100).round(2, big_js_1.default.roundDown);
@@ -1004,7 +1004,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                     this.LSTOSO = this.ST.mul(this.ZAHL100);
                 };
                 /**  Sonderberechnung mit sonstige Bezüge für Berechnung bei sonstigen Bezügen oder Vergütung für mehrjährige Tätigkeit, PAP Seite 38  */
-                Lohnsteuer2024.prototype.MRE4SONST = function () {
+                Lohnsteuer2024Big.prototype.MRE4SONST = function () {
                     this.MRE4();
                     this.FVB = this.FVBSO;
                     this.MRE4ABZ();
@@ -1016,7 +1016,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                 };
                 /**  Komplett Neu 2020  */
                 /**  Tarifliche Einkommensteuer §32a EStG, PAP Seite 39  */
-                Lohnsteuer2024.prototype.UPTAB24 = function () {
+                Lohnsteuer2024Big.prototype.UPTAB24 = function () {
                     if (this.X.cmp(this.GFB.add(this.ZAHL1)) == -1) {
                         this.ST = this.Z_0;
                     }
@@ -1054,7 +1054,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getAf = function () {
+                Lohnsteuer2024Big.prototype.getAf = function () {
                     return this.af;
                 };
                 /**
@@ -1064,7 +1064,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} af input value
                  */
-                Lohnsteuer2024.prototype.setAf = function (af) {
+                Lohnsteuer2024Big.prototype.setAf = function (af) {
                     this.af = af;
                 };
                 /**
@@ -1075,7 +1075,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getAJAHR = function () {
+                Lohnsteuer2024Big.prototype.getAJAHR = function () {
                     return this.AJAHR;
                 };
                 /**
@@ -1086,7 +1086,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} AJAHR input value
                  */
-                Lohnsteuer2024.prototype.setAJAHR = function (AJAHR) {
+                Lohnsteuer2024Big.prototype.setAJAHR = function (AJAHR) {
                     this.AJAHR = AJAHR;
                 };
                 /**
@@ -1097,7 +1097,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getALTER1 = function () {
+                Lohnsteuer2024Big.prototype.getALTER1 = function () {
                     return this.ALTER1;
                 };
                 /**
@@ -1108,7 +1108,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} ALTER1 input value
                  */
-                Lohnsteuer2024.prototype.setALTER1 = function (ALTER1) {
+                Lohnsteuer2024Big.prototype.setALTER1 = function (ALTER1) {
                     this.ALTER1 = ALTER1;
                 };
                 /**
@@ -1120,7 +1120,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getENTSCH = function () {
+                Lohnsteuer2024Big.prototype.getENTSCH = function () {
                     return this.ENTSCH;
                 };
                 /**
@@ -1132,7 +1132,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} ENTSCH input value
                  */
-                Lohnsteuer2024.prototype.setENTSCH = function (ENTSCH) {
+                Lohnsteuer2024Big.prototype.setENTSCH = function (ENTSCH) {
                     this.ENTSCH = ENTSCH;
                 };
                 /**
@@ -1142,7 +1142,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getF = function () {
+                Lohnsteuer2024Big.prototype.getF = function () {
                     return this.f;
                 };
                 /**
@@ -1152,7 +1152,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} f input value
                  */
-                Lohnsteuer2024.prototype.setF = function (f) {
+                Lohnsteuer2024Big.prototype.setF = function (f) {
                     this.f = f;
                 };
                 /**
@@ -1165,7 +1165,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getJFREIB = function () {
+                Lohnsteuer2024Big.prototype.getJFREIB = function () {
                     return this.JFREIB;
                 };
                 /**
@@ -1178,7 +1178,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} JFREIB input value
                  */
-                Lohnsteuer2024.prototype.setJFREIB = function (JFREIB) {
+                Lohnsteuer2024Big.prototype.setJFREIB = function (JFREIB) {
                     this.JFREIB = JFREIB;
                 };
                 /**
@@ -1191,7 +1191,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getJHINZU = function () {
+                Lohnsteuer2024Big.prototype.getJHINZU = function () {
                     return this.JHINZU;
                 };
                 /**
@@ -1204,7 +1204,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} JHINZU input value
                  */
-                Lohnsteuer2024.prototype.setJHINZU = function (JHINZU) {
+                Lohnsteuer2024Big.prototype.setJHINZU = function (JHINZU) {
                     this.JHINZU = JHINZU;
                 };
                 /**
@@ -1223,7 +1223,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getJRE4 = function () {
+                Lohnsteuer2024Big.prototype.getJRE4 = function () {
                     return this.JRE4;
                 };
                 /**
@@ -1242,7 +1242,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} JRE4 input value
                  */
-                Lohnsteuer2024.prototype.setJRE4 = function (JRE4) {
+                Lohnsteuer2024Big.prototype.setJRE4 = function (JRE4) {
                     this.JRE4 = JRE4;
                 };
                 /**
@@ -1252,7 +1252,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getJVBEZ = function () {
+                Lohnsteuer2024Big.prototype.getJVBEZ = function () {
                     return this.JVBEZ;
                 };
                 /**
@@ -1262,7 +1262,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} JVBEZ input value
                  */
-                Lohnsteuer2024.prototype.setJVBEZ = function (JVBEZ) {
+                Lohnsteuer2024Big.prototype.setJVBEZ = function (JVBEZ) {
                     this.JVBEZ = JVBEZ;
                 };
                 /**
@@ -1279,7 +1279,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getKRV = function () {
+                Lohnsteuer2024Big.prototype.getKRV = function () {
                     return this.KRV;
                 };
                 /**
@@ -1296,7 +1296,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} KRV input value
                  */
-                Lohnsteuer2024.prototype.setKRV = function (KRV) {
+                Lohnsteuer2024Big.prototype.setKRV = function (KRV) {
                     this.KRV = KRV;
                 };
                 /**
@@ -1309,7 +1309,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getKVZ = function () {
+                Lohnsteuer2024Big.prototype.getKVZ = function () {
                     return this.KVZ;
                 };
                 /**
@@ -1322,7 +1322,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} KVZ input value
                  */
-                Lohnsteuer2024.prototype.setKVZ = function (KVZ) {
+                Lohnsteuer2024Big.prototype.setKVZ = function (KVZ) {
                     this.KVZ = KVZ;
                 };
                 /**
@@ -1336,7 +1336,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getLZZ = function () {
+                Lohnsteuer2024Big.prototype.getLZZ = function () {
                     return this.LZZ;
                 };
                 /**
@@ -1350,7 +1350,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} LZZ input value
                  */
-                Lohnsteuer2024.prototype.setLZZ = function (LZZ) {
+                Lohnsteuer2024Big.prototype.setLZZ = function (LZZ) {
                     this.LZZ = LZZ;
                 };
                 /**
@@ -1362,7 +1362,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getLZZFREIB = function () {
+                Lohnsteuer2024Big.prototype.getLZZFREIB = function () {
                     return this.LZZFREIB;
                 };
                 /**
@@ -1374,7 +1374,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} LZZFREIB input value
                  */
-                Lohnsteuer2024.prototype.setLZZFREIB = function (LZZFREIB) {
+                Lohnsteuer2024Big.prototype.setLZZFREIB = function (LZZFREIB) {
                     this.LZZFREIB = LZZFREIB;
                 };
                 /**
@@ -1386,7 +1386,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getLZZHINZU = function () {
+                Lohnsteuer2024Big.prototype.getLZZHINZU = function () {
                     return this.LZZHINZU;
                 };
                 /**
@@ -1398,7 +1398,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} LZZHINZU input value
                  */
-                Lohnsteuer2024.prototype.setLZZHINZU = function (LZZHINZU) {
+                Lohnsteuer2024Big.prototype.setLZZHINZU = function (LZZHINZU) {
                     this.LZZHINZU = LZZHINZU;
                 };
                 /**
@@ -1409,7 +1409,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getMBV = function () {
+                Lohnsteuer2024Big.prototype.getMBV = function () {
                     return this.MBV;
                 };
                 /**
@@ -1420,7 +1420,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} MBV input value
                  */
-                Lohnsteuer2024.prototype.setMBV = function (MBV) {
+                Lohnsteuer2024Big.prototype.setMBV = function (MBV) {
                     this.MBV = MBV;
                 };
                 /**
@@ -1433,7 +1433,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getPKPV = function () {
+                Lohnsteuer2024Big.prototype.getPKPV = function () {
                     return this.PKPV;
                 };
                 /**
@@ -1446,7 +1446,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} PKPV input value
                  */
-                Lohnsteuer2024.prototype.setPKPV = function (PKPV) {
+                Lohnsteuer2024Big.prototype.setPKPV = function (PKPV) {
                     this.PKPV = PKPV;
                 };
                 /**
@@ -1459,7 +1459,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getPKV = function () {
+                Lohnsteuer2024Big.prototype.getPKV = function () {
                     return this.PKV;
                 };
                 /**
@@ -1472,7 +1472,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} PKV input value
                  */
-                Lohnsteuer2024.prototype.setPKV = function (PKV) {
+                Lohnsteuer2024Big.prototype.setPKV = function (PKV) {
                     this.PKV = PKV;
                 };
                 /**
@@ -1488,7 +1488,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getPVA = function () {
+                Lohnsteuer2024Big.prototype.getPVA = function () {
                     return this.PVA;
                 };
                 /**
@@ -1504,7 +1504,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} PVA input value
                  */
-                Lohnsteuer2024.prototype.setPVA = function (PVA) {
+                Lohnsteuer2024Big.prototype.setPVA = function (PVA) {
                     this.PVA = PVA;
                 };
                 /**
@@ -1515,7 +1515,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getPVS = function () {
+                Lohnsteuer2024Big.prototype.getPVS = function () {
                     return this.PVS;
                 };
                 /**
@@ -1526,7 +1526,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} PVS input value
                  */
-                Lohnsteuer2024.prototype.setPVS = function (PVS) {
+                Lohnsteuer2024Big.prototype.setPVS = function (PVS) {
                     this.PVS = PVS;
                 };
                 /**
@@ -1537,7 +1537,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getPVZ = function () {
+                Lohnsteuer2024Big.prototype.getPVZ = function () {
                     return this.PVZ;
                 };
                 /**
@@ -1548,7 +1548,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} PVZ input value
                  */
-                Lohnsteuer2024.prototype.setPVZ = function (PVZ) {
+                Lohnsteuer2024Big.prototype.setPVZ = function (PVZ) {
                     this.PVZ = PVZ;
                 };
                 /**
@@ -1559,7 +1559,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getR = function () {
+                Lohnsteuer2024Big.prototype.getR = function () {
                     return this.R;
                 };
                 /**
@@ -1570,7 +1570,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} R input value
                  */
-                Lohnsteuer2024.prototype.setR = function (R) {
+                Lohnsteuer2024Big.prototype.setR = function (R) {
                     this.R = R;
                 };
                 /**
@@ -1584,7 +1584,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getRE4 = function () {
+                Lohnsteuer2024Big.prototype.getRE4 = function () {
                     return this.RE4;
                 };
                 /**
@@ -1598,7 +1598,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} RE4 input value
                  */
-                Lohnsteuer2024.prototype.setRE4 = function (RE4) {
+                Lohnsteuer2024Big.prototype.setRE4 = function (RE4) {
                     this.RE4 = RE4;
                 };
                 /**
@@ -1611,7 +1611,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSONSTB = function () {
+                Lohnsteuer2024Big.prototype.getSONSTB = function () {
                     return this.SONSTB;
                 };
                 /**
@@ -1624,7 +1624,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} SONSTB input value
                  */
-                Lohnsteuer2024.prototype.setSONSTB = function (SONSTB) {
+                Lohnsteuer2024Big.prototype.setSONSTB = function (SONSTB) {
                     this.SONSTB = SONSTB;
                 };
                 /**
@@ -1636,7 +1636,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSTERBE = function () {
+                Lohnsteuer2024Big.prototype.getSTERBE = function () {
                     return this.STERBE;
                 };
                 /**
@@ -1648,7 +1648,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} STERBE input value
                  */
-                Lohnsteuer2024.prototype.setSTERBE = function (STERBE) {
+                Lohnsteuer2024Big.prototype.setSTERBE = function (STERBE) {
                     this.STERBE = STERBE;
                 };
                 /**
@@ -1664,7 +1664,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSTKL = function () {
+                Lohnsteuer2024Big.prototype.getSTKL = function () {
                     return this.STKL;
                 };
                 /**
@@ -1680,7 +1680,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} STKL input value
                  */
-                Lohnsteuer2024.prototype.setSTKL = function (STKL) {
+                Lohnsteuer2024Big.prototype.setSTKL = function (STKL) {
                     this.STKL = STKL;
                 };
                 /**
@@ -1690,7 +1690,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVBEZ = function () {
+                Lohnsteuer2024Big.prototype.getVBEZ = function () {
                     return this.VBEZ;
                 };
                 /**
@@ -1700,7 +1700,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VBEZ input value
                  */
-                Lohnsteuer2024.prototype.setVBEZ = function (VBEZ) {
+                Lohnsteuer2024Big.prototype.setVBEZ = function (VBEZ) {
                     this.VBEZ = VBEZ;
                 };
                 /**
@@ -1711,7 +1711,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVBEZM = function () {
+                Lohnsteuer2024Big.prototype.getVBEZM = function () {
                     return this.VBEZM;
                 };
                 /**
@@ -1722,7 +1722,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VBEZM input value
                  */
-                Lohnsteuer2024.prototype.setVBEZM = function (VBEZM) {
+                Lohnsteuer2024Big.prototype.setVBEZM = function (VBEZM) {
                     this.VBEZM = VBEZM;
                 };
                 /**
@@ -1734,7 +1734,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVBEZS = function () {
+                Lohnsteuer2024Big.prototype.getVBEZS = function () {
                     return this.VBEZS;
                 };
                 /**
@@ -1746,7 +1746,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VBEZS input value
                  */
-                Lohnsteuer2024.prototype.setVBEZS = function (VBEZS) {
+                Lohnsteuer2024Big.prototype.setVBEZS = function (VBEZS) {
                     this.VBEZS = VBEZS;
                 };
                 /**
@@ -1757,7 +1757,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVBS = function () {
+                Lohnsteuer2024Big.prototype.getVBS = function () {
                     return this.VBS;
                 };
                 /**
@@ -1768,7 +1768,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VBS input value
                  */
-                Lohnsteuer2024.prototype.setVBS = function (VBS) {
+                Lohnsteuer2024Big.prototype.setVBS = function (VBS) {
                     this.VBS = VBS;
                 };
                 /**
@@ -1779,7 +1779,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVJAHR = function () {
+                Lohnsteuer2024Big.prototype.getVJAHR = function () {
                     return this.VJAHR;
                 };
                 /**
@@ -1790,7 +1790,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} VJAHR input value
                  */
-                Lohnsteuer2024.prototype.setVJAHR = function (VJAHR) {
+                Lohnsteuer2024Big.prototype.setVJAHR = function (VJAHR) {
                     this.VJAHR = VJAHR;
                 };
                 /**
@@ -1801,7 +1801,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVKAPA = function () {
+                Lohnsteuer2024Big.prototype.getVKAPA = function () {
                     return this.VKAPA;
                 };
                 /**
@@ -1812,7 +1812,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VKAPA input value
                  */
-                Lohnsteuer2024.prototype.setVKAPA = function (VKAPA) {
+                Lohnsteuer2024Big.prototype.setVKAPA = function (VKAPA) {
                     this.VKAPA = VKAPA;
                 };
                 /**
@@ -1825,7 +1825,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVMT = function () {
+                Lohnsteuer2024Big.prototype.getVMT = function () {
                     return this.VMT;
                 };
                 /**
@@ -1838,7 +1838,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} VMT input value
                  */
-                Lohnsteuer2024.prototype.setVMT = function (VMT) {
+                Lohnsteuer2024Big.prototype.setVMT = function (VMT) {
                     this.VMT = VMT;
                 };
                 /**
@@ -1849,7 +1849,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getZKF = function () {
+                Lohnsteuer2024Big.prototype.getZKF = function () {
                     return this.ZKF;
                 };
                 /**
@@ -1860,7 +1860,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} ZKF input value
                  */
-                Lohnsteuer2024.prototype.setZKF = function (ZKF) {
+                Lohnsteuer2024Big.prototype.setZKF = function (ZKF) {
                     this.ZKF = ZKF;
                 };
                 /**
@@ -1871,7 +1871,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getZMVB = function () {
+                Lohnsteuer2024Big.prototype.getZMVB = function () {
                     return this.ZMVB;
                 };
                 /**
@@ -1882,7 +1882,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {number} ZMVB input value
                  */
-                Lohnsteuer2024.prototype.setZMVB = function (ZMVB) {
+                Lohnsteuer2024Big.prototype.setZMVB = function (ZMVB) {
                     this.ZMVB = ZMVB;
                 };
                 /**
@@ -1893,7 +1893,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getJRE4ENT = function () {
+                Lohnsteuer2024Big.prototype.getJRE4ENT = function () {
                     return this.JRE4ENT;
                 };
                 /**
@@ -1904,7 +1904,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} JRE4ENT input value
                  */
-                Lohnsteuer2024.prototype.setJRE4ENT = function (JRE4ENT) {
+                Lohnsteuer2024Big.prototype.setJRE4ENT = function (JRE4ENT) {
                     this.JRE4ENT = JRE4ENT;
                 };
                 /**
@@ -1915,7 +1915,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSONSTENT = function () {
+                Lohnsteuer2024Big.prototype.getSONSTENT = function () {
                     return this.SONSTENT;
                 };
                 /**
@@ -1926,7 +1926,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @param {Big} SONSTENT input value
                  */
-                Lohnsteuer2024.prototype.setSONSTENT = function (SONSTENT) {
+                Lohnsteuer2024Big.prototype.setSONSTENT = function (SONSTENT) {
                     this.SONSTENT = SONSTENT;
                 };
                 /**
@@ -1936,7 +1936,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getBK = function () {
+                Lohnsteuer2024Big.prototype.getBK = function () {
                     return this.BK;
                 };
                 /**
@@ -1951,7 +1951,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getBKS = function () {
+                Lohnsteuer2024Big.prototype.getBKS = function () {
                     return this.BKS;
                 };
                 /**
@@ -1962,7 +1962,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getBKV = function () {
+                Lohnsteuer2024Big.prototype.getBKV = function () {
                     return this.BKV;
                 };
                 /**
@@ -1972,7 +1972,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getLSTLZZ = function () {
+                Lohnsteuer2024Big.prototype.getLSTLZZ = function () {
                     return this.LSTLZZ;
                 };
                 /**
@@ -1983,7 +1983,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSOLZLZZ = function () {
+                Lohnsteuer2024Big.prototype.getSOLZLZZ = function () {
                     return this.SOLZLZZ;
                 };
                 /**
@@ -1997,7 +1997,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSOLZS = function () {
+                Lohnsteuer2024Big.prototype.getSOLZS = function () {
                     return this.SOLZS;
                 };
                 /**
@@ -2008,7 +2008,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSOLZV = function () {
+                Lohnsteuer2024Big.prototype.getSOLZV = function () {
                     return this.SOLZV;
                 };
                 /**
@@ -2023,7 +2023,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSTS = function () {
+                Lohnsteuer2024Big.prototype.getSTS = function () {
                     return this.STS;
                 };
                 /**
@@ -2034,7 +2034,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getSTV = function () {
+                Lohnsteuer2024Big.prototype.getSTV = function () {
                     return this.STV;
                 };
                 /**
@@ -2049,7 +2049,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVKVLZZ = function () {
+                Lohnsteuer2024Big.prototype.getVKVLZZ = function () {
                     return this.VKVLZZ;
                 };
                 /**
@@ -2063,7 +2063,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVKVSONST = function () {
+                Lohnsteuer2024Big.prototype.getVKVSONST = function () {
                     return this.VKVSONST;
                 };
                 /**
@@ -2073,7 +2073,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVFRB = function () {
+                Lohnsteuer2024Big.prototype.getVFRB = function () {
                     return this.VFRB;
                 };
                 /**
@@ -2083,7 +2083,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVFRBS1 = function () {
+                Lohnsteuer2024Big.prototype.getVFRBS1 = function () {
                     return this.VFRBS1;
                 };
                 /**
@@ -2093,7 +2093,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getVFRBS2 = function () {
+                Lohnsteuer2024Big.prototype.getVFRBS2 = function () {
                     return this.VFRBS2;
                 };
                 /**
@@ -2104,7 +2104,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getWVFRB = function () {
+                Lohnsteuer2024Big.prototype.getWVFRB = function () {
                     return this.WVFRB;
                 };
                 /**
@@ -2115,7 +2115,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getWVFRBO = function () {
+                Lohnsteuer2024Big.prototype.getWVFRBO = function () {
                     return this.WVFRBO;
                 };
                 /**
@@ -2126,18 +2126,18 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * <p>
                  * @return the value
                  */
-                Lohnsteuer2024.prototype.getWVFRBM = function () {
+                Lohnsteuer2024Big.prototype.getWVFRBM = function () {
                     return this.WVFRBM;
                 };
                 /**
                  * Initialize all inputs values with zero.
                  */
-                Lohnsteuer2024.prototype.initInputs = function () {
+                Lohnsteuer2024Big.prototype.initInputs = function () {
                     this.ENTSCH = this.JFREIB = this.JHINZU = this.JRE4 = this.JVBEZ = this.KVZ = this.LZZFREIB = this.LZZHINZU = this.MBV = this.PKPV = this.PVA = this.RE4 = this.SONSTB = this.STERBE = this.VBEZ = this.VBEZM = this.VBEZS = this.VBS = this.VKAPA = this.VMT = this.ZKF = this.JRE4ENT = this.SONSTENT = this.Z_0;
                     this.af = this.AJAHR = this.ALTER1 = this.f = this.KRV = this.LZZ = this.PKV = this.PVS = this.PVZ = this.R = this.STKL = this.VJAHR = this.ZMVB = 0;
                 };
                 // not realy clean, but for ts compiler
-                Lohnsteuer2024.prototype.isBigInput = function (name, value) {
+                Lohnsteuer2024Big.prototype.isBigInput = function (name, value) {
                     return value instanceof big_js_1.default;
                 };
                 /**
@@ -2146,7 +2146,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * @param {string} name Variable name to set.
                  * @param {number} value Value to set.
                  */
-                Lohnsteuer2024.prototype.set = function (name, value) {
+                Lohnsteuer2024Big.prototype.set = function (name, value) {
                     if (!this.hasOwnProperty(name)) {
                         throw new Error("Unknown parameter " + name);
                     }
@@ -2164,7 +2164,7 @@ System.register(["big.js"], function (exports_1, context_1) {
                  *
                  * @param {string} name Variable name to get.
                  */
-                Lohnsteuer2024.prototype.get = function (name) {
+                Lohnsteuer2024Big.prototype.get = function (name) {
                     if (this.hasOwnProperty(name)) {
                         return this[name];
                     }
@@ -2173,8 +2173,8 @@ System.register(["big.js"], function (exports_1, context_1) {
                 /**
                  * Get all fields with types.
                  */
-                Lohnsteuer2024.prototype.getDirectory = function () {
-                    return Lohnsteuer2024.typeDirectory;
+                Lohnsteuer2024Big.prototype.getDirectory = function () {
+                    return Lohnsteuer2024Big.typeDirectory;
                 };
                 /**
                  * Converts a value (number or Big) in the correct type (number or Big).
@@ -2182,8 +2182,8 @@ System.register(["big.js"], function (exports_1, context_1) {
                  * @param {string} name the name of the value
                  * @param {TaxJsValueType} value the value to convert
                  */
-                Lohnsteuer2024.prototype.toType = function (name, value) {
-                    var info = Lohnsteuer2024.typeDirectory[name];
+                Lohnsteuer2024Big.prototype.toType = function (name, value) {
+                    var info = Lohnsteuer2024Big.typeDirectory[name];
                     if (!info) {
                         throw new Error("Unknown parameter " + name);
                     }
@@ -2195,18 +2195,18 @@ System.register(["big.js"], function (exports_1, context_1) {
                     }
                     return value;
                 };
-                Lohnsteuer2024._n = "number";
-                Lohnsteuer2024._b = "Big";
-                Lohnsteuer2024._i = "input";
-                Lohnsteuer2024._o = "output";
-                Lohnsteuer2024._s = "STANDARD";
-                Lohnsteuer2024._d = "DBA";
-                Lohnsteuer2024.typeDirectory = {
-                    "af": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "AJAHR": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "ALTER1": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "ENTSCH": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "f": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "JFREIB": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "JHINZU": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "JRE4": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "JVBEZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "KRV": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "KVZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "LZZ": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "LZZFREIB": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "LZZHINZU": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "MBV": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "PKPV": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "PKV": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "PVA": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "PVS": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "PVZ": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "R": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "RE4": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "SONSTB": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "STERBE": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "STKL": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "VBEZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "VBEZM": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "VBEZS": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "VBS": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "VJAHR": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "VKAPA": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "VMT": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "ZKF": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "ZMVB": { type: Lohnsteuer2024._n, direction: Lohnsteuer2024._i }, "JRE4ENT": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "SONSTENT": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._i }, "BK": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "BKS": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "BKV": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "LSTLZZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "SOLZLZZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "SOLZS": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "SOLZV": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "STS": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "STV": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "VKVLZZ": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "VKVSONST": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._s }, "VFRB": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d }, "VFRBS1": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d }, "VFRBS2": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d }, "WVFRB": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d }, "WVFRBO": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d }, "WVFRBM": { type: Lohnsteuer2024._b, direction: Lohnsteuer2024._o, group: Lohnsteuer2024._d },
+                Lohnsteuer2024Big._n = "number";
+                Lohnsteuer2024Big._b = "Big";
+                Lohnsteuer2024Big._i = "input";
+                Lohnsteuer2024Big._o = "output";
+                Lohnsteuer2024Big._s = "STANDARD";
+                Lohnsteuer2024Big._d = "DBA";
+                Lohnsteuer2024Big.typeDirectory = {
+                    "af": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "AJAHR": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "ALTER1": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "ENTSCH": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "f": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "JFREIB": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "JHINZU": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "JRE4": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "JVBEZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "KRV": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "KVZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "LZZ": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "LZZFREIB": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "LZZHINZU": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "MBV": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "PKPV": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "PKV": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "PVA": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "PVS": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "PVZ": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "R": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "RE4": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "SONSTB": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "STERBE": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "STKL": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "VBEZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "VBEZM": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "VBEZS": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "VBS": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "VJAHR": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "VKAPA": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "VMT": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "ZKF": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "ZMVB": { type: Lohnsteuer2024Big._n, direction: Lohnsteuer2024Big._i }, "JRE4ENT": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "SONSTENT": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._i }, "BK": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "BKS": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "BKV": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "LSTLZZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "SOLZLZZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "SOLZS": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "SOLZV": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "STS": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "STV": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "VKVLZZ": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "VKVSONST": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._s }, "VFRB": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d }, "VFRBS1": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d }, "VFRBS2": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d }, "WVFRB": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d }, "WVFRBO": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d }, "WVFRBM": { type: Lohnsteuer2024Big._b, direction: Lohnsteuer2024Big._o, group: Lohnsteuer2024Big._d },
                 };
-                return Lohnsteuer2024;
+                return Lohnsteuer2024Big;
             }());
-            exports_1("Lohnsteuer2024", Lohnsteuer2024);
+            exports_1("Lohnsteuer2024Big", Lohnsteuer2024Big);
         }
     };
 });
