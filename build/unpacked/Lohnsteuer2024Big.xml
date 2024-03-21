@@ -107,7 +107,7 @@
 				 2 = Beitragsabschläge für das 2. und 3. Kind
 				 3 = Beitragsabschläge für 2. bis 4. Kinder
 				 4 = Beitragsabschläge für 2. bis 5. oder mehr Kinder   -->
-	        <INPUT name="PVA" type="BigDecimal" default="0"/>
+	        <INPUT name="PVA" type="BigDecimal" default="new BigDecimal(0)"/>
 	        
 	        
 	        <!-- 1, wenn bei der sozialen Pflegeversicherung die Besonderheiten in Sachsen zu berücksichtigen sind bzw. 
