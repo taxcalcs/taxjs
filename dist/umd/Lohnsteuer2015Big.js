@@ -1,3 +1,6 @@
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 (function (factory) {
     if (typeof module === "object" && typeof module.exports === "object") {
         var v = factory(require, exports);
@@ -10,7 +13,7 @@
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.Lohnsteuer2015Big = void 0;
-    var big_js_1 = require("big.js");
+    var big_js_1 = __importDefault(require("big.js"));
     /**
     * Steuerberechnungsklasse.
     *
