@@ -3,7 +3,7 @@
   "title": "TaxJs",
   "version": "2024.0.0",
   "description": "german tax calculation in typescript and javascript",
-  "main": "./dist/js/Lohnsteuer2024Big.min.js",
+  "main": "./dist/es2015/Lohnsteuer2024Big.min.js",
   "types": "./dist/declaration/Lohnsteuer2024Big.d.ts",
   "type": "module",
   "scripts": {
